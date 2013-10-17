@@ -136,9 +136,8 @@ nmap :Q :q
 nmap :W :w
 nmap :WQ :wq
 
-" Took this from Adrian Sampson. Reversed it though so that
-" I can type j k as in just kidding.
-inoremap kj <ESC>
+" Took this from Adrian Sampson.
+inoremap jk <ESC>
 
 " Windows
 map <C-J> <C-W>j

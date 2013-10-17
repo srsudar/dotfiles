@@ -1,0 +1,20 @@
+Much of this is based on
+vimcasts.org/episodes/synchronizing-plugins-with-git-submodules-and-pathogen/
+
+Installation:
+
+	
+
+Create symlinks:
+	Everything is going to live in .dotfiles/.vim/. 
+	Create symlinks so that things look in the correct place
+	in the home directory.
+
+	ln -s ~/.dotfiles/.vim ~/.vim # The vim folder itself.
+	ln -s ~/.vim/vimrc ~/.vimrc   # The vimrc.
+
+
+Initialize the submodules:
+	
+	git submodule init
+	git submodule update
