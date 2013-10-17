@@ -7,16 +7,25 @@ set t_Co=256
 execute pathogen#infect()
 
 call pathogen#helptags() " generate helptags for everything in 'runtimepath'
-let g:syntastic_auto_loc_list=1
 
 " Syntastic
 let g:syntastic_mode_map={ 'mode':'active',
 	\ 'active_filetypes': [],
 	\ 'passive_filetypes': [] }
-let g:syntastic_python_checkers = ['flake8']
-" Not sure what this does but it's on the yelp vim wiki.
+let g:syntastic_python_checkers = ['pep8', 'python', 'pyflakes']
+" This tells syntastic to use the location list for displaying things.
+let g:syntastic_auto_loc_list=1
+" Ignore the things that yelp does. 
+" TODO: Should probably only do this conditionally.
 let g:syntastic_python_pep8_args='--ignore=E501,W191'
 let g:syntastic_enable_highlighting = 1
+let g:syntastic_enable_signs = 1
+let g:syntastic_error_symbol = 'x'
+let g:syntastic_warning_symbol = '!'
+" And now we disable pyflakes using the quickfix list to leave the quickfix
+" buffer alone, which does weird things to syntastic.
+let g:pyflakes_use_quickfix = 0
+let g:pymode_lint_write = 0
 
 " Tagbar
 let g:tagbar_sort = 0
