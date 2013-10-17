@@ -36,6 +36,13 @@ endif
 let g:CommandTMaxFiles=999999
 
 " ---------- settings ---------
+" We'll use a highlight color column if it has it.
+if exists('+colorcolumn')
+	set colorcolumn=80
+	highlight ColorColumn ctermbg=Blue
+else
+	au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+endif
 
 let mapleader = ","
 set mouse=a
