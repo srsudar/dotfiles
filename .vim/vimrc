@@ -48,7 +48,6 @@ let g:CommandTMaxFiles=999999
 " We'll use a highlight color column if it has it.
 if exists('+colorcolumn')
 	set colorcolumn=80
-	highlight ColorColumn ctermbg=Blue " Not working, fyi.
 else
 	au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
@@ -65,6 +64,7 @@ set showcmd
 
 " Indentation/tabs
 set autoindent
+"highlight TabHighlight ctermbg=Blue " highlight tabs
 set listchars=tab:>-
 set list
 
@@ -81,7 +81,12 @@ autocmd BufWinEnter *.html setlocal expandtab
 
 " highlight trailing whitespace and non-tab indents
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+autocmd ColorScheme * highlight TabHighlight ctermbg=Blue
+" So this doesn't work because you can only apply one match at a time. What I
+" should really be doing is writing a custom syntax, apparently. See:
+" http://stackoverflow.com/questions/18167443/multiple-highlight-with-autocmd-in-vimrc
 autocmd BufWinEnter *.* match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter *.* match TabHighlight /\t/
 autocmd BufWinLeave * call clearmatches()
 
 " Color scheme and font
