@@ -48,7 +48,7 @@ let g:CommandTMaxFiles=999999
 " We'll use a highlight color column if it has it.
 if exists('+colorcolumn')
 	set colorcolumn=80
-	highlight ColorColumn ctermbg=Blue
+	highlight ColorColumn ctermbg=Blue " Not working, fyi.
 else
 	au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
@@ -65,12 +65,13 @@ set showcmd
 
 " Indentation/tabs
 set autoindent
-set noexpandtab " in python, use real tabs
+set listchars=tab:>-
+set list
 
-" 4 spaces by default
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+" 2 spaces by default
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 
 " Except HTML - 2 spaces
 autocmd BufWinEnter *.html setlocal tabstop=2
@@ -209,7 +210,7 @@ endif
 " taken from the yelp vim tools page.
 function YelpSettings()
 	setlocal noexpandtab	" don't turn them into spaces
-	setlocal shiftwidth=4	" auto-indent width
+	setlocal shiftwidth=2	" auto-indent width
 	setlocal tabstop=2		" display width of a physical tab character
 	setlocal softtabstop=0	" disable part-tab-part-space tabbing
 endfunction
