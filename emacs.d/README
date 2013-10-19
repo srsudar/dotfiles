@@ -1,0 +1,14 @@
+Similar to the vim file, this should be the home of all emacs files. To get it
+work you should then make a symbolic link as ~/.emacs.d, which is where emacs
+looks for its file. I.e. 
+
+ln -s dotfiles/emacs.d ~/.emacs.d
+
+Note that there is a file
+
+dotfiles/emacs.d/emacs_backups/.gitignore
+
+The point of this special ignore file is that emacs versions everything in that
+backup folder, and we don't want to be versioning those across systems. They
+should stay local, and if you need actual version control on those files you
+should be doing it yourself, not using emacs. And there you have it.
