@@ -1,4 +1,4 @@
 # We want to do away with all the .DS_STORE things as well as what I think is
 # a recovery file that emacs uses--namely: emacs.d/ac-comphist.dat.
 .DS_STORE
-/emacs.d/ac-comphist.dat
+ac-comphist.dat
