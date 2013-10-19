@@ -13,3 +13,6 @@
 [submodule "vim/bundle/vim-colors-solarized"]
 	path = vim/bundle/vim-colors-solarized
 	url = https://github.com/altercation/vim-colors-solarized.git
+[submodule "emacs.d/emacs-for-python"]
+	path = emacs.d/emacs-for-python
+	url = https://github.com/gabrielelanaro/emacs-for-python.git
