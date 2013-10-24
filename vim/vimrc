@@ -150,6 +150,18 @@ set tags+=./.tags,.tags,../.tags,../../.tags
 " Filetypes
 autocmd BufEnter *.mako setlocal filetype=html
 
+" Unicode stuff. This is taken from the following two places, both of which
+" have good explanations:
+" http://vim.wikia.com/wiki/Working_with_Unicode
+" http://stackoverflow.com/questions/16507777/vim-set-encoding-and-fileencoding-utf-8
+if has("multi_byte")
+	if &termencoding == ""
+		let &termencoding = &encoding
+	endif
+	set encoding=utf-8
+	setglobal fileencoding=utf-8
+	set fileencodings=ucs-bom,utf-8,latin1
+endif
 " ---------- mappings ---------
 
 " Typos and things I don't want to do
