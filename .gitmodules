@@ -16,3 +16,6 @@
 [submodule "emacs.d/emacs-for-python"]
 	path = emacs.d/emacs-for-python
 	url = https://github.com/gabrielelanaro/emacs-for-python.git
+[submodule "vim/bundle/nerdcommenter"]
+	path = vim/bundle/nerdcommenter
+	url = https://github.com/scrooloose/nerdcommenter.git
