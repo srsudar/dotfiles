@@ -1,0 +1,129 @@
+# This was copied from my macbook pro. Am commenting out the
+# inapplicable things.
+
+# Setting PATH for Python 3.1
+# The orginal version is saved in .bash_profile.pysave
+#PATH="/Library/Frameworks/Python.framework/Versions/3.1/bin:${PATH}"
+#export PATH
+
+# Jul9/2012 setting matlab license file
+export MLM_LICENSE_FILE=27000@lmas.engr.washington.edu,27000@nexus.engr.washington.edu,27000@persephone.engr.washington.edu
+
+# Mar27/2012 adding the path for postgres
+#PATH="/Library/PostgreSQL/9.1/bin":$PATH
+
+# Jun13/2012 adding things for maven3
+# I think these are also necessary, or at least I'm told to do them
+# these are links, if I update maven might have to choose specifically
+# or update the links.
+# Mar3/2014 updating the below.
+export M2_HOME=/usr/share/maven
+export M2=$M2_HOME"/bin"
+#PATH=$M2:$PATH
+
+# Jul/8/2012 this is for Tomcat 6.0 (raises sword and strikes killing blow)
+#export JAVA_HOME=/Library/Java/Home
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_21.jdk/Contents/Home
+export CATALINA_HOME=/usr/local/Cellar/tomcat/7.0.28
+
+# Jun13/2012 and this is for mysql
+PATH="/usr/local/mysql-5.5.25a-osx10.6-x86_64/bin":$PATH
+# Jun14/2012 amendment for the server. mysql's install sucks.
+# according to a website that is in my chrome favorites:
+# "create aliases that make it easier for you
+# to manually start and stop the MySQL Daemon.
+#alias mysqlstart="/Library/StartupItems/MySQLCOM/MySQLCOM start"
+#alias mysqlstop="/Library/StartupItems/MySQLCOM/MySQLCOM stop"
+
+# July 2, 2012. Command to get my ip address.
+alias myip="ifconfig | grep 'inet ' | grep -v '127.0.0.1' | cut -d\  -f2"
+
+alias grep="grep --color"
+alias egrep="egrep --color"
+
+# Nov 14, 2013. Command to get to my dev box at yelp.
+alias dev="ssh -A srsudar@dev20-devc"
+
+
+# Jun14/2012 this is to add the android SDK and AppEngine SDK to the path
+#PATH="/Developer/android-sdk-macosx/tools":$PATH
+#PATH="/Developer/appengine-java-sdk-1.6.6/bin":$PATH
+
+# Jun29/2012 adding the adb and SDK platform tools to my path
+#PATH="/Developer/android-sdk-macosx/platform-tools":$PATH
+
+
+#test -r /sw/bin/init.sh && . /sw/bin/init.sh
+alias attux="ssh -X sudars@attu.cs.washington.edu"
+alias attu="ssh sudars@attu.cs.washington.edu"
+alias barb="ssh sudars@barb.cs.washington.edu"
+alias wget="curl -O"
+alias ls="ls -G"
+alias ll="ls -laF"
+# We want to use the most recent emacs, not version 22
+# that comes installed on Apple. And we want to run it with
+# the -nw flags, which will make it be in the terminal,
+# I think.
+alias emacs="emacs-24.3 -nw"
+# And this is the most recent version of vim.
+alias vim="/Applications/MacVim-snapshot-71/MacVim.app/Contents/MacOS/Vim"
+##
+# Your previous /Users/samsudar/.bash_profile file was backed up as /Users/samsudar/.bash_profile.macports-saved_2012-03-08_at_12:59:24
+##
+
+# Jan 9, 2014
+# Starts a python server serving the contents of the current file
+alias python-server="python -m SimpleHTTPServer 8888"
+
+# Putting the appengine sdk on the path.
+PATH="/usr/local/appengine-java-sdk-1.6.6/bin":$PATH
+
+# MacPorts Installer addition on 2012-03-08_at_12:59:24: adding an appropriate PATH variable for use with MacPorts.
+#export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+# Finished adapting your PATH environment variable for use with MacPorts.
+
+# 7/8/12 Android SDK following homebrew's instructions
+export ANDROID_SDK_ROOT="/usr/local/Cellar/android-sdk/r22.2.1"
+
+# Jan 7, 2014. Trying to get the latest version of android working.
+export ANDROID_HOME="/usr/local/Cellar/android-sdk/22.2.1"
+# Jan 7, 2014. Took from:
+# http://spring.io/guides/gs/android/
+export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+
+# Adding the path for the xcode tools
+PATH="/Applications/Xcode.app/Contents/Developer/usr/bin":$PATH
+export PATH
+##
+# Your previous /Users/sudars/.bash_profile file was backed up as /Users/sudars/.bash_profile.macports-saved_2013-03-11_at_09:46:19
+##
+
+# MacPorts Installer addition on 2013-03-11_at_09:46:19: adding an appropriate PATH variable for use with MacPorts.
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+# Finished adapting your PATH environment variable for use with MacPorts.
+
+# Jan 10, 2014
+# After running 'brew install bash-completion', I am supposed to do the
+# following:
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
+fi
+# And then this means that I don't want to expand the tilde to the home
+# directory, which I hate. 
+set expand-tilde off
+# Sadly, however, this apparently is ignored by bash_completion:
+# http://www.linuxquestions.org/questions/linux-software-2/how-to-stop-bash-from-replacing-~-with-home-username-643162/
+# So we need to stop the expansion manually.
+_expand()
+{
+    return 0;
+}
+
+# Jan 10, 2014
+# Trying to get the git branch to appear in the prompt.
+# Before the change it was:
+# kachess:assignment1 sudars$ echo $PS1
+# \h:\W \u\$
+# Taken from:
+# http://www.bramschoenmakers.nl/en/node/624
+export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \W\[\033[01;33m\]$(__git_ps1)\[\033[01;34m\] \$\[\033[00m\] '
