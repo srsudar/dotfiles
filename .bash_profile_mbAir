@@ -17,13 +17,13 @@ export MLM_LICENSE_FILE=27000@lmas.engr.washington.edu,27000@nexus.engr.washingt
 # these are links, if I update maven might have to choose specifically
 # or update the links.
 # Mar3/2014 updating the below.
-export M2_HOME=/usr/share/maven
-export M2=$M2_HOME"/bin"
-#PATH=$M2:$PATH
+export MVN_HOME=/usr/local/opt/maven30
+export MVN=$M2_HOME"/bin"
+export PATH=$M2:$PATH
 
 # Jul/8/2012 this is for Tomcat 6.0 (raises sword and strikes killing blow)
 #export JAVA_HOME=/Library/Java/Home
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_21.jdk/Contents/Home
+export JAVA_HOME=$(/usr/libexec/java_home)
 export CATALINA_HOME=/usr/local/Cellar/tomcat/7.0.28
 
 # Jun13/2012 and this is for mysql
@@ -86,7 +86,7 @@ PATH="/usr/local/appengine-java-sdk-1.6.6/bin":$PATH
 export ANDROID_SDK_ROOT="/usr/local/Cellar/android-sdk/r22.2.1"
 
 # Jan 7, 2014. Trying to get the latest version of android working.
-export ANDROID_HOME="/usr/local/Cellar/android-sdk/22.2.1"
+export ANDROID_HOME=/usr/local/opt/android-sdk
 # Jan 7, 2014. Took from:
 # http://spring.io/guides/gs/android/
 export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
@@ -127,3 +127,11 @@ _expand()
 # Taken from:
 # http://www.bramschoenmakers.nl/en/node/624
 export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \W\[\033[01;33m\]$(__git_ps1)\[\033[01;34m\] \$\[\033[00m\] '
+
+# Mar 4, 2014. Getting GRADLE_HOME set correctly. using
+# brew --prefix gradle
+# http://stackoverflow.com/questions/18495474/intellij-cannot-find-gradle-home-location
+export GRADLE_HOME=/usr/local/opt/gradle/libexec
+
+# Mar 4, 2014. Getting Groovy set up.
+export GROOVY_HOME=/usr/local/opt/groovy/libexec
