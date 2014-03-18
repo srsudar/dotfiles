@@ -52,7 +52,11 @@ else
 	au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
 
-let mapleader = ","
+" The leader was mapped to comma, but his is the reverse find function of the
+" ; command. I'm going to not map this and just leave leader the same with
+" \. I think I'd prefer to use reverse find a lot than leader. But we'll see.
+"let mapleader = ","
+"noremap \ ,
 set mouse=a
 
 " Filetype highlighting
@@ -129,6 +133,12 @@ set shortmess+=IA
 
 " Longer history
 set history=1000
+" By default the up and down arrows filter commands in the history--eg if you
+" type ':e ' and then hit up, you'll see only the previous commands that
+" started with that. If you do that and then hit <C-p>, however, you won't. So
+" let's fix that behavior.
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
 
 " Case-smart searching (case-sensitive only if capital letter in search)
 set ignorecase
