@@ -64,6 +64,10 @@ filetype on
 filetype plugin indent on
 syntax on
 
+" Turn on the matchit plugin that will enable jumping to pairs of things like
+" matching open and close xml tags with %.
+runtime macros/matchit.vim
+
 " Show what you are typing mid-command
 set showcmd
 
@@ -124,7 +128,8 @@ set number
 set backspace=eol,start,indent
 set whichwrap=b,s,h,l,<,>,[,]
 
-" Hidden buffer support
+" Hidden buffer support. I think this lets us navigate away from a buffer,
+" even when doing ':bnext', without giving the 'override with !' error.
 set hidden
 
 " Disable annoying messages, swap file already exists
@@ -182,6 +187,13 @@ if has("multi_byte")
 	set fileencodings=ucs-bom,utf-8,latin1
 endif
 " ---------- mappings ---------
+
+" Make %% a shortcut for %:h on the command line. Normally if you do 
+" ':edit %<Tab>' it will show you the relative path to the file, including the
+" filename. If you don't want the filename, you do ':edit %:h<Tab>'. This
+" remapping will give allow us to get the same functionality by doing
+" ':edit %%'.
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
 " Typos and things I don't want to do
 nmap Q <ESC>
