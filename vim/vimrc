@@ -199,6 +199,21 @@ if has("multi_byte")
 	setglobal fileencoding=utf-8
 	set fileencodings=ucs-bom,utf-8,latin1
 endif
+
+" This is a function from Practical Vim that executes something for every item
+" in the argument list. It is also available as a plugin, with README
+" information and things here (also see the books for usage):
+" https://github.com/nelstrom/vim-qargs
+command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
+function! QuickfixFilenames()
+  " Building a hash ensures we get each buffer only once
+  let buffer_numbers = {}
+  for quickfix_item in getqflist()
+    let buffer_numbers[quickfix_item['bufnr']] = bufname(quickfix_item['bufnr'])
+  endfor
+  return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
+endfunction
+
 " ---------- mappings ---------
 
 " Make %% a shortcut for %:h on the command line. Normally if you do 
