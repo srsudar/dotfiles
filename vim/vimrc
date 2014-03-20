@@ -152,6 +152,19 @@ set smartcase
 " Incremental search
 set incsearch
 
+" And we're going to add commands that remap & to :&& in normal and visual
+" modes. & normally reruns the substitution without the same flags, but this
+" isn't super useful, so per the advice of Practical Vim I'm going to remap it
+" to just redo the same thing.
+nnoremap & :&&<CR>
+xnoremap & :&&<CR>
+
+" We're also going to add a toggle for highlighting search to c-l.
+" According to Practical Vim, normally <C-l> clears and redraws the creen.
+" This mapping builds on top of the usual behavior by muting search
+" highlighting. FOR WHATEVER REASON THIS IS NOT WORKING
+nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+
 " Tab completion
 set wildmode=longest,list
 set wildignore=*.pyc
