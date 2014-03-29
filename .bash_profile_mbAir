@@ -119,15 +119,9 @@ _expand()
     return 0;
 }
 
-# Jan 10, 2014
-# Trying to get the git branch to appear in the prompt.
-# Before the change it was:
-# kachess:assignment1 sudars$ echo $PS1
-# \h:\W \u\$
-# Taken from:
-# http://www.bramschoenmakers.nl/en/node/624
-#export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \W\[\033[01;33m\]$(__git_ps1)\[\033[01;34m\] \$\[\033[00m\] '
-
+# Mar 29, 2014
+# Taken from this gist: https://gist.github.com/henrik/31631
+#
 # http://henrik.nyh.se/2008/12/git-dirty-prompt
 # http://www.simplisticcomplexity.com/2008/03/13/show-your-git-branch-name-in-your-prompt/
 #   username@Machine ~/dev/dir[master]$   # clean working directory
