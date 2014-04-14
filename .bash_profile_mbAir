@@ -142,3 +142,6 @@ export GRADLE_HOME=/usr/local/opt/gradle/libexec
 
 # Mar 4, 2014. Getting Groovy set up.
 export GROOVY_HOME=/usr/local/opt/groovy/libexec
+
+# April 13, 2014. Sourcing my custom tmux-completion tmux function.
+source ~/dotfiles/bash_completion.d/tmux
