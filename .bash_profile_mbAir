@@ -6,12 +6,6 @@
 #PATH="/Library/Frameworks/Python.framework/Versions/3.1/bin:${PATH}"
 #export PATH
 
-# Jul9/2012 setting matlab license file
-export MLM_LICENSE_FILE=27000@lmas.engr.washington.edu,27000@nexus.engr.washington.edu,27000@persephone.engr.washington.edu
-
-# Mar27/2012 adding the path for postgres
-#PATH="/Library/PostgreSQL/9.1/bin":$PATH
-
 # Jun13/2012 adding things for maven3
 # I think these are also necessary, or at least I'm told to do them
 # these are links, if I update maven might have to choose specifically
@@ -28,12 +22,6 @@ export CATALINA_HOME=/usr/local/Cellar/tomcat/7.0.28
 
 # Jun13/2012 and this is for mysql
 PATH="/usr/local/mysql-5.5.25a-osx10.6-x86_64/bin":$PATH
-# Jun14/2012 amendment for the server. mysql's install sucks.
-# according to a website that is in my chrome favorites:
-# "create aliases that make it easier for you
-# to manually start and stop the MySQL Daemon.
-#alias mysqlstart="/Library/StartupItems/MySQLCOM/MySQLCOM start"
-#alias mysqlstop="/Library/StartupItems/MySQLCOM/MySQLCOM stop"
 
 # July 2, 2012. Command to get my ip address.
 alias myip="ifconfig | grep 'inet ' | grep -v '127.0.0.1' | cut -d\  -f2"
@@ -44,16 +32,6 @@ alias egrep="egrep --color"
 # Nov 14, 2013. Command to get to my dev box at yelp.
 alias dev="ssh -A srsudar@dev20-devc"
 
-
-# Jun14/2012 this is to add the android SDK and AppEngine SDK to the path
-#PATH="/Developer/android-sdk-macosx/tools":$PATH
-#PATH="/Developer/appengine-java-sdk-1.6.6/bin":$PATH
-
-# Jun29/2012 adding the adb and SDK platform tools to my path
-#PATH="/Developer/android-sdk-macosx/platform-tools":$PATH
-
-
-#test -r /sw/bin/init.sh && . /sw/bin/init.sh
 alias attux="ssh -X sudars@attu.cs.washington.edu"
 alias attu="ssh sudars@attu.cs.washington.edu"
 alias barb="ssh sudars@barb.cs.washington.edu"
@@ -67,9 +45,6 @@ alias ll="ls -laF"
 alias emacs="emacs-24.3 -nw"
 # And this is the most recent version of vim.
 alias vim="/Applications/MacVim-snapshot-71/MacVim.app/Contents/MacOS/Vim"
-##
-# Your previous /Users/samsudar/.bash_profile file was backed up as /Users/samsudar/.bash_profile.macports-saved_2012-03-08_at_12:59:24
-##
 
 # Jan 9, 2014
 # Starts a python server serving the contents of the current file
@@ -78,11 +53,7 @@ alias python-server="python -m SimpleHTTPServer 8888"
 # Putting the appengine sdk on the path.
 PATH="/usr/local/appengine-java-sdk-1.6.6/bin":$PATH
 
-# MacPorts Installer addition on 2012-03-08_at_12:59:24: adding an appropriate PATH variable for use with MacPorts.
-#export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-# Finished adapting your PATH environment variable for use with MacPorts.
-
-# 7/8/12 Android SDK following homebrew's instructions
+# July 8, 2012. Android SDK following homebrew's instructions
 export ANDROID_SDK_ROOT="/usr/local/Cellar/android-sdk/r22.2.1"
 
 # Jan 7, 2014. Trying to get the latest version of android working.
@@ -94,9 +65,6 @@ export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 # Adding the path for the xcode tools
 PATH="/Applications/Xcode.app/Contents/Developer/usr/bin":$PATH
 export PATH
-##
-# Your previous /Users/sudars/.bash_profile file was backed up as /Users/sudars/.bash_profile.macports-saved_2013-03-11_at_09:46:19
-##
 
 # MacPorts Installer addition on 2013-03-11_at_09:46:19: adding an appropriate PATH variable for use with MacPorts.
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
