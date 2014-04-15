@@ -30,6 +30,17 @@ ln -s ./dotfiles/emacs.d/ ./.emacs.d
 # readline
 ln -s ./dotfiles/inputrc ./.inputrc
 
+# hg
+ln -s ./dotfiles/hgignore ./.hgignore
+# The .hgrc file contains a username. Be warned.
+ln -s ./dotfiles/hgrc ./.hgrc
+
+# git
+ln -s ./dotfiles/gitignore_global ./.gitignore_global
+# The .gitconfig file contains some system-specific paths as well as a
+# a username. Be warned.
+ln -s ./dotfiles/gitconfig_mbAir ./.gitconfig
+
 # mighty vim
 # directory
 ln -s ./dotfiles/vim/ ./.vim
@@ -48,9 +59,16 @@ git submodule update
 The way I manage my vim configuration is based on this excellent tutorial:
 vimcasts.org/episodes/synchronizing-plugins-with-git-submodules-and-pathogen/
 
-To add additional submodules, do something like the following:
+To add new submodules, do something like the following. In the below command we
+are pointing at the git repo for the vim-unimpaired plugin and placing it in a
+directory called `bundle/unimpaired/`, where pathogen will find it.
 
-Adding new submodules:
-Do something like the following:
-
+```shell
 git submodule add git://github.com/tpope/vim-unimpaired.git bundle/unimpaired
+```
+
+## Git and Hg
+
+My `.gitconfig` and `.hgrc` files contain system and me-specific info like
+usernames and paths. Be aware you'll have to change these things if you try to
+use these files.
