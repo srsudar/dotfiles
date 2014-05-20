@@ -233,10 +233,10 @@ nmap :WQ :wq
 inoremap jk <ESC>
 
 " Windows
-map <C-J> <C-W>j
-map <C-K> <C-W>k
-map <C-H> <C-W>h
-map <C-L> <C-W>l
+"map <C-J> <C-W>j
+"map <C-K> <C-W>k
+"map <C-H> <C-W>h
+"map <C-L> <C-W>l
 
 " Function key shortcuts
 map <F1> <nop>
