@@ -11,9 +11,16 @@
 # these are links, if I update maven might have to choose specifically
 # or update the links.
 # Mar3/2014 updating the below.
-export MVN_HOME=/usr/local/opt/maven30
-export MVN=$M2_HOME"/bin"
-export PATH=$M2:$PATH
+#export MVN_HOME=/usr/local/opt/maven30
+#export MVN=$M2_HOME"/bin"
+#export PATH=$M2:$PATH
+# May 22, 2014: Updating these to use the latest mvn. I think maven30 was
+# installed for version issues with the Android build system or something.
+export M3_HOME=/usr/local/opt/maven
+export MVN_HOME=$M3_HOME
+export PATH=$PATH:$M3_HOME/bin
+export MVN=$M3_HOME/bin
+
 
 # Jul/8/2012 this is for Tomcat 6.0 (raises sword and strikes killing blow)
 #export JAVA_HOME=/Library/Java/Home
@@ -142,3 +149,22 @@ function color_maven() {
 }
 
 alias mvn=color_maven
+
+# May 22, 2014. Setting up go. Installed via `brew install go`.
+GOROOT=/usr/local/opt/go/libexec
+export GOROOT
+export PATH=${PATH}:${GOROOT}/bin
+# According to this, you should create a special directory for your go
+# workspace: http://golang.org/doc/code.html. This should NOT be the same as
+# your installation location of go.
+export GOPATH=${HOME}/go
+export PATH=${PATH}:${GOPATH}/bin
+
+# May 23, 2014
+# Installing node version manager (nvm) via homebrew came up with the caveat
+# that I need to add the following:
+source $(brew --prefix nvm)/nvm.sh
+
+# May 27, 2014
+# This is required to avoid having to edit the default merge message in git.
+export GIT_MERGE_AUTOEDIT=no

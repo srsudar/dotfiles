@@ -3,6 +3,7 @@
 	email = sudar.sam@gmail.com
 [core]
 	excludesfile = /Users/sudars/.gitignore_global
+	mergeoptions = --no-edit
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
