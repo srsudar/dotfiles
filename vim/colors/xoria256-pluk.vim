@@ -66,7 +66,7 @@ hi WildMenu     ctermfg=0   guifg=#000000 ctermbg=184 guibg=#dfdf00 cterm=bold g
 hi Directory	cterm=none	ctermfg=39	ctermbg=bg	gui=none	guifg=#00afff	guibg=bg
 
 "" Syntax highlighting
-hi Comment      ctermfg=244 guifg=#808080
+hi Comment      ctermfg=48 guifg=#808080
 hi Constant     ctermfg=229 guifg=#ffffaf
 hi Error        ctermfg=15  guifg=#ffffff ctermbg=1   guibg=#800000
 hi ErrorMsg     ctermfg=15  guifg=#ffffff ctermbg=1   guibg=#800000
