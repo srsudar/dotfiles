@@ -172,3 +172,8 @@ export GIT_MERGE_AUTOEDIT=no
 # July 3, 2014
 # setting up global node modules.
 export NODE_PATH=/usr/local/lib/node_modules
+
+# July 22, 2014.
+# I need to use burp regularly at UPCH to proxy their proxy (yo dawg, I heard
+# you like proxies...), so aliasing that command.
+alias burp="java -jar -Xmx1024m burpsuite_free_v1.6.jar"
