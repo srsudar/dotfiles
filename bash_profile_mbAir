@@ -177,3 +177,7 @@ export NODE_PATH=/usr/local/lib/node_modules
 # I need to use burp regularly at UPCH to proxy their proxy (yo dawg, I heard
 # you like proxies...), so aliasing that command.
 alias burp="java -jar -Xmx1024m ~/Dropbox/CSE/burpsuite_free_v1.6.jar"
+
+# Aug 21, 2014.
+# sick of having to type this
+alias getlo="cd ~/Dropbox/CSE/letitride/letitrideWorkspace"

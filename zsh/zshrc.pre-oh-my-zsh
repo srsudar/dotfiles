@@ -1,0 +1,4 @@
+# Aug 22, 2014. Added on the advice of homebrew.
+unalias run-help
+autoload run-help
+HELPDIR=/usr/local/share/zsh/helpfiles
