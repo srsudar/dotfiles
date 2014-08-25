@@ -1,3 +1,4 @@
+echo "Sourcing $0"
 # http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html
 # http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html#Zle-Builtins
 # http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html#Standard-Widgets
@@ -68,6 +69,7 @@ bindkey '\C-x\C-e' edit-command-line
 
 bindkey -e  ## emacs key bindings
 bindkey "^P" up-line-or-search
+bindkey "^N" down-line-or-search
 #
 #bindkey '^[[A' up-line-or-search
 #bindkey '^[[B' down-line-or-search

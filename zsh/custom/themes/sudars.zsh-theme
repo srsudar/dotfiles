@@ -1,13 +1,24 @@
+echo "Sourcing $0"
 # af-magic.zsh-theme
 # Repo: https://github.com/andyfleming/oh-my-zsh
 # Direct Link: https://github.com/andyfleming/oh-my-zsh/blob/master/themes/af-magic.zsh-theme
+
+# original af-magic prompt. Well not quite original, but original colors. I
+# think the $ was originally a ! or something.
+#PROMPT='$FG[237]------------------------------------------------------------%{$reset_color%}
+#$FG[032]%~\
+#$(git_prompt_info) \
+#$FG[105]%(!.#.$)%{$reset_color%} '
+#PROMPT2='%{$fg[red]%}\ %{$reset_color%}'
+#RPS1='${return_code}'
+
 
 if [ $UID -eq 0 ]; then NCOLOR="red"; else NCOLOR="green"; fi
 local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 
 # primary prompt
 PROMPT='$FG[237]------------------------------------------------------------%{$reset_color%}
-$FG[032]%~\
+$FG[226]%~\
 $(git_prompt_info) \
 $FG[105]%(!.#.$)%{$reset_color%} '
 PROMPT2='%{$fg[red]%}\ %{$reset_color%}'
