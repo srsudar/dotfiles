@@ -19,12 +19,14 @@ echo "Sourcing $0"
 #RPS1='${return_code}'
 
 
+
+
 if [ $UID -eq 0 ]; then NCOLOR="red"; else NCOLOR="green"; fi
 local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 
 # primary prompt
 PROMPT='$FG[237]------------------------------------------------------------%{$reset_color%}
-$FG[226]${PWD/#$HOME/~}\
+${vcs_info_msg_0_}$FG[226]${PWD/#$HOME/~}\
 $(git_prompt_info) \
 $FG[105]%(!.#.$)%{$reset_color%} '
 PROMPT2='%{$fg[red]%}\ %{$reset_color%}'
@@ -35,6 +37,7 @@ RPS1='${return_code}'
 eval my_gray='$FG[237]'
 eval my_orange='$FG[214]'
 eval fino_green='$FG[040]'
+eval purple='$FG[135]'
 
 # right prompt
 if type "virtualenv_prompt_info" > /dev/null
