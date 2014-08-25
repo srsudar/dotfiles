@@ -1,4 +1,7 @@
 echo "Sourcing $0"
+# Sam Sudar based on the af-magic theme and gleaned colors and things from
+# elsewhere. Named torrent for the venerable torrent duck.
+
 # af-magic.zsh-theme
 # Repo: https://github.com/andyfleming/oh-my-zsh
 # Direct Link: https://github.com/andyfleming/oh-my-zsh/blob/master/themes/af-magic.zsh-theme
