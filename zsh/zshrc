@@ -81,13 +81,3 @@ export PATH="/opt/local/bin:/opt/local/sbin:/Applications/Xcode.app/Contents/Dev
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
-
-autoload -Uz vcs_info
-zstyle ':vcs_info:*' enable git hg
-# version control stuff.
-zstyle ':vcs_info:hg*' use-simple true
-zstyle ':vcs_info:hg*' formats "%{$FG[135]%}(%b%u)"
-zstyle ':vcs_info:hg*' actionformats "(hg|%a%u)"
-precmd() {
-    vcs_info
-}

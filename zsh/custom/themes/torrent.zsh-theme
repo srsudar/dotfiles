@@ -19,6 +19,16 @@ echo "Sourcing $0"
 #RPS1='${return_code}'
 
 
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git hg
+# version control stuff.
+zstyle ':vcs_info:hg*' use-simple true
+zstyle ':vcs_info:hg*' formats "%{$FG[135]%}(%b%u)"
+zstyle ':vcs_info:hg*' actionformats "(hg|%a%u)"
+precmd() {
+    vcs_info
+}
+
 
 
 if [ $UID -eq 0 ]; then NCOLOR="red"; else NCOLOR="green"; fi
