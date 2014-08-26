@@ -74,7 +74,7 @@ zstyle ':vcs_info:hg*' get-revision true
 
 # show + symbol if something in the repo has changed. vcs_info doesn't make
 # distinctions between untracked and tracked, it seems
-zstyle ':vcs_info:hg*' unstagedstr "${hg_dirty_col}+${PR_RESET}"
+zstyle ':vcs_info:hg*' unstagedstr "${hg_dirty_col}*${PR_RESET}"
 
 # hg doesn't support stagedstr 
 # http://www.zsh.org/mla/users/2011/msg00319.html
