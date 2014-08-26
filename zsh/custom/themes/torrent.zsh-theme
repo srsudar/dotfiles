@@ -23,7 +23,9 @@ eval my_gray='$FG[237]'
 eval my_orange='$FG[214]'
 eval fino_green='$FG[040]'
 eval purple='$FG[135]'
-eval red='$FG[RED]'
+eval my_red='$fg[red]'
+
+eval PR_RESET="%{${reset_color}%}"
 
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git hg
@@ -32,12 +34,13 @@ zstyle ':vcs_info:*' enable git hg
 zstyle ':vcs_info:(hg*|git*):*' check-for-changes true
 
 zstyle ':vcs_info:git*' formats "[%b%u*]"
-zstyle ':vcs_info:git*' actionformats "[%b|$fg[red]%a%{$reset_color%}%u*]"
+zstyle ':vcs_info:git*' actionformats "[%b|${my_red}%a${PR_RESET}]"
+#zstyle ':vcs_info:git*' actionformats "[%b|$fg[red]%a${PR_RESET}]"
 
 # version control stuff.
 zstyle ':vcs_info:hg*' use-simple true
 zstyle ':vcs_info:hg*' formats "%{$FG[135]%}(%b%u)"
-zstyle ':vcs_info:hg*' actionformats "(hg|%a%u)"
+zstyle ':vcs_info:hg*' actionformats "(hg|${my_red}%a${PR_RESET}%u)"
 precmd() {
     vcs_info
 }
