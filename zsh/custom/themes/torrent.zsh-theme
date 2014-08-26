@@ -39,52 +39,59 @@ zstyle ':vcs_info:*' enable git hg
 
 # we're also going to check for changes, even though this could be slow on
 # big repos
-zstyle ':vcs_info:(hg*|git*):*' check-for-changes true
 
 # git
-zstyle ':vcs_info:*' stagedstr "${my_orange}*${PR_RESET}"
-zstyle ':vcs_info:*' unstagedstr "${my_pink}?${PR_RESET}"
+zstyle ':vcs_info:git*' check-for-changes true
+zstyle ':vcs_info:git*' stagedstr "${my_orange}*${PR_RESET}"
+zstyle ':vcs_info:git*' unstagedstr "${my_pink}?${PR_RESET}"
 zstyle ':vcs_info:git*' formats "${git_col}[%b${PR_RESET}%c%u${git_col}]${PR_RESET}"
 zstyle ':vcs_info:git*' actionformats "${git_col}[%b${PR_RESET}%c%u|${my_red}%a${PR_RESET}${git_col}]${PR_RESET}"
-#zstyle ':vcs_info:git*' actionformats "[%b|$fg[red]%a${PR_RESET}]"
 
 # hg
-zstyle ':vcs_info:hg*' use-simple true
-zstyle ':vcs_info:hg*:' formats "${hg_col}(%b${PR_RESET}%c%u${hg_col})${PR_RESET}"
-zstyle ':vcs_info:hg*:' actionformats "${hg_col}(%b${PR_RESET}%c%u|${my_red}%a${PR_RESET}%u${hg_col})${PR_RESET}"
+#zstyle ':vcs_info:hg*' use-simple true
+zstyle ':vcs_info:hg*' check-for-changes true
+zstyle ':vcs_info:hg*' get-revision true
+zstyle ':vcs_info:hg*' get-bookmarks true
+#zstyle ':vcs_info:hg*' unstagedstr "${my_pink}?${PR_RESET}"
+#zstyle ':vcs_info:hg*' unstagedstr "+"
+#zstyle ':vcs_info:hg*:*' branchformat "%b" # only show branch
+zstyle ':vcs_info:hg*' formats "${hg_col}%u(%b${PR_RESET}%c%u${hg_col})${PR_RESET}"
+zstyle ':vcs_info:hg*' actionformats "${hg_col}%u(%b${PR_RESET}%c%u|${my_red}%a${PR_RESET}%u${hg_col})${PR_RESET}"
 precmd() {
     vcs_info
 }
 
-zstyle ':vcs_info:hg*+set-message:*' hooks hg-storerev hg-branchhead
+# Trying to add hook to show if not on a head:
+# http://eseth.org/2010/hg-in-zsh.html
+#zstyle ':vcs_info:hg*+set-message:*' hooks hg-storerev hg-branchhead
 
 ### Store the localrev and global hash for use in other hooks
-function +vi-hg-storerev() {
-    user_data[localrev]=${hook_com[localrev]}
-    user_data[hash]=${hook_com[hash]}
-}
+#function +vi-hg-storerev() {
+    #user_data[localrev]=${hook_com[localrev]}
+    #user_data[hash]=${hook_com[hash]}
+#}
 
 ### Show marker when the working directory is not on a branch head
 # This may indicate that running `hg up` will do something
-function +vi-hg-branchhead() {
-    local branchheadsfile i_tiphash i_branchname
-    local -a branchheads
+#function +vi-hg-branchhead() {
+    #local branchheadsfile i_tiphash i_branchname
+    #local -a branchheads
 
-    local branchheadsfile=${hook_com[base]}/.hg/branchheads.cache
+    #local branchheadsfile=${hook_com[base]}/.hg/branchheads.cache
 
-    # Bail out if any mq patches are applied
-    [[ -s ${hook_com[base]}/.hg/patches/status ]] && return 0
+    ## Bail out if any mq patches are applied
+    #[[ -s ${hook_com[base]}/.hg/patches/status ]] && return 0
 
-    if [[ -r ${branchheadsfile} ]] ; then
-        while read -r i_tiphash i_branchname ; do
-            branchheads+=( $i_tiphash )
-        done < ${branchheadsfile}
+    #if [[ -r ${branchheadsfile} ]] ; then
+        #while read -r i_tiphash i_branchname ; do
+            #branchheads+=( $i_tiphash )
+        #done < ${branchheadsfile}
 
-        if [[ ! ${branchheads[(i)${user_data[hash]}]} -le ${#branchheads} ]] ; then
-            hook_com[revision]="${c4}^${c2}${hook_com[revision]}"
-        fi
-    fi
-}
+        #if [[ ! ${branchheads[(i)${user_data[hash]}]} -le ${#branchheads} ]] ; then
+            #hook_com[revision]="${c4}^${c2}${hook_com[revision]}"
+        #fi
+    #fi
+#}
 
 
 if [ $UID -eq 0 ]; then NCOLOR="red"; else NCOLOR="green"; fi
