@@ -22,6 +22,7 @@ echo "Sourcing $0"
 eval my_gray='$FG[237]'
 eval my_orange='$FG[214]'
 eval fino_green='$FG[040]'
+eval fino_blue='$FG[033]'
 eval my_purple='$FG[135]'
 eval my_red='$fg[red]'
 eval el_blue='$FG[075]'  # electric blue
@@ -135,7 +136,7 @@ local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 
 # primary prompt
 PROMPT='$FG[237]------------------------------------------------------------%{$reset_color%}
-${vcs_info_msg_0_}$FG[226]${PWD/#$HOME/~}\
+${vcs_info_msg_0_}${fino_blue}${PWD/#$HOME/~}\
 $(git_prompt_info) \
 $FG[105]%(!.#.$)%{$reset_color%} '
 PROMPT2='%{$fg[red]%}\ %{$reset_color%}'
