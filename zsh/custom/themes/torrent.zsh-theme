@@ -37,7 +37,7 @@ zstyle ':vcs_info:(hg*|git*):*' check-for-changes true
 
 zstyle ':vcs_info:*' stagedstr "${my_orange}*${PR_RESET}"
 zstyle ':vcs_info:*' unstagedstr "${my_pink}?${PR_RESET}"
-zstyle ':vcs_info:git*' formats "[%b%c%u]"
+zstyle ':vcs_info:git*' formats "${el_blue}[%b${PR_RESET}%c%u${el_blue}]${PR_RESET}"
 zstyle ':vcs_info:git*' actionformats "${el_blue}[%b${PR_RESET}%c%u|${my_red}%a${PR_RESET}${el_blue}]${PR_RESET}"
 #zstyle ':vcs_info:git*' actionformats "[%b|$fg[red]%a${PR_RESET}]"
 
