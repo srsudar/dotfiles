@@ -27,10 +27,11 @@ eval my_red='$fg[red]'
 eval el_blue='$FG[075]'  # electric blue
 eval my_pink='$FG[201]'
 eval bright_green='$FG[082]'
+eval my_silver='$FG[195]'
 
 # Fascinating, you can't eval this one. hmm. should figure this out.
 git_col=${el_blue}
-hg_col=${my_purple}
+hg_col=${my_silver}
 hg_dirty_col=${bright_green}
 
 eval PR_RESET="%{${reset_color}%}"
