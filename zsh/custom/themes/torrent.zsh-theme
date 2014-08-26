@@ -25,6 +25,7 @@ eval fino_green='$FG[040]'
 eval my_purple='$FG[135]'
 eval my_red='$fg[red]'
 eval el_blue='$FG[075]'  # electric blue
+eval my_pink='$FG[201]'
 
 eval PR_RESET="%{${reset_color}%}"
 
@@ -34,14 +35,16 @@ zstyle ':vcs_info:*' enable git hg
 # big repos
 zstyle ':vcs_info:(hg*|git*):*' check-for-changes true
 
-zstyle ':vcs_info:git*' formats "[%b%u*]"
-zstyle ':vcs_info:git*' actionformats "${el_blue}[%b${PR_RESET}|${my_red}%a${PR_RESET}${el_blue}]${PR_RESET}"
+zstyle ':vcs_info:*' stagedstr "${my_orange}*${PR_RESET}"
+zstyle ':vcs_info:*' unstagedstr "${my_pink}?${PR_RESET}"
+zstyle ':vcs_info:git*' formats "[%b%c%u]"
+zstyle ':vcs_info:git*' actionformats "${el_blue}[%b${PR_RESET}%c%u|${my_red}%a${PR_RESET}${el_blue}]${PR_RESET}"
 #zstyle ':vcs_info:git*' actionformats "[%b|$fg[red]%a${PR_RESET}]"
 
 # version control stuff.
 zstyle ':vcs_info:hg*' use-simple true
-zstyle ':vcs_info:hg*' formats "%{$FG[135]%}(%b%u)"
-zstyle ':vcs_info:hg*' actionformats "${my_purple}(%b${PR_RESET}|${my_red}%a${PR_RESET}%u${my_purple})${PR_RESET}"
+zstyle ':vcs_info:hg*' formats "%{$FG[135]%}(%b%c%u)"
+zstyle ':vcs_info:hg*' actionformats "${my_purple}(%b${PR_RESET}%c%u|${my_red}%a${PR_RESET}%u${my_purple})${PR_RESET}"
 precmd() {
     vcs_info
 }
