@@ -29,22 +29,25 @@ eval my_pink='$FG[201]'
 
 eval PR_RESET="%{${reset_color}%}"
 
+# version control stuff.
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git hg
+
 # we're also going to check for changes, even though this could be slow on
 # big repos
 zstyle ':vcs_info:(hg*|git*):*' check-for-changes true
 
+# git
 zstyle ':vcs_info:*' stagedstr "${my_orange}*${PR_RESET}"
 zstyle ':vcs_info:*' unstagedstr "${my_pink}?${PR_RESET}"
 zstyle ':vcs_info:git*' formats "${el_blue}[%b${PR_RESET}%c%u${el_blue}]${PR_RESET}"
 zstyle ':vcs_info:git*' actionformats "${el_blue}[%b${PR_RESET}%c%u|${my_red}%a${PR_RESET}${el_blue}]${PR_RESET}"
 #zstyle ':vcs_info:git*' actionformats "[%b|$fg[red]%a${PR_RESET}]"
 
-# version control stuff.
+# hg
 zstyle ':vcs_info:hg*' use-simple true
-zstyle ':vcs_info:hg*' formats "%{$FG[135]%}(%b%c%u)"
-zstyle ':vcs_info:hg*' actionformats "${my_purple}(%b${PR_RESET}%c%u|${my_red}%a${PR_RESET}%u${my_purple})${PR_RESET}"
+zstyle ':vcs_info:hg*:' formats "%{$FG[135]%}(%b%c%u)"
+zstyle ':vcs_info:hg*:' actionformats "${my_purple}(%b${PR_RESET}%c%u|${my_red}%a${PR_RESET}%u${my_purple})${PR_RESET}"
 precmd() {
     vcs_info
 }
