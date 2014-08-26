@@ -22,8 +22,9 @@ echo "Sourcing $0"
 eval my_gray='$FG[237]'
 eval my_orange='$FG[214]'
 eval fino_green='$FG[040]'
-eval purple='$FG[135]'
+eval my_purple='$FG[135]'
 eval my_red='$fg[red]'
+eval el_blue='$FG[075]'  # electric blue
 
 eval PR_RESET="%{${reset_color}%}"
 
@@ -34,13 +35,13 @@ zstyle ':vcs_info:*' enable git hg
 zstyle ':vcs_info:(hg*|git*):*' check-for-changes true
 
 zstyle ':vcs_info:git*' formats "[%b%u*]"
-zstyle ':vcs_info:git*' actionformats "[%b|${my_red}%a${PR_RESET}]"
+zstyle ':vcs_info:git*' actionformats "${el_blue}[%b${PR_RESET}|${my_red}%a${PR_RESET}${el_blue}]${PR_RESET}"
 #zstyle ':vcs_info:git*' actionformats "[%b|$fg[red]%a${PR_RESET}]"
 
 # version control stuff.
 zstyle ':vcs_info:hg*' use-simple true
 zstyle ':vcs_info:hg*' formats "%{$FG[135]%}(%b%u)"
-zstyle ':vcs_info:hg*' actionformats "(hg|${my_red}%a${PR_RESET}%u)"
+zstyle ':vcs_info:hg*' actionformats "${my_purple}(%b${PR_RESET}|${my_red}%a${PR_RESET}%u${my_purple})${PR_RESET}"
 precmd() {
     vcs_info
 }
