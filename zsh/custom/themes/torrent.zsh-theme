@@ -39,8 +39,8 @@ hg_dirty_col=${bright_green}
 # not one who diets. The idea is to display the time and have it colored by
 # return code (red if >0).
 # local time, color coded by last return code
-time_enabled="%(?.%{$fg[green]%}.%{$fg[red]%})%*%{$reset_color%}"
-time_disabled="%{$fg[green]%}%*%{$reset_color%}"
+time_enabled="%(?.${my_orange}.${my_red})%*%{$reset_color%}"
+time_disabled="${my_orange}%*%{$reset_color%}"
 time=$time_enabled
 
 eval PR_RESET="%{${reset_color}%}"
