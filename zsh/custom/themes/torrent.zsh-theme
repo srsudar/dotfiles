@@ -35,6 +35,14 @@ git_col=${el_blue}
 hg_col=${my_silver}
 hg_dirty_col=${bright_green}
 
+# Got this stuff from the dieter theme. That's dieter as a name, apparently,
+# not one who diets. The idea is to display the time and have it colored by
+# return code (red if >0).
+# local time, color coded by last return code
+time_enabled="%(?.%{$fg[green]%}.%{$fg[red]%})%*%{$reset_color%}"
+time_disabled="%{$fg[green]%}%*%{$reset_color%}"
+time=$time_enabled
+
 eval PR_RESET="%{${reset_color}%}"
 
 # version control stuff.
@@ -136,8 +144,9 @@ local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 
 # primary prompt
 PROMPT='$FG[237]------------------------------------------------------------%{$reset_color%}
-${vcs_info_msg_0_}${fino_blue}${PWD/#$HOME/~}\
-$(git_prompt_info) \
+${fino_green}${PWD/#$HOME/~}${PR_RESET}
+${time} ${fino_blue}%1d \
+${vcs_info_msg_0_}$(git_prompt_info) \
 $FG[105]%(!.#.$)%{$reset_color%} '
 PROMPT2='%{$fg[red]%}\ %{$reset_color%}'
 RPS1='${return_code}'
