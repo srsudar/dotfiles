@@ -81,3 +81,12 @@ export PATH="/opt/local/bin:/opt/local/sbin:/Applications/Xcode.app/Contents/Dev
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
+
+# Aug 27, 2014. Try and get the blasted colors to be the same everywhere, even
+# when ls'ing. https://github.com/robbyrussell/oh-my-zsh/issues/1563
+# ls with color
+eval `gdircolors ~/.dir_colors`
+alias ls='gls --color -F'
+zstyle ':completion:*' "${(@s.:.)LS_COLORS}"
+autoload -Uz compinit
+compinit
