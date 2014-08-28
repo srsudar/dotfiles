@@ -29,9 +29,10 @@ eval el_blue='$FG[075]'  # electric blue
 eval my_pink='$FG[201]'
 eval bright_green='$FG[082]'
 eval my_silver='$FG[195]'
+eval fino_yellow='$FG[226]'
 
 # Fascinating, you can't eval this one. hmm. should figure this out.
-git_col=${el_blue}
+git_col=${fino_yellow}
 hg_col=${my_silver}
 hg_dirty_col=${bright_green}
 
@@ -55,7 +56,7 @@ zstyle ':vcs_info:*' enable git hg
 ### git
 zstyle ':vcs_info:git*' check-for-changes true
 
-zstyle ':vcs_info:git*' stagedstr "${my_orange}*${PR_RESET}"
+zstyle ':vcs_info:git*' stagedstr "${bright_green}*${PR_RESET}"
 zstyle ':vcs_info:git*' unstagedstr "${my_pink}?${PR_RESET}"
 
 # normal format should be something like:
@@ -143,8 +144,8 @@ if [ $UID -eq 0 ]; then NCOLOR="red"; else NCOLOR="green"; fi
 local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 
 # primary prompt
-PROMPT='$FG[237]------------------------------------------------------------%{$reset_color%}
-${fino_green}${PWD/#$HOME/~}${PR_RESET}
+#PROMPT='$FG[237]------------------------------------------------------------%{$reset_color%}
+PROMPT='${fino_green}${PWD/#$HOME/~}${PR_RESET}
 ${time} ${fino_blue}%1d \
 ${vcs_info_msg_0_}$(git_prompt_info) \
 $FG[105]%(!.#.$)%{$reset_color%} '
