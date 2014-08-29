@@ -40,9 +40,12 @@ hg_dirty_col=${bright_green}
 # not one who diets. The idea is to display the time and have it colored by
 # return code (red if >0).
 # local time, color coded by last return code
-time_enabled="%(?.${my_orange}.${my_red})%*%{$reset_color%}"
+time_enabled="%(?.${${my_orange}%}.%{${my_red}%})%*%{$reset_color%}"
 time_disabled="${my_orange}%*%{$reset_color%}"
 time=$time_enabled
+#time_enabled="%(?.%{$fg[green]%}.%{$fg[red]%})%*%{$reset_color%}"
+#time_disabled="%{$fg[green]%}%*%{$reset_color%}"
+#time=$time_enabled
 
 eval PR_RESET="%{${reset_color}%}"
 
@@ -149,8 +152,8 @@ PROMPT='${fino_green}${PWD/#$HOME/~}${PR_RESET}
 ${time} ${fino_blue}%1d \
 ${vcs_info_msg_0_}$(git_prompt_info) \
 $FG[105]%(!.#.$)%{$reset_color%} '
-PROMPT2='%{$fg[red]%}\ %{$reset_color%}'
-RPS1='${return_code}'
+#PROMPT2='%{$fg[red]%}\ %{$reset_color%}'
+#RPS1='${return_code}'
 
 
 
