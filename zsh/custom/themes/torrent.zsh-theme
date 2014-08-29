@@ -70,8 +70,8 @@ zstyle ':vcs_info:git*' unstagedstr "${my_pink}?${PR_RESET}"
 
 # normal format should be something like:
 # [my_branch*]
-zstyle ':vcs_info:git*' formats "${git_col}[%b${PR_RESET}%c%u${git_col}]${PR_RESET}"
-zstyle ':vcs_info:git*' actionformats "${git_col}[%b${PR_RESET}%c%u|${my_red}%a${PR_RESET}${git_col}]${PR_RESET}"
+zstyle ':vcs_info:git*' formats "${git_col}[%b${PR_RESET}%c%u${git_col}]${PR_RESET} "
+zstyle ':vcs_info:git*' actionformats "${git_col}[%b${PR_RESET}%c%u|${my_red}%a${PR_RESET}${git_col}]${PR_RESET} "
 
 ### end git
 
@@ -103,18 +103,14 @@ zstyle ':vcs_info:hg*:*' branchformat "%b"
 
 # regular format should show something like:
 # (default+)
-zstyle ':vcs_info:hg*' formats "${hg_col}(%b${PR_RESET}%c%u${hg_col})${PR_RESET}"
+zstyle ':vcs_info:hg*' formats "${hg_col}(%b${PR_RESET}%c%u${hg_col})${PR_RESET} "
 
 # Action format should show something like:
 # (default+|merging)
-zstyle ':vcs_info:hg*' actionformats "${hg_col}(%b${PR_RESET}%c%u|${my_red}%a${PR_RESET}${hg_col})${PR_RESET}"
+zstyle ':vcs_info:hg*' actionformats "${hg_col}(%b${PR_RESET}%c%u|${my_red}%a${PR_RESET}${hg_col})${PR_RESET} "
 
 ### end hg
 
-
-precmd() {
-    vcs_info
-}
 
 # Trying to add hook to show if not on a head:
 # http://eseth.org/2010/hg-in-zsh.html
@@ -148,15 +144,19 @@ precmd() {
     #fi
 #}
 
+#vcs_info_wrapper=" ${vcs_info_msg_0_} "
 
 if [ $UID -eq 0 ]; then NCOLOR="red"; else NCOLOR="green"; fi
 local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 
+# the old git prompt that came with the theme. seems to be more responsive and
+# reliable than vcs_info
+# $(git_prompt_info)
 # primary prompt
 #PROMPT='$FG[237]------------------------------------------------------------%{$reset_color%}
 PROMPT='${fino_green}${PWD/#$HOME/~}${PR_RESET}
 ${time} ${fino_blue}%1d \
-${vcs_info_msg_0_}$(git_prompt_info) \
+${vcs_info_msg_0_}\
 $FG[105]%(!.#.$)%{$reset_color%} '
 #PROMPT2='%{$fg[red]%}\ %{$reset_color%}'
 #RPS1='${return_code}'
@@ -170,6 +170,11 @@ then
 else
 	RPROMPT='$fino_green%n@%m%{$reset_color%}%'
 fi
+
+precmd() {
+    vcs_info
+}
+
 
 # git settings
 ZSH_THEME_GIT_PROMPT_PREFIX=" $FG[075]["
