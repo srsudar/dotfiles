@@ -18,6 +18,12 @@ echo "Sourcing $0"
 #PROMPT2='%{$fg[red]%}\ %{$reset_color%}'
 #RPS1='${return_code}'
 
+#eval `gdircolors ~/.dir_colors`
+#alias ls='gls --color -F'
+#zstyle ':completion:*' "${(@s.:.)LS_COLORS}"
+#autoload -Uz compinit
+#compinit
+
 # color vars
 eval my_gray='$FG[237]'
 eval my_orange='$FG[214]'
