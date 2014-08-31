@@ -72,3 +72,22 @@ git submodule add git://github.com/tpope/vim-unimpaired.git bundle/unimpaired
 My `.gitconfig` and `.hgrc` files contain system and me-specific info like
 usernames and paths. Be aware you'll have to change these things if you try to
 use these files.
+
+## zsh
+
+Recently I've been messing around with `zsh`, and am well on my way to switching
+for good. The main reasons are easier hg status in the prompt, colorized tab
+completion output, and better overall tab completion. It's the little things.
+
+Originally I tried [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh),
+but struggled to get the colorized output on tab completion to work, so I gave
+[prezto](https://github.com/sorin-ionescu/prezto) a try. This was much easier
+for me to configure, and I felt like it was more overt about its magic, which
+I appreciated. Being new to `zsh`, I don't miss any potential plugins that only
+exist for oh-my-zsh.
+
+My zsh customizations are managed in my own
+[prezto fork](https://github.com/srsudar/prezto). The next time I get setup on
+a new machine I'll add my fork as a submodule to this project. Until then,
+replicating my complete configuration will require also following the
+instructions for prezto as seen in the `README` in that repo.
