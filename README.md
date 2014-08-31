@@ -91,3 +91,7 @@ My zsh customizations are managed in my own
 a new machine I'll add my fork as a submodule to this project. Until then,
 replicating my complete configuration will require also following the
 instructions for prezto as seen in the `README` in that repo.
+
+On that note, the contents of the `zsh/` directory here are mostly vestiges of
+the old oh-my-zsh environment. They are mostly dead and will eventually be
+removed or converted for prezto.
