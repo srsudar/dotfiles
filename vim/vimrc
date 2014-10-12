@@ -81,6 +81,7 @@ set list
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
+set expandtab
 
 " Except HTML - 2 spaces
 autocmd BufWinEnter *.html setlocal tabstop=2
@@ -94,7 +95,7 @@ autocmd BufWinEnter *.html setlocal expandtab
 " Can be avoided by remembering that <CTRL-V><TAB> will insert a tab
 " character, as <CTRL-V> apparently inserts a literal version of the next
 " character you enter.
-autocmd FileType make setlocal noexpandtab shiftwidth=4 softtabstop=0
+"autocmd FileType make setlocal noexpandtab shiftwidth=4 softtabstop=0
 
 " highlight trailing whitespace and non-tab indents
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
@@ -285,10 +286,10 @@ endif
 
 " This is to fix it up a bit to use PEP8 and 4 tabs, which apparently is what
 " we're moving to at Yelp.
-function YelpPEP8Settings()
-	setlocal expandtab     " turn tabs into spaces
-	setlocal shiftwidth=4  " auto-indent width
-	setlocal tabstop=2     " If there is a tab, for now only make it 2 wide.
-	setlocal softtabstop=4 " We'll indent 4 for tabs.
-endfunction
-autocmd BufNewFile,BufRead * call YelpPEP8Settings()
+"function YelpPEP8Settings()
+	"setlocal expandtab     " turn tabs into spaces
+	"setlocal shiftwidth=4  " auto-indent width
+	"setlocal tabstop=2     " If there is a tab, for now only make it 2 wide.
+	"setlocal softtabstop=4 " We'll indent 4 for tabs.
+"endfunction
+"autocmd BufNewFile,BufRead * call YelpPEP8Settings()

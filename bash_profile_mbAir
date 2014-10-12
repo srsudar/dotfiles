@@ -181,3 +181,5 @@ alias burp="java -jar -Xmx1024m ~/Dropbox/CSE/burpsuite_free_v1.6.jar"
 # Aug 21, 2014.
 # sick of having to type this
 alias getlo="cd ~/Dropbox/CSE/letitride/letitrideWorkspace"
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
