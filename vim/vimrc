@@ -89,6 +89,10 @@ autocmd BufWinEnter *.html setlocal expandtab
 autocmd BufWinEnter *.html setlocal shiftwidth=2
 autocmd BufWinEnter *.html setlocal expandtab
 
+" Treat all *.md files as markdown, not just README.md. Otherwise vim by
+" default treats *.md files as modula-2: https://github.com/tpope/vim-markdown
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
 " Tabs when editing a Makefile
 " This doesn't seem to be working, at least on my yelp machine in the file
 " ~/pg/geoviz_clientlib/Makefile. Maybe due to a setting down below?
