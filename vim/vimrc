@@ -133,6 +133,15 @@ set number
 set backspace=eol,start,indent
 set whichwrap=b,s,h,l,<,>,[,]
 
+" Wrap automatically at 79 chars.
+" http://stackoverflow.com/questions/5602905/auto-wrap-long-lines-in-vim
+" Why 79, you ask? In part because python pep recommends it:
+" https://www.python.org/dev/peps/pep-0008/
+" And in part because this way I never overlap my color column (which I set at
+" 80, not 81), and I'm not yet ready to change it.
+set wrap
+set textwidth=79
+
 " Hidden buffer support. I think this lets us navigate away from a buffer,
 " even when doing ':bnext', without giving the 'override with !' error.
 set hidden
