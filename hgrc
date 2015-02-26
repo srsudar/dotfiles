@@ -1,5 +1,15 @@
 [ui]
 username=Sam Sudar <sudar.sam@gmail.com>
 ignore = ~/.hgignore
+ssh = ssh -C
+[pager]
+pager = LESS='FSRX' less
+attend = help, cat, diff, glog, log, incoming, outgoing, lg, show, lga, blame
 [extensions]
 color =
+pager =
+rebase =
+purge =
+shelve =
+graphlog =
+progress =
