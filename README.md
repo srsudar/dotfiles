@@ -49,7 +49,7 @@ ln -s ./dotfiles/vim/ ./.vim
 # point into the dotfiles/ directory directly.
 ln -s ./.vim/vimrc ./.vimrc
 
-# Despite liking them less and less, I still have at least one submdule that
+# Despite liking them less and less, I still have at least one submodule that
 # needs to be configured here.
 git submodule init
 git submodule update

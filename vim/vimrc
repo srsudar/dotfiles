@@ -36,9 +36,6 @@ Bundle 'tfnico/vim-gradle'
 " more sane regex
 Bundle 'nelstrom/vim-visual-star-search'
 
-" Feb 26, 2015--disabling pathogen while trying vundle
-"execute pathogen#infect()
-"call pathogen#helptags() " generate helptags for everything in 'runtimepath'
 
 " Syntastic
 let g:syntastic_mode_map={ 'mode':'active',
