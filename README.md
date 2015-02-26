@@ -49,8 +49,8 @@ ln -s ./dotfiles/vim/ ./.vim
 # point into the dotfiles/ directory directly.
 ln -s ./.vim/vimrc ./.vimrc
 
-# Vim depends on a number of extensions that are managed as git submodules. To
-# use these, you'll also have to run the following:
+# Despite liking them less and less, I still have at least one submdule that
+# needs to be configured here.
 git submodule init
 git submodule update
 ```
