@@ -2,6 +2,7 @@
 
 > My dotfiles
 
+
 ## Overview
 
 These are my dotfiles. I keep all my configuration files (i.e. dotfiles) in
@@ -54,24 +55,30 @@ git submodule init
 git submodule update
 ```
 
+
 ## Vim
 
-The way I manage my vim configuration is based on this excellent tutorial:
-vimcasts.org/episodes/synchronizing-plugins-with-git-submodules-and-pathogen/
+I manage my Vim plugins with Vundle. Previously I was using Pathogen and
+submodules, but submodules being such a pain to delete (even with `deinit`) has
+made me more tentative to try plugins. Vundle alleviates this and makes
+configuration much simpler.
 
-To add new submodules, do something like the following. In the below command we
-are pointing at the git repo for the vim-unimpaired plugin and placing it in a
-directory called `bundle/unimpaired/`, where pathogen will find it.
+After cloning the dotfiles repo, clone Vundle into `vim/bundle/vundle` using
+the following command:
 
 ```shell
-git submodule add git://github.com/tpope/vim-unimpaired.git bundle/unimpaired
+git clone https://github.com/gmarik/Vundle.vim.git vim/bundle/vundle
 ```
+
+Then you need to open Vim, run `:BundleInstall`, and restart Vim.
+
 
 ## Git and Hg
 
 My `.gitconfig` and `.hgrc` files contain system and me-specific info like
 usernames and paths. Be aware you'll have to change these things if you try to
 use these files.
+
 
 ## zsh
 

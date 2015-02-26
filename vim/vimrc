@@ -4,9 +4,41 @@ set t_Co=256
 
 " ---------- plugins ---------
 
-execute pathogen#infect()
+" setting up vundle
+filetype off
+set runtimepath+=~/.vim/bundle/vundle
+call vundle#rc()
 
-call pathogen#helptags() " generate helptags for everything in 'runtimepath'
+Bundle 'gmarik/vundle'
+
+" search with ack
+Bundle 'mileszs/ack.vim'
+" some git integration and status info
+Bundle 'tpope/vim-fugitive'
+" comments
+Bundle 'scrooloose/nerdcommenter'
+" file browser on the left
+Bundle 'scrooloose/nerdtree'
+" more python support
+Bundle 'klen/python-mode'
+" surround things with other things
+Bundle 'tpope/vim-surround'
+" syntax highlighting
+Bundle 'scrooloose/syntastic'
+" complementary mappings
+Bundle 'tpope/vim-unimpaired'
+" solarized
+Bundle 'altercation/vim-colors-solarized'
+" GO integration
+Bundle 'fatih/vim-go'
+" gradle integration
+Bundle 'tfnico/vim-gradle'
+" more sane regex
+Bundle 'nelstrom/vim-visual-star-search'
+
+" Feb 26, 2015--disabling pathogen while trying vundle
+"execute pathogen#infect()
+"call pathogen#helptags() " generate helptags for everything in 'runtimepath'
 
 " Syntastic
 let g:syntastic_mode_map={ 'mode':'active',
