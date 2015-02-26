@@ -19,6 +19,8 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'scrooloose/nerdcommenter'
 " file browser on the left
 Bundle 'scrooloose/nerdtree'
+" and make the nerdtree file browser consistent between tabs
+Bundle 'jistr/vim-nerdtree-tabs'
 " more python support
 Bundle 'klen/python-mode'
 " surround things with other things
@@ -35,7 +37,16 @@ Bundle 'fatih/vim-go'
 Bundle 'tfnico/vim-gradle'
 " more sane regex
 Bundle 'nelstrom/vim-visual-star-search'
-
+" fuzzy search for files using ctrl+p
+Plugin 'kien/ctrlp.vim'
+" open alternate files (eg foo.h quick opens foo.c)
+Plugin 'vim-scripts/a.vim'
+" show git status of lines
+Plugin 'airblade/vim-gitgutter'
+" Smart align things like markdown tables
+Plugin 'godlygeek/tabular'
+" Use ctrl+h,j,k,l to navigate tmux and vim windows
+Plugin 'christoomey/vim-tmux-navigator'
 
 " Syntastic
 let g:syntastic_mode_map={ 'mode':'active',
