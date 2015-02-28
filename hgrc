@@ -13,3 +13,4 @@ purge =
 shelve =
 graphlog =
 progress =
+hgext.extdiff =
