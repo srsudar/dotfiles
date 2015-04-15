@@ -4,7 +4,7 @@ ignore = ~/.hgignore
 ssh = ssh -C
 [pager]
 pager = LESS='FSRX' less
-attend = help, cat, diff, glog, log, incoming, outgoing, lg, show, lga, blame
+attend = status, help, cat, diff, glog, log, incoming, outgoing, lg, show, lga, blame
 [extensions]
 color =
 pager =
