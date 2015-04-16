@@ -352,3 +352,6 @@ endif
 	"setlocal softtabstop=4 " We'll indent 4 for tabs.
 "endfunction
 "autocmd BufNewFile,BufRead * call YelpPEP8Settings()
+
+" 2015-04-15: remove the delay in ESC leaving a mode
+set timeoutlen=1000 ttimeoutlen=0
