@@ -15,8 +15,6 @@ Bundle 'gmarik/vundle'
 Bundle 'mileszs/ack.vim'
 " some git integration and status info
 Bundle 'tpope/vim-fugitive'
-" comments
-Bundle 'scrooloose/nerdcommenter'
 " file browser on the left
 Bundle 'scrooloose/nerdtree'
 " and make the nerdtree file browser consistent between tabs
@@ -49,6 +47,8 @@ Plugin 'godlygeek/tabular'
 Plugin 'christoomey/vim-tmux-navigator'
 " Use github-flavored markdown highlighting, not canonical md highlighthing
 Plugin 'jtratner/vim-flavored-markdown'
+" Commenting with gc{motion}
+Plugin 'tpope/vim-commentary'
 
 " Syntastic
 let g:syntastic_mode_map={ 'mode':'active',
