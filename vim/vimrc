@@ -51,6 +51,10 @@ Plugin 'jtratner/vim-flavored-markdown'
 Plugin 'bling/vim-airline'
 " Commenting with gc{motion}
 Plugin 'tpope/vim-commentary'
+" Define custom text objects. Required for vim-textobj-entire
+Plugin 'kana/vim-textobj-user'
+" Add 'whole file' objects with ae and ie (ignores leading/trailing whitespace)
+Plugin 'kana/vim-textobj-entire'
 
 " Syntastic
 let g:syntastic_mode_map={ 'mode':'active',
