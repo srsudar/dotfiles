@@ -47,6 +47,8 @@ Plugin 'godlygeek/tabular'
 Plugin 'christoomey/vim-tmux-navigator'
 " Use github-flavored markdown highlighting, not canonical md highlighthing
 Plugin 'jtratner/vim-flavored-markdown'
+" Prettier status line.
+Plugin 'bling/vim-airline'
 " Commenting with gc{motion}
 Plugin 'tpope/vim-commentary'
 
@@ -85,6 +87,19 @@ endif
 
 " Command-T
 let g:CommandTMaxFiles=999999
+
+" Airline
+let g:airline_theme='murmur'
+" Don't want to require patched font, so change separator.
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+" Turn off file type, which is useless. Keep tagbar and virtual env, like
+" default
+let g:airline_section_x = airline#section#create_right(['tagbar', 'virtualenv'])
+" Turn off file type and file encoding
+let g:airline_section_y = 0
+" Turn off white space errors by default.
+let g:airline#extensions#whitespace#enabled = 0
 
 " ---------- settings ---------
 " We'll use a highlight color column if it has it.
