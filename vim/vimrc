@@ -55,6 +55,8 @@ Plugin 'tpope/vim-commentary'
 Plugin 'kana/vim-textobj-user'
 " Add 'whole file' objects with ae and ie (ignores leading/trailing whitespace)
 Plugin 'kana/vim-textobj-entire'
+" Allow . repeating using vim-surround
+Plugin 'tpope/vim-repeat'
 
 " Syntastic
 let g:syntastic_mode_map={ 'mode':'active',
