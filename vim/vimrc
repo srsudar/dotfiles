@@ -57,6 +57,10 @@ Plugin 'kana/vim-textobj-user'
 Plugin 'kana/vim-textobj-entire'
 " Allow . repeating using vim-surround
 Plugin 'tpope/vim-repeat'
+" Smarter CTRL-A and CTRL-X for addition/subtraction
+Plugin 'tpope/vim-speeddating'
+" Auto-conversion to snake, camel, mixed, upper  case with crs, crc, crm, cru
+Plugin 'tpope/vim-abolish'
 
 " Syntastic
 let g:syntastic_mode_map={ 'mode':'active',
