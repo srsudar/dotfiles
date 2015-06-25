@@ -61,6 +61,32 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-speeddating'
 " Auto-conversion to snake, camel, mixed, upper  case with crs, crc, crm, cru
 Plugin 'tpope/vim-abolish'
+" Allow smarter pasting.
+Plugin 'svermeulen/vim-easyclip'
+" Allowing yanking via yankstack
+Plugin 'maxbrunsfeld/vim-yankstack'
+" Word objects for columns of text
+Plugin 'coderifous/textobj-word-column.vim'
+" latex support
+Plugin 'LaTeX-Box-Team/LaTeX-Box'
+" toggle the quickfix and location lists
+" Plugin 'milkypostman/vim-togglelist'
+
+" Use system clipboard for pasting and yanking.
+set clipboard=unnamed
+" Don't let easy clip overwrite the mark function.
+" let g:EasyClipUseCutDefaults = 0
+" Remap mark to gm, allowing easyclip to use m for move
+nnoremap gm m
+" Set paste by default when pasting from insert and command mode.
+imap <c-v> <plug>EasyClipInsertModePaste
+cmap <c-v> <plug>EasyClipCommandModePaste
+
+" LatexBox
+" Open the quickfix window immediately if not empty, but don't steal focus
+let g:LatexBox_quickfix = 2
+" ]] to close the current environment
+imap ]] <Plug>LatexCloseCurEnv
 
 " Syntastic
 let g:syntastic_mode_map={ 'mode':'active',
@@ -118,6 +144,11 @@ if exists('+colorcolumn')
 else
 	au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
+
+" <C-a> and <C-x> by default interpret leading-zero numbers as octal. I almost
+" never work with octal, so this will make all numbers be interpreted as
+" decimal.
+set nrformats=
 
 " The leader was mapped to comma, but his is the reverse find function of the
 " ; command. I'm going to not map this and just leave leader the same with
@@ -342,10 +373,10 @@ map <Leader>Q :tabc<CR>
 map <Leader>m :tabm
 map <Leader>w :w<CR>
 map <Leader>q :q<CR>
-map <Leader>l :lclose<CR>
-map <Leader>L :lopen<CR>
-map <Leader>c :copen<CR>
-map <Leader>C :cclose<CR>
+" map <Leader>l :lclose<CR>
+" map <Leader>L :lopen<CR>
+" map <Leader>c :copen<CR>
+" map <Leader>C :cclose<CR>
 map <Leader>z :cp<CR>
 map <Leader>x :cn<CR>
 " git diff in new tab
