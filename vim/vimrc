@@ -69,8 +69,10 @@ Plugin 'maxbrunsfeld/vim-yankstack'
 Plugin 'coderifous/textobj-word-column.vim'
 " latex support
 Plugin 'LaTeX-Box-Team/LaTeX-Box'
-" toggle the quickfix and location lists
-" Plugin 'milkypostman/vim-togglelist'
+" Readline-style bindings in vim
+Plugin 'tpope/vim-rsi'
+" More information for <ctrl>+a character information, including unicode
+Plugin 'tpope/vim-characterize'
 
 " Use system clipboard for pasting and yanking.
 set clipboard=unnamed
@@ -345,6 +347,40 @@ nmap :Q :q
 nmap :W :w
 nmap :WQ :wq
 
+" Toggle fix quix and location list
+function! GetBufferList()
+  redir =>buflist
+  silent! ls!
+  redir END
+  return buflist
+endfunction
+
+function! ToggleList(bufname, pfx)
+  let buflist = GetBufferList()
+  for bufnum in map(filter(split(buflist, '\n'), 'v:val =~ "'.a:bufname.'"'), 'str2nr(matchstr(v:val, "\\d\\+"))')
+    if bufwinnr(bufnum) != -1
+      exec(a:pfx.'close')
+      return
+    endif
+  endfor
+  if a:pfx == 'l' && len(getloclist(0)) == 0
+      echohl ErrorMsg
+      echo "Location List is Empty."
+      return
+  endif
+  let winnr = winnr()
+  exec(a:pfx.'open')
+  if winnr() != winnr
+    wincmd p
+  endif
+endfunction
+
+" This is being funky and under sone circumstance the quickfix toggle is also
+" opening the location list toggle. Annoying. Will wait to investigate more,
+" might be something to do with Syntastic.
+nmap <silent> <leader>l :call ToggleList("Location List", 'l')<CR>
+nmap <silent> <leader>q :call ToggleList("Quickfix List", 'c')<CR>
+
 " Took this from Adrian Sampson.
 inoremap jk <ESC>
 
@@ -363,32 +399,18 @@ map <F8> :TagbarToggle<cr>
 map <F9> :!/usr/bin/ctags -L <(find . -name '*.py') --fields=+iaS --python-kinds=-i --sort=yes --extra=+q<cr>
 
 " Leader shortcuts
-map <Leader>v :tabe ~/.vimrc<CR>
-map <Leader>e :tabe 
-map <Leader>E :e <C-R>=expand('%:p:h') . '/'<CR>
 " open current buffer in new tab
 map <Leader>s :tab split<CR>
 map <Leader>n :tabnew<CR>
-map <Leader>Q :tabc<CR>
 map <Leader>m :tabm
-map <Leader>w :w<CR>
-map <Leader>q :q<CR>
 " map <Leader>l :lclose<CR>
 " map <Leader>L :lopen<CR>
 " map <Leader>c :copen<CR>
 " map <Leader>C :cclose<CR>
-map <Leader>z :cp<CR>
-map <Leader>x :cn<CR>
 " git diff in new tab
 map <Leader>f :tab split<CR>:Gdiff canon/master<CR>
 map <Leader>g :tab split<CR>:Ggrep 
-" commit log for current file
-map <Leader>o :Glog -- %<CR>:copen<CR>
 map <Leader>i Oimport pdb; pdb.set_trace()<ESC>
-map <Leader>I Oimport pudb; pudb.set_trace()<ESC>
-" these are already set by Command-T, but let's be explicit
-map <Leader>t :CommandT<CR>
-map <Leader>b :CommandTBuffer<CR>
 
 " ---------- yelp stuff ---------
 
