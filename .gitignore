@@ -5,3 +5,8 @@ ac-comphist.dat
 # We also don't want to version the auto-save-list directory.
 auto-save-list
 vim/.netrwhist
+
+# We need to install eclim on its own.
+vim/eclim
+vim/plugin/eclim.vim
+workbench.xmi

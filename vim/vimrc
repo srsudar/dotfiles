@@ -73,6 +73,8 @@ Plugin 'LaTeX-Box-Team/LaTeX-Box'
 Plugin 'tpope/vim-rsi'
 " More information for <ctrl>+a character information, including unicode
 Plugin 'tpope/vim-characterize'
+" Fancy pants auto completion
+Plugin 'valloric/YouCompleteMe'
 
 " Use system clipboard for pasting and yanking.
 set clipboard=unnamed
@@ -83,6 +85,9 @@ nnoremap gm m
 " Set paste by default when pasting from insert and command mode.
 imap <c-v> <plug>EasyClipInsertModePaste
 cmap <c-v> <plug>EasyClipCommandModePaste
+
+" Let eclim and YouCompleteMe play nice.
+let g:EclimCompletionMethod = 'omnifunc'
 
 " LatexBox
 " Open the quickfix window immediately if not empty, but don't steal focus
@@ -118,10 +123,13 @@ let g:tagbar_autofocus = 1
 let g:pymode_folding = 0 " No auto code folding
 
 " Ropevim
-if(filereadable(expand('~/.vim/plugin/ropevim.vim')))
-	let ropevim_vim_completion=1 "Replace vim's complete function with ropevim
-	let ropevim_extended_complete=1
-endif
+" if(filereadable(expand('~/.vim/plugin/ropevim.vim')))
+" 	let ropevim_vim_completion=1 "Replace vim's complete function with ropevim
+" 	let ropevim_extended_complete=1
+" endif
+
+" Don't move the cursor when you join lines with J
+:nnoremap <silent> J :let p=getpos('.')<bar>join<bar>call setpos('.', p)<cr>
 
 " Command-T
 let g:CommandTMaxFiles=999999
