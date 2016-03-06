@@ -63,6 +63,9 @@ submodules, but submodules being such a pain to delete (even with `deinit`) has
 made me more tentative to try plugins. Vundle alleviates this and makes
 configuration much simpler.
 
+I'm currently giving fzf-vim a try, which means I'm also using
+[vim-plug](https://github.com/junegunn/vim-plug).
+
 After cloning the dotfiles repo, clone Vundle into `vim/bundle/vundle` using
 the following command:
 
@@ -70,7 +73,16 @@ the following command:
 git clone https://github.com/gmarik/Vundle.vim.git vim/bundle/vundle
 ```
 
+Now install vim-plug:
+
+```shell
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+```
+
 Then you need to open Vim, run `:BundleInstall`, and restart Vim.
+
+Then for vim-plug managed plugins run: `:PlugInstall` and restart Vim.
 
 
 ## Git and Hg

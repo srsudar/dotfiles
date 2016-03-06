@@ -76,6 +76,33 @@ Plugin 'tpope/vim-characterize'
 " Fancy pants auto completion
 Plugin 'valloric/YouCompleteMe'
 
+" begin vim-plug section
+" I want to be able to use fzf-vim, which looks like it's easiest to install
+" using vim-plug. Directions are here: https://github.com/junegunn/vim-plug.
+" Basically, first initialize using curl -fLo ~/.vim/autoload/plug.vim
+" --create-dirs \
+"      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim and
+" This section is for vim-plug managed plugins.
+" :PlugInstall to install them.
+call plug#begin('~/.vim/plugged')
+
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
+" Add plugins to &runtimepath
+call plug#end()
+" end vim-plug section
+
+" Command for fzf stolen from someone else. Their description:
+" This maps \ff in command-line mode to invoke fzf file search and lets you
+" insert the filename in any vim command. So I can type :sp ,ff and then the
+" filename. or :vs or :tabnew. So this gives a lot of flexibility wrt to how
+" you want to open the file.
+cnoremap <Leader>ff <C-R>=fzf#run({'down': '40%'})<CR><CR>
+
+
+
+
 " Use system clipboard for pasting and yanking.
 set clipboard=unnamed
 " Don't let easy clip overwrite the mark function.
@@ -86,8 +113,14 @@ nnoremap gm m
 imap <c-v> <plug>EasyClipInsertModePaste
 cmap <c-v> <plug>EasyClipCommandModePaste
 
+" YouCompleteMe (YCM)
 " Let eclim and YouCompleteMe play nice.
 let g:EclimCompletionMethod = 'omnifunc'
+" From: https://github.com/Valloric/YouCompleteMe/issues/53 
+" Turn off YCM
+nnoremap <leader>y :let g:ycm_auto_trigger=0<CR>
+" Turn on YCM
+nnoremap <leader>Y :let g:ycm_auto_trigger=1<CR>
 
 " LatexBox
 " Open the quickfix window immediately if not empty, but don't steal focus
@@ -390,7 +423,7 @@ nmap <silent> <leader>l :call ToggleList("Location List", 'l')<CR>
 nmap <silent> <leader>q :call ToggleList("Quickfix List", 'c')<CR>
 
 " Took this from Adrian Sampson.
-inoremap jk <ESC>
+" inoremap jk <ESC>
 
 " Windows
 "map <C-J> <C-W>j

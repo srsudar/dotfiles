@@ -10,3 +10,6 @@ vim/.netrwhist
 vim/eclim
 vim/plugin/eclim.vim
 workbench.xmi
+
+# Don't version things installed by vim-plug.
+vim/plugged
