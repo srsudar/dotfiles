@@ -126,7 +126,7 @@ nnoremap <leader>Y :let g:ycm_auto_trigger=1<CR>
 " Open the quickfix window immediately if not empty, but don't steal focus
 let g:LatexBox_quickfix = 2
 " ]] to close the current environment
-imap ]] <Plug>LatexCloseCurEnv
+autocmd Filetype tex,latex imap <buffer> ]] <Plug>LatexCloseCurEnv
 
 " Syntastic
 let g:syntastic_mode_map={ 'mode':'active',
