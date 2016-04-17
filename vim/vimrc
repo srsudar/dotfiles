@@ -4,88 +4,90 @@ set t_Co=256
 
 " ---------- plugins ---------
 
-" setting up vundle
-filetype off
-set runtimepath+=~/.vim/bundle/vundle
-call vundle#rc()
-
-Bundle 'gmarik/vundle'
-
-" search with ack
-Bundle 'mileszs/ack.vim'
-" some git integration and status info
-Bundle 'tpope/vim-fugitive'
-" file browser on the left
-Bundle 'scrooloose/nerdtree'
-" and make the nerdtree file browser consistent between tabs
-Bundle 'jistr/vim-nerdtree-tabs'
-" more python support
-Bundle 'klen/python-mode'
-" surround things with other things
-Bundle 'tpope/vim-surround'
-" syntax highlighting
-Bundle 'scrooloose/syntastic'
-" complementary mappings
-Bundle 'tpope/vim-unimpaired'
-" solarized
-Bundle 'altercation/vim-colors-solarized'
-" GO integration
-Bundle 'fatih/vim-go'
-" gradle integration
-Bundle 'tfnico/vim-gradle'
-" more sane regex
-Bundle 'nelstrom/vim-visual-star-search'
-" fuzzy search for files using ctrl+p
-Plugin 'kien/ctrlp.vim'
-" open alternate files (eg foo.h quick opens foo.c)
-Plugin 'vim-scripts/a.vim'
-" show git status of lines
-Plugin 'airblade/vim-gitgutter'
-" Smart align things like markdown tables
-Plugin 'godlygeek/tabular'
-" Use ctrl+h,j,k,l to navigate tmux and vim windows
-Plugin 'christoomey/vim-tmux-navigator'
-" Use github-flavored markdown highlighting, not canonical md highlighthing
-Plugin 'jtratner/vim-flavored-markdown'
-" Prettier status line.
-Plugin 'bling/vim-airline'
-" Commenting with gc{motion}
-Plugin 'tpope/vim-commentary'
-" Define custom text objects. Required for vim-textobj-entire
-Plugin 'kana/vim-textobj-user'
-" Add 'whole file' objects with ae and ie (ignores leading/trailing whitespace)
-Plugin 'kana/vim-textobj-entire'
-" Allow . repeating using vim-surround
-Plugin 'tpope/vim-repeat'
-" Smarter CTRL-A and CTRL-X for addition/subtraction
-Plugin 'tpope/vim-speeddating'
-" Auto-conversion to snake, camel, mixed, upper  case with crs, crc, crm, cru
-Plugin 'tpope/vim-abolish'
-" Allow smarter pasting.
-Plugin 'svermeulen/vim-easyclip'
-" Word objects for columns of text
-Plugin 'coderifous/textobj-word-column.vim'
-" latex support
-Plugin 'lervag/vimtex'
-" Readline-style bindings in vim
-Plugin 'tpope/vim-rsi'
-" More information for <ctrl>+a character information, including unicode
-Plugin 'tpope/vim-characterize'
-" Fancy pants auto completion
-Plugin 'valloric/YouCompleteMe'
+" Switching from vundle to vim-plug.
+" This will load and install vim-plug if it isn't already installed.
+" Load vim-plug
+if empty(glob("~/.vim/autoload/plug.vim"))
+    execute '!curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+endif
 
 " begin vim-plug section
-" I want to be able to use fzf-vim, which looks like it's easiest to install
-" using vim-plug. Directions are here: https://github.com/junegunn/vim-plug.
+" Directions are here: https://github.com/junegunn/vim-plug.
 " Basically, first initialize using curl -fLo ~/.vim/autoload/plug.vim
 " --create-dirs \
 "      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim and
 " This section is for vim-plug managed plugins.
 " :PlugInstall to install them.
+
 call plug#begin('~/.vim/plugged')
 
+" fzf for searching
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+" search with ack
+Plug 'mileszs/ack.vim'
+" some git integration and status info
+Plug 'tpope/vim-fugitive'
+" file browser on the left
+Plug 'scrooloose/nerdtree'
+" and make the nerdtree file browser consistent between tabs
+Plug 'jistr/vim-nerdtree-tabs'
+" more python support
+Plug 'klen/python-mode'
+" surround things with other things
+Plug 'tpope/vim-surround'
+" syntax highlighting
+Plug 'scrooloose/syntastic'
+" complementary mappings
+Plug 'tpope/vim-unimpaired'
+" solarized
+Plug 'altercation/vim-colors-solarized'
+" GO integration
+Plug 'fatih/vim-go'
+" gradle integration
+Plug 'tfnico/vim-gradle'
+" more sane regex
+Plug 'nelstrom/vim-visual-star-search'
+" fuzzy search for files using ctrl+p
+Plug 'kien/ctrlp.vim'
+" open alternate files (eg foo.h quick opens foo.c)
+Plug 'vim-scripts/a.vim'
+" show git status of lines
+Plug 'airblade/vim-gitgutter'
+" Smart align things like markdown tables
+Plug 'godlygeek/tabular'
+" Use ctrl+h,j,k,l to navigate tmux and vim windows
+Plug 'christoomey/vim-tmux-navigator'
+" Use github-flavored markdown highlighting, not canonical md highlighthing
+Plug 'jtratner/vim-flavored-markdown'
+" Prettier status line.
+Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+" Commenting with gc{motion}
+Plug 'tpope/vim-commentary'
+" Define custom text objects. Required for vim-textobj-entire
+Plug 'kana/vim-textobj-user'
+" Add 'whole file' objects with ae and ie (ignores leading/trailing whitespace)
+Plug 'kana/vim-textobj-entire'
+" Allow . repeating using vim-surround
+Plug 'tpope/vim-repeat'
+" Smarter CTRL-A and CTRL-X for addition/subtraction
+Plug 'tpope/vim-speeddating'
+" Auto-conversion to snake, camel, mixed, upper  case with crs, crc, crm, cru
+Plug 'tpope/vim-abolish'
+" Allow smarter pasting.
+Plug 'svermeulen/vim-easyclip'
+" Word objects for columns of text
+Plug 'coderifous/textobj-word-column.vim'
+" latex support
+Plug 'lervag/vimtex'
+" Readline-style bindings in vim
+Plug 'tpope/vim-rsi'
+" More information for <ctrl>+a character information, including unicode
+Plug 'tpope/vim-characterize'
+" Fancy pants auto completion
+Plug 'valloric/YouCompleteMe'
+
 
 " Add plugins to &runtimepath
 call plug#end()
