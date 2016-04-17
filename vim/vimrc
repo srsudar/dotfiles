@@ -66,7 +66,7 @@ Plugin 'svermeulen/vim-easyclip'
 " Word objects for columns of text
 Plugin 'coderifous/textobj-word-column.vim'
 " latex support
-Plugin 'LaTeX-Box-Team/LaTeX-Box'
+Plugin 'lervag/vimtex'
 " Readline-style bindings in vim
 Plugin 'tpope/vim-rsi'
 " More information for <ctrl>+a character information, including unicode
