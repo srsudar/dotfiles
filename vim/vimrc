@@ -115,6 +115,8 @@ let g:indentLine_enabled = 0
 " Currently looks like it's conflicting with easyclip but I'm keeping it so as
 " not to forget.
 Plug 'justinmk/vim-gtfo'
+" Better Javascript highlighting.
+Plug 'pangloss/vim-javascript'
 
 " Add plugins to &runtimepath
 call plug#end()
