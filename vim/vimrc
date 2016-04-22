@@ -119,6 +119,8 @@ Plug 'justinmk/vim-gtfo'
 Plug 'pangloss/vim-javascript'
 " Coffeescript support
 Plug 'kchmck/vim-coffee-script'
+" Support for Rust
+Plug 'rust-lang/rust.vim'
 
 " Add plugins to &runtimepath
 call plug#end()
