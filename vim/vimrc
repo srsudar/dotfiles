@@ -97,7 +97,12 @@ Plug 'plasticboy/vim-markdown'
 Plug 'junegunn/vim-oblique'
 " Show contents of registers using " and @ in insert and <C-CR> in insert
 Plug 'junegunn/vim-peekaboo'
-
+" Browse git commits. fugitive must be installed first.
+" :GV to open commit browser
+" :GV! will only list commits for the current file
+" :GV over visual range will list commits for the lines
+" You can pass git log options to the command, e.g. :GV -S foobar.
+Plug 'junegunn/gv.vim'
 
 " Add plugins to &runtimepath
 call plug#end()
