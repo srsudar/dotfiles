@@ -111,6 +111,10 @@ Plug 'tpope/vim-tbone'
 " Show indentation levels with :IndentLinesToggle
 Plug 'Yggdroot/indentLine'
 let g:indentLine_enabled = 0
+" Open the current file[pwd] in finder with go{f,F}.
+" Currently looks like it's conflicting with easyclip but I'm keeping it so as
+" not to forget.
+Plug 'justinmk/vim-gtfo'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -125,7 +129,7 @@ cnoremap <Leader>ff <C-R>=fzf#run({'down': '40%'})<CR><CR>
 
 " Add a :Reload command to reload the buffer. This is the same behavior as
 " :edit but I always forget about it.
-command Reload execute "edit"
+command! Reload execute "edit"
 
 
 " Align things using ga as a motion for easy-align.
