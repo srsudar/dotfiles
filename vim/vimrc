@@ -54,8 +54,8 @@ Plug 'kien/ctrlp.vim'
 Plug 'vim-scripts/a.vim'
 " show git status of lines
 Plug 'airblade/vim-gitgutter'
-" Smart align things like markdown tables
-Plug 'godlygeek/tabular'
+" Smart alignment of text.
+Plug 'junegunn/vim-easy-align'
 " Use ctrl+h,j,k,l to navigate tmux and vim windows
 Plug 'christoomey/vim-tmux-navigator'
 " Use github-flavored markdown highlighting, not canonical md highlighthing
@@ -103,6 +103,14 @@ call plug#end()
 " filename. or :vs or :tabnew. So this gives a lot of flexibility wrt to how
 " you want to open the file.
 cnoremap <Leader>ff <C-R>=fzf#run({'down': '40%'})<CR><CR>
+
+
+" Align things using ga as a motion for easy-align.
+" ga used to inspect characters.
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+" " Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 
 " Color frontmatter in markdown files.
