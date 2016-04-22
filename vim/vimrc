@@ -123,6 +123,8 @@ Plug 'kchmck/vim-coffee-script'
 Plug 'rust-lang/rust.vim'
 " Highlighting for docker files
 Plug 'honza/dockerfile.vim'
+" Help with unicode digraphs
+Plug 'chrisbra/unicode.vim'
 
 " Add plugins to &runtimepath
 call plug#end()
