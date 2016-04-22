@@ -24,6 +24,8 @@ call plug#begin('~/.vim/plugged')
 " fzf for searching
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+" We need pseudocli for some of junegunn's other plugins
+Plug 'junegunn/vim-pseudocl'
 " search with ack
 Plug 'mileszs/ack.vim'
 " some git integration and status info
@@ -91,6 +93,8 @@ Plug 'valloric/YouCompleteMe'
 Plug 'cespare/vim-toml'
 " Better markdown support
 Plug 'plasticboy/vim-markdown'
+" Better searching and highlighting defaults.
+Plug 'junegunn/vim-oblique'
 
 
 " Add plugins to &runtimepath
