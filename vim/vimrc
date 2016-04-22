@@ -103,6 +103,9 @@ Plug 'junegunn/vim-peekaboo'
 " :GV over visual range will list commits for the lines
 " You can pass git log options to the command, e.g. :GV -S foobar.
 Plug 'junegunn/gv.vim'
+" Turn on[off] color coding parentheses with :RainbowToggle
+Plug 'luochen1990/rainbow'
+let g:rainbow_active = 0
 
 " Add plugins to &runtimepath
 call plug#end()
