@@ -108,6 +108,9 @@ Plug 'luochen1990/rainbow'
 let g:rainbow_active = 0
 " Tmux integration like writing to another pane.
 Plug 'tpope/vim-tbone'
+" Show indentation levels with :IndentLinesToggle
+Plug 'Yggdroot/indentLine'
+let g:indentLine_enabled = 0
 
 " Add plugins to &runtimepath
 call plug#end()
