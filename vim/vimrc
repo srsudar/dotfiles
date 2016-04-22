@@ -95,6 +95,8 @@ Plug 'cespare/vim-toml'
 Plug 'plasticboy/vim-markdown'
 " Better searching and highlighting defaults.
 Plug 'junegunn/vim-oblique'
+" Show contents of registers using " and @ in insert and <C-CR> in insert
+Plug 'junegunn/vim-peekaboo'
 
 
 " Add plugins to &runtimepath
