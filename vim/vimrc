@@ -121,6 +121,8 @@ Plug 'pangloss/vim-javascript'
 Plug 'kchmck/vim-coffee-script'
 " Support for Rust
 Plug 'rust-lang/rust.vim'
+" Highlighting for docker files
+Plug 'honza/dockerfile.vim'
 
 " Add plugins to &runtimepath
 call plug#end()
