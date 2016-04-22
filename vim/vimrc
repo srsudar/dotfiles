@@ -59,7 +59,7 @@ Plug 'godlygeek/tabular'
 " Use ctrl+h,j,k,l to navigate tmux and vim windows
 Plug 'christoomey/vim-tmux-navigator'
 " Use github-flavored markdown highlighting, not canonical md highlighthing
-Plug 'jtratner/vim-flavored-markdown'
+" Plug 'jtratner/vim-flavored-markdown'
 " Prettier status line.
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -87,6 +87,10 @@ Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-characterize'
 " Fancy pants auto completion
 Plug 'valloric/YouCompleteMe'
+" Color TOML
+Plug 'cespare/vim-toml'
+" Better markdown support
+Plug 'plasticboy/vim-markdown'
 
 
 " Add plugins to &runtimepath
@@ -101,6 +105,13 @@ call plug#end()
 cnoremap <Leader>ff <C-R>=fzf#run({'down': '40%'})<CR><CR>
 
 
+" Color frontmatter in markdown files.
+let g:vim_markdown_toml_frontmatter = 1
+let g:vim_markdown_math = 1
+" Open table of contents with <leader>lt
+autocmd Filetype markdown map <buffer> <leader>lt :Toc<CR>
+" highlight bold
+autocmd FileType markdown highlight htmlBold ctermbg=60
 
 
 " Use system clipboard for pasting and yanking.
@@ -234,7 +245,7 @@ autocmd BufWinEnter *.html setlocal expandtab
 " default treats *.md files as modula-2: https://github.com/tpope/vim-markdown
 augroup markdown
   au!
-  au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
+  au BufNewFile,BufRead *.md,*.markdown setlocal filetype=markdown
 augroup END
 "autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
