@@ -112,8 +112,6 @@ Plug 'tpope/vim-tbone'
 Plug 'Yggdroot/indentLine'
 let g:indentLine_enabled = 0
 " Open the current file[pwd] in finder with go{f,F}.
-" Currently looks like it's conflicting with easyclip but I'm keeping it so as
-" not to forget.
 Plug 'justinmk/vim-gtfo'
 " Better Javascript highlighting.
 Plug 'pangloss/vim-javascript'
