@@ -117,6 +117,8 @@ let g:indentLine_enabled = 0
 Plug 'justinmk/vim-gtfo'
 " Better Javascript highlighting.
 Plug 'pangloss/vim-javascript'
+" Coffeescript support
+Plug 'kchmck/vim-coffee-script'
 
 " Add plugins to &runtimepath
 call plug#end()
