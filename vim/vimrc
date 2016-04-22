@@ -120,6 +120,10 @@ call plug#end()
 " you want to open the file.
 cnoremap <Leader>ff <C-R>=fzf#run({'down': '40%'})<CR><CR>
 
+" Add a :Reload command to reload the buffer. This is the same behavior as
+" :edit but I always forget about it.
+command Reload execute "edit"
+
 
 " Align things using ga as a motion for easy-align.
 " ga used to inspect characters.
