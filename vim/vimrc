@@ -123,6 +123,8 @@ Plug 'rust-lang/rust.vim'
 Plug 'honza/dockerfile.vim'
 " Help with unicode digraphs
 Plug 'chrisbra/unicode.vim'
+" HTML5 highlighting.
+Plug 'othree/html5.vim'
 
 " Add plugins to &runtimepath
 call plug#end()
