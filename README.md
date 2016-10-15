@@ -24,9 +24,7 @@ ln -s ./dotfiles/inputrc ./.inputrc
 
 # git
 ln -s ./dotfiles/gitignore_global ./.gitignore_global
-# The .gitconfig file contains some system-specific paths as well as a
-# a username. Be warned.
-ln -s ./dotfiles/gitconfig_mbAir ./.gitconfig
+ln -s ./dotfiles/gitconfig ./.gitconfig
 
 # mighty vim
 # directory

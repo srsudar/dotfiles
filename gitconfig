@@ -1,0 +1,9 @@
+[user]
+	name = Sam Sudar
+	email = sudar.sam@gmail.com
+[core]
+	excludesfile = ~/.gitignore_global
+	mergeoptions = --no-edit
+[color]
+	ui = true
+
