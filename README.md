@@ -7,7 +7,7 @@ things into place.
 
 Clone the repo to your home directory (i.e. `~/dotfiles`).
 
-`cd` into that directory.
+`cd` into your home directory.
 
 Type these commands. I purposely don't put them in a script, forcing me to
 think about the setup at least a tiny bit on each new machine.
@@ -15,6 +15,9 @@ think about the setup at least a tiny bit on each new machine.
 ```shell
 # tmux
 ln -s ./dotfiles/tmux.conf ./.tmux.conf
+
+# eg
+ln -s ./dotfiles/eg/egrc ./.egrc
 
 # readline
 ln -s ./dotfiles/inputrc ./.inputrc

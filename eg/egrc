@@ -1,0 +1,5 @@
+[eg-config]
+custom-dir = ~/dotfiles/eg/custom_files
+
+[color]
+heading = '\x1b[38;5;172m'
