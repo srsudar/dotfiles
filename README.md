@@ -1,9 +1,9 @@
-## Overview
+# Overview
 
 These are my dotfiles. I generally keep these in `~/dotfiles` and then symlink
 things into place.
 
-## Usage
+# Usage
 
 Clone the repo to your home directory (i.e. `~/dotfiles`).
 
@@ -34,7 +34,7 @@ ln -s ./.vim/vimrc ./.vimrc
 
 ```
 
-## Vim
+# Vim
 
 I manage my vim plugins with [vim-plug](https://github.com/junegunn/vim-plug).
 
@@ -42,26 +42,26 @@ Open vim, hit enter through all the errors, and run `:PlugInstall`. Restart
 vim.
 
 
-## zsh
+# zsh
 
 My zsh customizations are managed in my own
 [prezto fork](https://github.com/srsudar/prezto). Follow the instructions in
 the README in that repo.
 
 
-## Git and Hg
+# Git and Hg
 
 My `.gitconfig` and `.hgrc` files contain system and me-specific info like
 usernames and paths. Be aware you'll have to change these things if you try to
 use these files.
 
 ==============
-## Old but not Forgotten
+# Old but not Forgotten
 
 These are things I don't use much anymore. I want to keep them around just in
 case, however.
 
-### Shell
+## Shell
 ```
 # Don't use hg much anymore.
 ln -s ./dotfiles/hgignore ./.hgignore
