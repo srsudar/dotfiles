@@ -27,10 +27,7 @@ ln -s ./dotfiles/gitignore_global ./.gitignore_global
 ln -s ./dotfiles/gitconfig ./.gitconfig
 
 # mighty vim
-# directory
 ln -s ./dotfiles/vim/ ./.vim
-# vimrc. Must be run AFTER the above command, but it could just as easily
-# point into the dotfiles/ directory directly.
 ln -s ./.vim/vimrc ./.vimrc
 
 ```
