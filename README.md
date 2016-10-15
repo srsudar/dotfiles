@@ -1,8 +1,3 @@
-# dotfiles
-
-> My dotfiles
-
-
 ## Overview
 
 These are my dotfiles. I generally keep these in `~/dotfiles` and then symlink
