@@ -353,6 +353,13 @@ set whichwrap=b,s,h,l,<,>,[,]
 set wrap
 set textwidth=79
 
+" Wrap git commit messages as 72 charcters. This is supposed to come with both
+" fugitive and these days stock vim, but for whatever reason I'm getting
+" highlighting at 50 characters in the first line, as expected, but not commit
+" message wrapping.
+au FileType gitcommit setlocal tw=72
+au FileType gitcommit setlocal colorcolumn=73
+
 " Hidden buffer support. I think this lets us navigate away from a buffer,
 " even when doing ':bnext', without giving the 'override with !' error.
 set hidden
