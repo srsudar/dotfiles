@@ -526,24 +526,5 @@ map <Leader>f :tab split<CR>:Gdiff canon/master<CR>
 map <Leader>g :tab split<CR>:Ggrep 
 map <Leader>i Oimport pdb; pdb.set_trace()<ESC>
 
-" ---------- yelp stuff ---------
-
-if(match(hostname(), 'dev20') >= 0)
-	map <Leader>r :!cd ~/pg/yelp-main/templates && make && cd ~/pg/yelp-main/mobile_templates && make -f ../templates/Makefile<CR>
-	set wildignore+=build/**,templates/*.py*,mobile_templates/*.py*,biz_templates/*.py*,admin_templates/*.py*,lite_templates/*.py*
-	autocmd BufEnter *.css.tmpl setlocal filetype=css
-	autocmd BufEnter *.js.tmpl setlocal filetype=javascript
-endif
-
-" This is to fix it up a bit to use PEP8 and 4 tabs, which apparently is what
-" we're moving to at Yelp.
-"function YelpPEP8Settings()
-	"setlocal expandtab     " turn tabs into spaces
-	"setlocal shiftwidth=4  " auto-indent width
-	"setlocal tabstop=2     " If there is a tab, for now only make it 2 wide.
-	"setlocal softtabstop=4 " We'll indent 4 for tabs.
-"endfunction
-"autocmd BufNewFile,BufRead * call YelpPEP8Settings()
-
 " Remove the delay in ESC leaving a mode (ttimeoutlen)
 set timeoutlen=1000 ttimeoutlen=0
