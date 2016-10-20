@@ -30,6 +30,16 @@ ln -s ./dotfiles/gitconfig ./.gitconfig
 ln -s ./dotfiles/vim/ ./.vim
 ln -s ./.vim/vimrc ./.vimrc
 
+# bash
+# (I use zsh, with instructions below, but I'm keeping this in the active
+# section as I sometimes still have to use it when zsh isn't available. mac
+# seems to default to bash_profile, while conventionally (and currently on my
+# mbair if starting from the command line) it seems to prefer .bashrc. I don't
+# use this enough to know if this has changed of late, so for now I'm just
+# going to link both.
+ln -s ./dotfiles/bash_profile_mbAir ./.bash_profile
+ln -s ./dotfiles/bash_profile_mbAir ./.bashrc
+
 ```
 
 # Vim
