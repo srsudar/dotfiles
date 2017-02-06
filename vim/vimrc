@@ -153,6 +153,8 @@ nmap ga <Plug>(EasyAlign)
 " Color frontmatter in markdown files.
 let g:vim_markdown_toml_frontmatter = 1
 let g:vim_markdown_math = 1
+" Disable annoying folding, at least for a few levels
+let g:vim_markdown_folding_disabled = 1
 " Open table of contents with <leader>lt
 autocmd Filetype markdown map <buffer> <leader>lt :Toc<CR>
 " highlight bold
@@ -179,6 +181,8 @@ nnoremap <leader>y :let g:ycm_auto_trigger=0<CR>
 nnoremap <leader>Y :let g:ycm_auto_trigger=1<CR>
 
 " vim latex
+" don't complain if we're not using +clientserver
+let g:vimtex_echo_ignore_wait = 1
 " autocomplete citations with ycm. :h vimtex-complete-youcompleteme
 if !exists('g:ycm_semantic_triggers')
   let g:ycm_semantic_triggers = {}
@@ -218,8 +222,16 @@ let g:tagbar_sort = 0
 let g:tagbar_compact = 1
 let g:tagbar_autofocus = 1
 
+" JavaScript highlighting
+let g:javascript_plugin_jsdoc = 1
+
 " PythonMode
 let g:pymode_folding = 0 " No auto code folding
+" Disable the documentation after tab completion is over.
+autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+" This comman will prevent the documentation window opening at all:
+" set completeopt=menu
 
 " Ropevim
 " if(filereadable(expand('~/.vim/plugin/ropevim.vim')))
