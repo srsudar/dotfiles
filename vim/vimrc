@@ -444,6 +444,9 @@ if has("multi_byte")
 	set fileencodings=ucs-bom,utf-8,latin1
 endif
 
+" Make warnings more noticeable, specially to not miss search wrap
+hi WarningMsg ctermfg=white ctermbg=red guifg=White guibg=Red gui=None
+
 " This is a function from Practical Vim that executes something for every item
 " in the argument list. It is also available as a plugin, with README
 " information and things here (also see the books for usage):
