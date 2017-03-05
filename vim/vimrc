@@ -127,6 +127,8 @@ Plug 'chrisbra/unicode.vim'
 Plug 'othree/html5.vim'
 " Polymer support
 Plug 'webdesus/polymer-ide.vim'
+" Distraction free writing
+Plug 'junegunn/goyo.vim'
 
 " Add plugins to &runtimepath
 call plug#end()
