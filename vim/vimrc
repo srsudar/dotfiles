@@ -125,6 +125,8 @@ Plug 'honza/dockerfile.vim'
 Plug 'chrisbra/unicode.vim'
 " HTML5 highlighting.
 Plug 'othree/html5.vim'
+" Polymer support
+Plug 'webdesus/polymer-ide.vim'
 
 " Add plugins to &runtimepath
 call plug#end()
