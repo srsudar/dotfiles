@@ -129,6 +129,8 @@ Plug 'othree/html5.vim'
 Plug 'webdesus/polymer-ide.vim'
 " Distraction free writing
 Plug 'junegunn/goyo.vim'
+" Title Case operator with gt
+Plug 'christoomey/vim-titlecase'
 
 " Add plugins to &runtimepath
 call plug#end()
