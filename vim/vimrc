@@ -126,15 +126,32 @@ Plug 'chrisbra/unicode.vim'
 " HTML5 highlighting.
 Plug 'othree/html5.vim'
 " Polymer support
-Plug 'webdesus/polymer-ide.vim'
+" Plug 'webdesus/polymer-ide.vim'
 " Distraction free writing
 Plug 'junegunn/goyo.vim'
 " Title Case operator with gt
 Plug 'christoomey/vim-titlecase'
+" Snippets engine
+Plug 'SirVer/ultisnips'
+" Snippet starers
+Plug 'honza/vim-snippets'
+" Try to fix snippet suggestion
+Plug 'ervandew/supertab'
 
 " Add plugins to &runtimepath
 call plug#end()
 " end vim-plug section
+
+" Better completion with UltiSnips
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+" let g:UltiSnipsListSnippets = '<c-tab>'
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
 
 " Command for fzf stolen from someone else. Their description:
 " This maps \ff in command-line mode to invoke fzf file search and lets you
@@ -146,7 +163,6 @@ cnoremap <Leader>ff <C-R>=fzf#run({'down': '40%'})<CR><CR>
 " Add a :Reload command to reload the buffer. This is the same behavior as
 " :edit but I always forget about it.
 command! Reload execute "edit"
-
 
 " Align things using ga as a motion for easy-align.
 " ga used to inspect characters.
