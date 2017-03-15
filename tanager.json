@@ -1,0 +1,13 @@
+{
+  "foo": "from file",
+  "notebooks": {
+    "journal": {
+      "path": "~/Dropbox/writing/journal/",
+      "aliases": ["j"],
+      "default": true
+    },
+    "notes": {
+      "path": "~/Dropbox/Documents/notes"
+    }
+  }
+}
