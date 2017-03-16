@@ -181,9 +181,9 @@ let g:vim_markdown_folding_disabled = 1
 autocmd Filetype markdown map <buffer> <leader>lt :Toc<CR>
 " highlight bold
 autocmd FileType markdown highlight htmlBold ctermbg=60
-" Open markdown preview in Marked 2 with <leader>lo. This is lo to mirror the
-" same open functionality in my LaTeX plugin.
-autocmd FileType markdown map <buffer> <leader>lo :silent! !open -a Marked\ 2 % > /dev/null &<cr>:redraw!<cr>
+" View markdown in Marked 2 with <leader>lv. This is lo to mirror the view 
+" functionality in my LaTeX plugin.
+autocmd FileType markdown map <buffer> <leader>lv :silent! !open -a Marked\ 2 % > /dev/null &<cr>:redraw!<cr>
 
 
 " Use system clipboard for pasting and yanking.
@@ -222,6 +222,12 @@ let g:ycm_semantic_triggers.tex = [
       \ 're!\\includepdf(\s*\[[^]]*\])?\s*\{[^}]*',
       \ 're!\\includestandalone(\s*\[[^]]*\])?\s*\{[^}]*',
       \ ]
+" Open using skim
+let g:vimtex_view_general_viewer
+      \ = '/Applications/Skim.app/Contents/SharedSupport/displayline'
+let g:vimtex_view_general_options = '-r @line @pdf @tex'
+" Put build files in gen
+" let g:vimtex_latexmk_build_dir = './generated'
 
 " Syntastic
 let g:syntastic_mode_map={ 'mode':'active',
