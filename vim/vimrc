@@ -181,6 +181,9 @@ let g:vim_markdown_folding_disabled = 1
 autocmd Filetype markdown map <buffer> <leader>lt :Toc<CR>
 " highlight bold
 autocmd FileType markdown highlight htmlBold ctermbg=60
+" Open markdown preview in Marked 2 with <leader>lo. This is lo to mirror the
+" same open functionality in my LaTeX plugin.
+autocmd FileType markdown map <buffer> <leader>lo :silent! !open -a Marked\ 2 % > /dev/null &<cr>:redraw!<cr>
 
 
 " Use system clipboard for pasting and yanking.
