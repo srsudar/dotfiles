@@ -175,6 +175,8 @@ nmap ga <Plug>(EasyAlign)
 " Color frontmatter in markdown files.
 let g:vim_markdown_toml_frontmatter = 1
 let g:vim_markdown_math = 1
+" 2 space indent in lists
+let g:vim_markdown_new_list_item_indent = 2
 " Disable annoying folding, at least for a few levels
 let g:vim_markdown_folding_disabled = 1
 " Open table of contents with <leader>lt
