@@ -91,7 +91,8 @@ Plug 'tpope/vim-characterize'
 Plug 'valloric/YouCompleteMe'
 " Color TOML
 Plug 'cespare/vim-toml'
-" Better markdown support
+" Better markdown support. Need tabular and vim-markdown
+Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 " Better searching and highlighting defaults.
 Plug 'junegunn/vim-oblique'
@@ -179,14 +180,55 @@ let g:vim_markdown_math = 1
 let g:vim_markdown_new_list_item_indent = 2
 " Disable annoying folding, at least for a few levels
 let g:vim_markdown_folding_disabled = 1
-" Open table of contents with <leader>lt
-autocmd Filetype markdown map <buffer> <leader>lt :Toc<CR>
-" highlight bold
-autocmd FileType markdown highlight htmlBold ctermbg=60
-" View markdown in Marked 2 with <leader>lv. This is lo to mirror the view 
-" functionality in my LaTeX plugin.
-autocmd FileType markdown map <buffer> <leader>lv :silent! !open -a Marked\ 2 % > /dev/null &<cr>:redraw!<cr>
 
+function! MarkdownEnter()
+    " let pos=getpos(".")
+    " let win=winsaveview()
+    " If we start with something that can be indented, unindent. If we don't
+    " have any indents, delete two characters. Otherwise, behave normally.
+    " let stayOnLine=0
+    let line=getline(".")
+
+    if line =~ '\v\s+[*+-0-9] $'
+        " at least one space then a valid indentation
+        return "\<ESC><<A"
+    elseif line =~ '\v[*+-0-9] $'
+        " delete the first two characters
+        return "\<ESC>0xxA"
+    else 
+        " just do the regular thing
+        return "\<CR>"
+    endif
+endfunction   
+
+function! MarkdownSpace()
+  " Tab to indent if we're on the first line of a bullet
+  let line=getline(".")
+  if line =~ '\v\s*[*+0-9] $'
+    " We are starting on a list item
+    return "\<ESC>>>A"
+  else
+    " Behave normally
+    return "\<Space>"
+  endif
+endfunction
+
+" Treat all *.md files as markdown, not just README.md. Otherwise vim by
+" default treats *.md files as modula-2: https://github.com/tpope/vim-markdown
+augroup markdown
+  autocmd!
+  autocmd BufNewFile,BufRead *.md,*.markdown setlocal filetype=markdown
+  " Open table of contents with <leader>lt
+  autocmd Filetype markdown map <buffer> <leader>lt :Toc<CR>
+  " highlight bold
+  autocmd FileType markdown highlight htmlBold ctermbg=60
+  " View markdown in Marked 2 with <leader>lv. This is lo to mirror the view 
+  " functionality in my LaTeX plugin.
+  autocmd FileType markdown map <buffer> <leader>lv :silent! !open -a Marked\ 2 % > /dev/null &<cr>:redraw!<cr>
+
+  autocmd FileType markdown inoremap <expr> <CR> MarkdownEnter()
+  autocmd FileType markdown inoremap <expr> <Space> MarkdownSpace()
+augroup END
 
 " Use system clipboard for pasting and yanking.
 set clipboard=unnamed
@@ -340,14 +382,6 @@ autocmd BufWinEnter *.html setlocal tabstop=2
 autocmd BufWinEnter *.html setlocal expandtab
 autocmd BufWinEnter *.html setlocal shiftwidth=2
 autocmd BufWinEnter *.html setlocal expandtab
-
-" Treat all *.md files as markdown, not just README.md. Otherwise vim by
-" default treats *.md files as modula-2: https://github.com/tpope/vim-markdown
-augroup markdown
-  au!
-  au BufNewFile,BufRead *.md,*.markdown setlocal filetype=markdown
-augroup END
-"autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 " Tabs when editing a Makefile
 " This doesn't seem to be working, at least on my yelp machine in the file
