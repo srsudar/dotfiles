@@ -172,49 +172,51 @@ xmap ga <Plug>(EasyAlign)
 " " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
+" Ignore some directories when using ctrlp
+let g:ctrlp_custom_ignore = 'node_modules\|bower_components\|DS_Store\|git'
 
 " Color frontmatter in markdown files.
 let g:vim_markdown_toml_frontmatter = 1
-let g:vim_markdown_math = 1
+" let g:vim_markdown_math = 1
 " 2 space indent in lists
 let g:vim_markdown_new_list_item_indent = 2
 " Disable annoying folding, at least for a few levels
 let g:vim_markdown_folding_disabled = 1
 
-function! MarkdownEnter()
-  " If we start with something that can be indented, unindent. If we don't
-  " have any indents, delete two characters. Otherwise, behave normally.
-  let line=getline(".")
-
-  if line =~ '\v\s+([\*\+\-]|[0-9]+\.) $'
-    " at least one space then a valid indentation
-    return "\<ESC><<A "
-  elseif line =~ '\v[*+-0-9] $'
-    " Delete the contents and append.
-    " Add an extra space at the end because if we've auto-inserted escape
-    " goes back one too many characters. The majority of the time we expect
-    " to be using these helpers we will have auto inserted.
-    return "\<ESC>0Di"
-  else 
-    " just do the regular thing
-    return "\<CR>"
-  endif
-endfunction   
-
-function! MarkdownSpace()
-  " Tab to indent if we're on the first line of a bullet
-  let line=getline(".")
-  if line =~ '\v\s*([\*\+\-]|[0-9]+\.) $'
-    " We are starting on a list item
-    " Add an extra space at the end because if we've auto-inserted escape goes
-    " back one too many characters. The majority of the time we expect to be
-    " using these helpers we will have auto inserted.
-    return "\<ESC>>>A "
-  else
-    " Behave normally
-    return "\<Space>"
-  endif
-endfunction
+" function! MarkdownEnter()
+"   " If we start with something that can be indented, unindent. If we don't
+"   " have any indents, delete two characters. Otherwise, behave normally.
+"   let line=getline(".")
+"
+"   if line =~ '\v\s+([\*\+\-]|[0-9]+\.) $'
+"     " at least one space then a valid indentation
+"     return "\<ESC><<A "
+"   elseif line =~ '\v[*+-0-9] $'
+"     " Delete the contents and append.
+"     " Add an extra space at the end because if we've auto-inserted escape
+"     " goes back one too many characters. The majority of the time we expect
+"     " to be using these helpers we will have auto inserted.
+"     return "\<ESC>0Di"
+"   else 
+"     " just do the regular thing
+"     return "\<CR>"
+"   endif
+" endfunction   
+"
+" function! MarkdownSpace()
+"   " Tab to indent if we're on the first line of a bullet
+"   let line=getline(".")
+"   if line =~ '\v\s*([\*\+\-]|[0-9]+\.) $'
+"     " We are starting on a list item
+"     " Add an extra space at the end because if we've auto-inserted escape goes
+"     " back one too many characters. The majority of the time we expect to be
+"     " using these helpers we will have auto inserted.
+"     return "\<ESC>>>A "
+"   else
+"     " Behave normally
+"     return "\<Space>"
+"   endif
+" endfunction
 
 " Treat all *.md files as markdown, not just README.md. Otherwise vim by
 " default treats *.md files as modula-2: https://github.com/tpope/vim-markdown
@@ -229,8 +231,8 @@ augroup markdown
   " functionality in my LaTeX plugin.
   autocmd FileType markdown map <buffer> <leader>lv :silent! !open -a Marked\ 2 % > /dev/null &<cr>:redraw!<cr>
 
-  autocmd FileType markdown inoremap <expr> <CR> MarkdownEnter()
-  autocmd FileType markdown inoremap <expr> <Space> MarkdownSpace()
+  " autocmd FileType markdown inoremap <expr> <CR> MarkdownEnter()
+  " autocmd FileType markdown inoremap <expr> <Space> MarkdownSpace()
 augroup END
 
 " Use system clipboard for pasting and yanking.
@@ -335,6 +337,10 @@ let g:airline_section_x = airline#section#create_right(['tagbar', 'virtualenv'])
 let g:airline_section_y = 0
 " Turn off white space errors by default.
 let g:airline#extensions#whitespace#enabled = 0
+" Enable Tabline
+let g:airline#extensions#tabline#enabled = 1
+" Show buffer numbers
+let g:airline#extensions#tabline#buffer_nr_show = 1
 
 " ---------- settings ---------
 " We'll use a highlight color column if it has it.

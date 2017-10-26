@@ -1,0 +1,44 @@
+snippet newt "Create a new failing Tape test" b
+test('${1}', function(t) {
+  t.fail();
+  t.end();
+});
+endsnippet
+
+snippet fend "Create an end function for tape tests" b
+function end(t) {
+  if (!t) { throw new Error('You forgot to pass tape'); }
+  t.end();
+  reset();
+}
+endsnippet
+
+snippet throwerr "Throw a new error"
+throw new Error('${1:unimplemented}');
+endsnippet
+
+snippet retp "Return a new Promise"
+return new Promise(function(resolve, reject) {
+  ${1}
+});
+endsnippet
+
+snippet deepeq "Tape deep equal"
+t.deepEqual(actual, expected);
+endsnippet
+
+snippet then "Create then statement"
+.then(${1:res} => {
+  ${2:throw new Error('unimplemented');}
+})
+endsnippet
+
+snippet catch "Create catch statement"
+.catch(${1:err} => {
+  ${2:throw new Error('unimplemented');}
+})
+endsnippet
+
+snippet clog "console.log() something"
+console.log(${1});
+endsnippet

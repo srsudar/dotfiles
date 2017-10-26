@@ -1,12 +1,25 @@
 snippet newj "Start of journal entry"
 # `date +%Y-%m-%d`
 
-> full-date = "`date`"
-> friendly_date = "`date +%Y-%m-%d`"
-> iso_date = "`date +%Y-%m-%dT%H:%M:%S%z`"
-> location = "$1"
-> weather = "$2"
+> full-date = "`date`"  
+> friendly_date = "`date +%Y-%m-%d`"  
+> iso_date = "`date +%Y-%m-%dT%H:%M:%S%z`"  
+> location = "$1"  
+> weather = "$2"  
 > 
-> tags = []
+> tags = [ $3]  
+
+endsnippet
+
+snippet conj "Continue journal entry"
+---
+
+> full-date = "`date`"  
+> friendly_date = "`date +%Y-%m-%d`"  
+> iso_date = "`date +%Y-%m-%dT%H:%M:%S%z`"  
+> location = "$1"  
+> weather = "$2"  
+> 
+> tags = [ $3]  
 
 endsnippet
