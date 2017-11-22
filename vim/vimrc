@@ -185,40 +185,8 @@ let g:vim_markdown_new_list_item_indent = 2
 " Disable annoying folding, at least for a few levels
 let g:vim_markdown_folding_disabled = 1
 
-" function! MarkdownEnter()
-"   " If we start with something that can be indented, unindent. If we don't
-"   " have any indents, delete two characters. Otherwise, behave normally.
-"   let line=getline(".")
-"
-"   if line =~ '\v\s+([\*\+\-]|[0-9]+\.) $'
-"     " at least one space then a valid indentation
-"     return "\<ESC><<A "
-"   elseif line =~ '\v[*+-0-9] $'
-"     " Delete the contents and append.
-"     " Add an extra space at the end because if we've auto-inserted escape
-"     " goes back one too many characters. The majority of the time we expect
-"     " to be using these helpers we will have auto inserted.
-"     return "\<ESC>0Di"
-"   else 
-"     " just do the regular thing
-"     return "\<CR>"
-"   endif
-" endfunction   
-"
-" function! MarkdownSpace()
-"   " Tab to indent if we're on the first line of a bullet
-"   let line=getline(".")
-"   if line =~ '\v\s*([\*\+\-]|[0-9]+\.) $'
-"     " We are starting on a list item
-"     " Add an extra space at the end because if we've auto-inserted escape goes
-"     " back one too many characters. The majority of the time we expect to be
-"     " using these helpers we will have auto inserted.
-"     return "\<ESC>>>A "
-"   else
-"     " Behave normally
-"     return "\<Space>"
-"   endif
-" endfunction
+" Delay the peekaboo register opening after hitting "
+let g:peekaboo_delay = 1500
 
 " Treat all *.md files as markdown, not just README.md. Otherwise vim by
 " default treats *.md files as modula-2: https://github.com/tpope/vim-markdown
