@@ -34,6 +34,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
 " and make the nerdtree file browser consistent between tabs
 Plug 'jistr/vim-nerdtree-tabs'
+" and show git flags
+Plug 'Xuyuanp/nerdtree-git-plugin'
 " more python support
 Plug 'klen/python-mode'
 " surround things with other things
@@ -410,6 +412,22 @@ autocmd BufWinEnter *.* match ExtraWhitespace /\s\+$/
 autocmd BufWinEnter *.* match TabHighlight /\t/
 autocmd BufWinLeave * call clearmatches()
 
+" More familiar symbols for nerdtree-git-plugin
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "*",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "?",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "x",
+    \ "Dirty"     : "*",
+    \ "Clean"     : "✔︎",
+    \ 'Ignored'   : '☒',
+    \ "Unknown"   : "!"
+    \ }
+" Close vim if the only thing left open is nerdtree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 " Color scheme and font
 colorscheme xoria256-pluk
 set guifont=Monaco:h12
@@ -598,8 +616,8 @@ nmap <silent> <leader>q :call ToggleList("Quickfix List", 'c')<CR>
 " Function key shortcuts
 map <F1> <nop>
 map <F3> :set hlsearch! hlsearch?<CR>
-map <F6> :NERDTreeClose<CR>
-map <F7> :NERDTreeFind<CR> "TODO combine with F6 to make toggle
+map <C-n> :NERDTreeToggle<CR>
+map <F7> :NERDTreeToggle<CR>
 map <F8> :TagbarToggle<cr>
 map <F9> :!/usr/bin/ctags -L <(find . -name '*.py') --fields=+iaS --python-kinds=-i --sort=yes --extra=+q<cr>
 
