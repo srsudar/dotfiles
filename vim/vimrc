@@ -145,6 +145,12 @@ Plug 'ervandew/supertab'
 call plug#end()
 " end vim-plug section
 
+" Don't use default titlecase mappings, as they interfere with gt/gT for tabs
+let g:titlecase_map_keys = 0
+nmap <leader>gt <Plug>Titlecase
+vmap <leader>gt <Plug>Titlecase
+nmap <leader>gT <Plug>TitlecaseLine
+
 " Better completion with UltiSnips
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
@@ -197,7 +203,7 @@ augroup markdown
   autocmd Filetype markdown map <buffer> <leader>lt :Toc<CR>
   " highlight bold
   autocmd FileType markdown highlight htmlBold ctermbg=60
-  " View markdown in Marked 2 with <leader>lv. This is lo to mirror the view 
+  " View markdown in Marked 2 with <leader>lv. This is lo to mirror the view
   " functionality in my LaTeX plugin.
   autocmd FileType markdown map <buffer> <leader>lv :silent! !open -a Marked\ 2 % > /dev/null &<cr>:redraw!<cr>
 
@@ -255,9 +261,6 @@ let g:syntastic_mode_map={ 'mode':'active',
 let g:syntastic_python_checkers = ['pep8', 'python', 'pyflakes']
 " This tells syntastic to use the location list for displaying things.
 let g:syntastic_auto_loc_list=1
-" Ignore the things that yelp does. 
-" TODO: Should probably only do this conditionally.
-let g:syntastic_python_pep8_args='--ignore=E501,W191'
 let g:syntastic_enable_highlighting = 1
 let g:syntastic_enable_signs = 1
 let g:syntastic_error_symbol = 'x'
@@ -315,9 +318,9 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 " ---------- settings ---------
 " We'll use a highlight color column if it has it.
 if exists('+colorcolumn')
-	set colorcolumn=80
+	set colorcolumn=81
 else
-	au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+	au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>81v.\+', -1)
 endif
 
 " <C-a> and <C-x> by default interpret leading-zero numbers as octal. I almost
@@ -325,11 +328,6 @@ endif
 " decimal.
 set nrformats=
 
-" The leader was mapped to comma, but his is the reverse find function of the
-" ; command. I'm going to not map this and just leave leader the same with
-" \. I think I'd prefer to use reverse find a lot than leader. But we'll see.
-"let mapleader = ","
-"noremap \ ,
 set mouse=a
 
 " Filetype highlighting
@@ -361,14 +359,8 @@ autocmd BufWinEnter *.html setlocal tabstop=2
 autocmd BufWinEnter *.html setlocal expandtab
 autocmd BufWinEnter *.html setlocal shiftwidth=2
 autocmd BufWinEnter *.html setlocal expandtab
-
-" Tabs when editing a Makefile
-" This doesn't seem to be working, at least on my yelp machine in the file
-" ~/pg/geoviz_clientlib/Makefile. Maybe due to a setting down below?
-" Can be avoided by remembering that <CTRL-V><TAB> will insert a tab
-" character, as <CTRL-V> apparently inserts a literal version of the next
-" character you enter.
-"autocmd FileType make setlocal noexpandtab shiftwidth=4 softtabstop=0
+autocmd BufWinEnter *.html setlocal colorcolumn=101
+autocmd BufWinEnter *.html setlocal textwidth=101
 
 " highlight trailing whitespace and non-tab indents
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
@@ -383,7 +375,7 @@ autocmd BufWinLeave * call clearmatches()
 " More familiar symbols for nerdtree-git-plugin
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "*",
-    \ "Staged"    : "✚",
+    \ "Staged"    : "✹",
     \ "Untracked" : "?",
     \ "Renamed"   : "➜",
     \ "Unmerged"  : "═",
@@ -418,14 +410,8 @@ set number
 set backspace=eol,start,indent
 set whichwrap=b,s,h,l,<,>,[,]
 
-" Wrap automatically at 79 chars.
-" http://stackoverflow.com/questions/5602905/auto-wrap-long-lines-in-vim
-" Why 79, you ask? In part because python pep recommends it:
-" https://www.python.org/dev/peps/pep-0008/
-" And in part because this way I never overlap my color column (which I set at
-" 80, not 81), and I'm not yet ready to change it.
 set wrap
-set textwidth=79
+set textwidth=80
 
 " Wrap git commit messages as 72 charcters. This is supposed to come with both
 " fugitive and these days stock vim, but for whatever reason I'm getting
