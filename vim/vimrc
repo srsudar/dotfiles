@@ -140,6 +140,8 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 " Try to fix snippet suggestion
 Plug 'ervandew/supertab'
+" json text objects with aj and ij
+Plug 'tpope/vim-jdaddy'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -365,11 +367,8 @@ autocmd BufWinEnter *.html setlocal textwidth=101
 " highlight trailing whitespace and non-tab indents
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 autocmd ColorScheme * highlight TabHighlight ctermbg=Blue
-" So this doesn't work because you can only apply one match at a time. What I
-" should really be doing is writing a custom syntax, apparently. See:
-" http://stackoverflow.com/questions/18167443/multiple-highlight-with-autocmd-in-vimrc
 autocmd BufWinEnter *.* match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter *.* match TabHighlight /\t/
+autocmd BufWinEnter *.* 2match TabHighlight /\t/
 autocmd BufWinLeave * call clearmatches()
 
 " More familiar symbols for nerdtree-git-plugin
