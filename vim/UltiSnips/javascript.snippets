@@ -42,3 +42,13 @@ endsnippet
 snippet clog "console.log() something"
 console.log(${1});
 endsnippet
+
+snippet newpt "Create a new failing Polymer test" b
+test('${1}', () => {
+  assert.fail("Unimplemented");
+});
+endsnippet
+
+snippet eqp "Create an equals assertion for a Polymer test" b
+expect(${1}).to.eql(${2});
+endsnippet

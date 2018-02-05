@@ -34,6 +34,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
 " and make the nerdtree file browser consistent between tabs
 Plug 'jistr/vim-nerdtree-tabs'
+" and show git flags
+Plug 'Xuyuanp/nerdtree-git-plugin'
 " more python support
 Plug 'klen/python-mode'
 " surround things with other things
@@ -138,10 +140,18 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 " Try to fix snippet suggestion
 Plug 'ervandew/supertab'
+" json text objects with aj and ij
+Plug 'tpope/vim-jdaddy'
 
 " Add plugins to &runtimepath
 call plug#end()
 " end vim-plug section
+
+" Don't use default titlecase mappings, as they interfere with gt/gT for tabs
+let g:titlecase_map_keys = 0
+nmap <leader>gt <Plug>Titlecase
+vmap <leader>gt <Plug>Titlecase
+nmap <leader>gT <Plug>TitlecaseLine
 
 " Better completion with UltiSnips
 " make YCM compatible with UltiSnips (using supertab)
@@ -183,40 +193,8 @@ let g:vim_markdown_new_list_item_indent = 2
 " Disable annoying folding, at least for a few levels
 let g:vim_markdown_folding_disabled = 1
 
-" function! MarkdownEnter()
-"   " If we start with something that can be indented, unindent. If we don't
-"   " have any indents, delete two characters. Otherwise, behave normally.
-"   let line=getline(".")
-"
-"   if line =~ '\v\s+([\*\+\-]|[0-9]+\.) $'
-"     " at least one space then a valid indentation
-"     return "\<ESC><<A "
-"   elseif line =~ '\v[*+-0-9] $'
-"     " Delete the contents and append.
-"     " Add an extra space at the end because if we've auto-inserted escape
-"     " goes back one too many characters. The majority of the time we expect
-"     " to be using these helpers we will have auto inserted.
-"     return "\<ESC>0Di"
-"   else 
-"     " just do the regular thing
-"     return "\<CR>"
-"   endif
-" endfunction   
-"
-" function! MarkdownSpace()
-"   " Tab to indent if we're on the first line of a bullet
-"   let line=getline(".")
-"   if line =~ '\v\s*([\*\+\-]|[0-9]+\.) $'
-"     " We are starting on a list item
-"     " Add an extra space at the end because if we've auto-inserted escape goes
-"     " back one too many characters. The majority of the time we expect to be
-"     " using these helpers we will have auto inserted.
-"     return "\<ESC>>>A "
-"   else
-"     " Behave normally
-"     return "\<Space>"
-"   endif
-" endfunction
+" Delay the peekaboo register opening after hitting "
+let g:peekaboo_delay = 1500
 
 " Treat all *.md files as markdown, not just README.md. Otherwise vim by
 " default treats *.md files as modula-2: https://github.com/tpope/vim-markdown
@@ -227,7 +205,7 @@ augroup markdown
   autocmd Filetype markdown map <buffer> <leader>lt :Toc<CR>
   " highlight bold
   autocmd FileType markdown highlight htmlBold ctermbg=60
-  " View markdown in Marked 2 with <leader>lv. This is lo to mirror the view 
+  " View markdown in Marked 2 with <leader>lv. This is lo to mirror the view
   " functionality in my LaTeX plugin.
   autocmd FileType markdown map <buffer> <leader>lv :silent! !open -a Marked\ 2 % > /dev/null &<cr>:redraw!<cr>
 
@@ -285,9 +263,6 @@ let g:syntastic_mode_map={ 'mode':'active',
 let g:syntastic_python_checkers = ['pep8', 'python', 'pyflakes']
 " This tells syntastic to use the location list for displaying things.
 let g:syntastic_auto_loc_list=1
-" Ignore the things that yelp does. 
-" TODO: Should probably only do this conditionally.
-let g:syntastic_python_pep8_args='--ignore=E501,W191'
 let g:syntastic_enable_highlighting = 1
 let g:syntastic_enable_signs = 1
 let g:syntastic_error_symbol = 'x'
@@ -345,9 +320,9 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 " ---------- settings ---------
 " We'll use a highlight color column if it has it.
 if exists('+colorcolumn')
-	set colorcolumn=80
+	set colorcolumn=81
 else
-	au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+	au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>81v.\+', -1)
 endif
 
 " <C-a> and <C-x> by default interpret leading-zero numbers as octal. I almost
@@ -355,11 +330,6 @@ endif
 " decimal.
 set nrformats=
 
-" The leader was mapped to comma, but his is the reverse find function of the
-" ; command. I'm going to not map this and just leave leader the same with
-" \. I think I'd prefer to use reverse find a lot than leader. But we'll see.
-"let mapleader = ","
-"noremap \ ,
 set mouse=a
 
 " Filetype highlighting
@@ -391,24 +361,31 @@ autocmd BufWinEnter *.html setlocal tabstop=2
 autocmd BufWinEnter *.html setlocal expandtab
 autocmd BufWinEnter *.html setlocal shiftwidth=2
 autocmd BufWinEnter *.html setlocal expandtab
-
-" Tabs when editing a Makefile
-" This doesn't seem to be working, at least on my yelp machine in the file
-" ~/pg/geoviz_clientlib/Makefile. Maybe due to a setting down below?
-" Can be avoided by remembering that <CTRL-V><TAB> will insert a tab
-" character, as <CTRL-V> apparently inserts a literal version of the next
-" character you enter.
-"autocmd FileType make setlocal noexpandtab shiftwidth=4 softtabstop=0
+autocmd BufWinEnter *.html setlocal colorcolumn=101
+autocmd BufWinEnter *.html setlocal textwidth=101
 
 " highlight trailing whitespace and non-tab indents
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 autocmd ColorScheme * highlight TabHighlight ctermbg=Blue
-" So this doesn't work because you can only apply one match at a time. What I
-" should really be doing is writing a custom syntax, apparently. See:
-" http://stackoverflow.com/questions/18167443/multiple-highlight-with-autocmd-in-vimrc
 autocmd BufWinEnter *.* match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter *.* match TabHighlight /\t/
+autocmd BufWinEnter *.* 2match TabHighlight /\t/
 autocmd BufWinLeave * call clearmatches()
+
+" More familiar symbols for nerdtree-git-plugin
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "*",
+    \ "Staged"    : "✹",
+    \ "Untracked" : "?",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "x",
+    \ "Dirty"     : "*",
+    \ "Clean"     : "✔︎",
+    \ 'Ignored'   : '☒',
+    \ "Unknown"   : "!"
+    \ }
+" Close vim if the only thing left open is nerdtree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Color scheme and font
 colorscheme xoria256-pluk
@@ -432,14 +409,8 @@ set number
 set backspace=eol,start,indent
 set whichwrap=b,s,h,l,<,>,[,]
 
-" Wrap automatically at 79 chars.
-" http://stackoverflow.com/questions/5602905/auto-wrap-long-lines-in-vim
-" Why 79, you ask? In part because python pep recommends it:
-" https://www.python.org/dev/peps/pep-0008/
-" And in part because this way I never overlap my color column (which I set at
-" 80, not 81), and I'm not yet ready to change it.
 set wrap
-set textwidth=79
+set textwidth=80
 
 " Wrap git commit messages as 72 charcters. This is supposed to come with both
 " fugitive and these days stock vim, but for whatever reason I'm getting
@@ -598,8 +569,8 @@ nmap <silent> <leader>q :call ToggleList("Quickfix List", 'c')<CR>
 " Function key shortcuts
 map <F1> <nop>
 map <F3> :set hlsearch! hlsearch?<CR>
-map <F6> :NERDTreeClose<CR>
-map <F7> :NERDTreeFind<CR> "TODO combine with F6 to make toggle
+map <C-n> :NERDTreeToggle<CR>
+map <F7> :NERDTreeToggle<CR>
 map <F8> :TagbarToggle<cr>
 map <F9> :!/usr/bin/ctags -L <(find . -name '*.py') --fields=+iaS --python-kinds=-i --sort=yes --extra=+q<cr>
 
