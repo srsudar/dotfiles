@@ -310,8 +310,9 @@ let g:airline_right_sep = ''
 let g:airline_section_x = airline#section#create_right(['tagbar', 'virtualenv'])
 " Turn off file type and file encoding
 let g:airline_section_y = 0
-" Turn off white space errors by default.
-let g:airline#extensions#whitespace#enabled = 0
+" Handle whitespace errors with airline
+autocmd FileType * unlet! g:airline#extensions#whitespace#checks
+autocmd FileType markdown let g:airline#extensions#whitespace#checks = [ 'indent' ]
 " Enable Tabline
 let g:airline#extensions#tabline#enabled = 1
 " Show buffer numbers
@@ -350,6 +351,21 @@ set autoindent
 set listchars=tab:>-
 set list
 
+" Delete trailing whitespace with <leader><space>
+" Taken from: http://sartak.org/2011/03/end-of-line-whitespace-in-vim.html
+function! <SID>StripTrailingWhitespace()
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " Do the business:
+    %s/\s\+$//e
+    " Clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+endfunction
+nmap <silent> <Leader><space> :call <SID>StripTrailingWhitespace()<CR>
+
 " 2 spaces by default
 set tabstop=2
 set softtabstop=2
@@ -363,13 +379,6 @@ autocmd BufWinEnter *.html setlocal shiftwidth=2
 autocmd BufWinEnter *.html setlocal expandtab
 autocmd BufWinEnter *.html setlocal colorcolumn=101
 autocmd BufWinEnter *.html setlocal textwidth=101
-
-" highlight trailing whitespace and non-tab indents
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-autocmd ColorScheme * highlight TabHighlight ctermbg=Blue
-autocmd BufWinEnter *.* match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter *.* 2match TabHighlight /\t/
-autocmd BufWinLeave * call clearmatches()
 
 " More familiar symbols for nerdtree-git-plugin
 let g:NERDTreeIndicatorMapCustom = {
