@@ -378,7 +378,14 @@ autocmd BufWinEnter *.html setlocal expandtab
 autocmd BufWinEnter *.html setlocal shiftwidth=2
 autocmd BufWinEnter *.html setlocal expandtab
 autocmd BufWinEnter *.html setlocal colorcolumn=101
-autocmd BufWinEnter *.html setlocal textwidth=101
+autocmd BufWinEnter *.html setlocal textwidth=100
+
+" Java 100 characters.
+autocmd BufWinEnter *.java setlocal tabstop=4
+autocmd BufWinEnter *.java setlocal expandtab
+autocmd BufWinEnter *.java setlocal shiftwidth=4
+autocmd BufWinEnter *.java setlocal colorcolumn=101
+autocmd BufWinEnter *.java setlocal textwidth=100
 
 " More familiar symbols for nerdtree-git-plugin
 let g:NERDTreeIndicatorMapCustom = {
