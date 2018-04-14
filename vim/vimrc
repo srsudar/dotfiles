@@ -41,7 +41,8 @@ Plug 'klen/python-mode'
 " surround things with other things
 Plug 'tpope/vim-surround'
 " syntax highlighting
-Plug 'scrooloose/syntastic'
+" Plug 'scrooloose/syntastic'
+Plug 'w0rp/ale'
 " complementary mappings
 Plug 'tpope/vim-unimpaired'
 " solarized
