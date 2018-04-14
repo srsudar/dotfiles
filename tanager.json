@@ -9,6 +9,11 @@
     "notes": {
       "path": "~/Dropbox/Documents/notes",
       "defaultTitle": "notes"
+    },
+    "snippets": {
+      "path": "~/Dropbox/writing/snippets",
+      "aliases": ["s", "snip"],
+      "template": "<title>.md"
     }
   }
 }
