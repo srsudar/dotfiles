@@ -53,7 +53,7 @@ Plug 'tfnico/vim-gradle'
 " more sane regex
 Plug 'nelstrom/vim-visual-star-search'
 " fuzzy search for files using ctrl+p
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 " open alternate files (eg foo.h quick opens foo.c)
 Plug 'vim-scripts/a.vim'
 " show git status of lines
@@ -184,6 +184,8 @@ nmap ga <Plug>(EasyAlign)
 
 " Ignore some directories when using ctrlp
 let g:ctrlp_custom_ignore = 'node_modules\|bower_components\|DS_Store\|git'
+" If a file is already open, open in a new pane rather than switch to it.
+let g:ctrlp_switch_buffer = ''
 
 " Color frontmatter in markdown files.
 let g:vim_markdown_toml_frontmatter = 1
