@@ -6,6 +6,10 @@
       "aliases": ["j"],
       "default": true
     },
+    "dream-journal": {
+      "path": "~/Dropbox/writing/dream-journal/",
+      "aliases": ["dream", "d"]
+    },
     "notes": {
       "path": "~/Dropbox/Documents/notes",
       "defaultTitle": "notes"
