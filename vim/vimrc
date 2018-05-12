@@ -32,6 +32,8 @@ Plug 'mileszs/ack.vim'
 Plug 'tpope/vim-fugitive'
 " help with project configurations
 Plug 'tpope/vim-projectionist'
+" async builds
+Plug 'tpope/vim-dispatch'
 " file browser on the left
 Plug 'scrooloose/nerdtree'
 " and make the nerdtree file browser consistent between tabs
@@ -143,6 +145,8 @@ Plug 'honza/vim-snippets'
 Plug 'ervandew/supertab'
 " json text objects with aj and ij
 Plug 'tpope/vim-jdaddy'
+" Typescript support
+Plug 'leafgarland/typescript-vim'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -355,6 +359,16 @@ set autoindent
 "highlight TabHighlight ctermbg=Blue " highlight tabs
 set listchars=tab:>-
 set list
+
+" Settings for the ALE linter.
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   }
+" Mappings in the style of unimpaired-next
+nmap <silent> [W <Plug>(ale_first)
+nmap <silent> [w <Plug>(ale_previous)
+nmap <silent> ]w <Plug>(ale_next)
+nmap <silent> ]W <Plug>(ale_last)
 
 " Delete trailing whitespace with <leader><space>
 " Taken from: http://sartak.org/2011/03/end-of-line-whitespace-in-vim.html
