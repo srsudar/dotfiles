@@ -53,8 +53,6 @@ Plug 'fatih/vim-go'
 Plug 'tfnico/vim-gradle'
 " more sane regex
 Plug 'nelstrom/vim-visual-star-search'
-" fuzzy search for files using ctrl+p
-Plug 'kien/ctrlp.vim'
 " open alternate files (eg foo.h quick opens foo.c)
 Plug 'vim-scripts/a.vim'
 " show git status of lines
@@ -171,6 +169,10 @@ let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
 " filename. or :vs or :tabnew. So this gives a lot of flexibility wrt to how
 " you want to open the file.
 cnoremap <Leader>ff <C-R>=fzf#run({'down': '40%'})<CR><CR>
+" This provides "FzfFiles" instead of "Files"
+let g:fzf_command_prefix = 'Fzf'
+" Open fzf with <C-p>, like ctrlp.
+nnoremap <c-p> :FZF<cr>
 
 " Add a :Reload command to reload the buffer. This is the same behavior as
 " :edit but I always forget about it.
