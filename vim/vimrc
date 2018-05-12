@@ -30,6 +30,8 @@ Plug 'junegunn/vim-pseudocl'
 Plug 'mileszs/ack.vim'
 " some git integration and status info
 Plug 'tpope/vim-fugitive'
+" help with project configurations
+Plug 'tpope/vim-projectionist'
 " file browser on the left
 Plug 'scrooloose/nerdtree'
 " and make the nerdtree file browser consistent between tabs
