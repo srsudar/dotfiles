@@ -147,6 +147,10 @@ Plug 'ervandew/supertab'
 Plug 'tpope/vim-jdaddy'
 " Typescript support
 Plug 'leafgarland/typescript-vim'
+" Better grepping
+Plug 'mhinz/vim-grepper'
+" Testing support
+Plug 'janko-m/vim-test'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -179,6 +183,9 @@ cnoremap <Leader>ff <C-R>=fzf#run({'down': '40%'})<CR><CR>
 let g:fzf_command_prefix = 'Fzf'
 " Open fzf with <C-p>, like ctrlp.
 nnoremap <c-p> :FZF<cr>
+
+" Use dispatch to async tests run via vim-test
+let test#strategy = "dispatch"
 
 " Add a :Reload command to reload the buffer. This is the same behavior as
 " :edit but I always forget about it.
@@ -369,6 +376,15 @@ nmap <silent> [W <Plug>(ale_first)
 nmap <silent> [w <Plug>(ale_previous)
 nmap <silent> ]w <Plug>(ale_next)
 nmap <silent> ]W <Plug>(ale_last)
+
+" Grepper configuration.
+let g:grepper = {}
+let g:grepper.tools = ['grep', 'git', 'rg']
+" Search for the current word
+nnoremap <Leader>* :Grepper -cword -noprompt<CR>
+" Search for the current selection
+nmap gs <plug>(GrepperOperator)
+xmap gs <plug>(GrepperOperator)
 
 " Delete trailing whitespace with <leader><space>
 " Taken from: http://sartak.org/2011/03/end-of-line-whitespace-in-vim.html
