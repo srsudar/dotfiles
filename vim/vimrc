@@ -204,6 +204,8 @@ nmap ga <Plug>(EasyAlign)
 
 " Ignore some directories when using ctrlp
 let g:ctrlp_custom_ignore = 'node_modules\|bower_components\|DS_Store\|git'
+" If a file is already open, open in a new pane rather than switch to it.
+let g:ctrlp_switch_buffer = ''
 
 " Color frontmatter in markdown files.
 " let g:vim_markdown_math = 1
@@ -416,7 +418,14 @@ autocmd BufWinEnter *.html setlocal expandtab
 autocmd BufWinEnter *.html setlocal shiftwidth=2
 autocmd BufWinEnter *.html setlocal expandtab
 autocmd BufWinEnter *.html setlocal colorcolumn=101
-autocmd BufWinEnter *.html setlocal textwidth=101
+autocmd BufWinEnter *.html setlocal textwidth=100
+
+" Java 100 characters.
+autocmd BufWinEnter *.java setlocal tabstop=4
+autocmd BufWinEnter *.java setlocal expandtab
+autocmd BufWinEnter *.java setlocal shiftwidth=4
+autocmd BufWinEnter *.java setlocal colorcolumn=101
+autocmd BufWinEnter *.java setlocal textwidth=100
 
 " More familiar symbols for nerdtree-git-plugin
 let g:NERDTreeIndicatorMapCustom = {
