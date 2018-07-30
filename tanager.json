@@ -18,6 +18,12 @@
       "path": "~/Dropbox/writing/snippets",
       "aliases": ["s", "snip"],
       "template": "<title>.md"
+    },
+    "chile": {
+      "path": "~/Dropbox/writing/chile",
+      "defaultTitle": "chile-coffee",
+      "aliases": ["ch"],
+      "template": "<title>.md"
     }
   }
 }

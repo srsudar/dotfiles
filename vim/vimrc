@@ -98,7 +98,9 @@ Plug 'valloric/YouCompleteMe'
 Plug 'cespare/vim-toml'
 " Better markdown support. Need tabular and vim-markdown
 Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
+" markdown
+Plug 'gabrielelana/vim-markdown'
+" Plug 'plasticboy/vim-markdown'
 " Better searching and highlighting defaults.
 Plug 'junegunn/vim-oblique'
 " Show contents of registers using " and @ in insert and <C-CR> in insert
@@ -163,7 +165,9 @@ vmap <leader>gt <Plug>Titlecase
 nmap <leader>gT <Plug>TitlecaseLine
 
 " Better completion with UltiSnips
-" make YCM compatible with UltiSnips (using supertab)
+" make YCM compatible with UltiSnips (using supertab). Later I stumbled across
+" this, which looks like the source where I originally got it:
+" https://github.com/SirVer/ultisnips/issues/512
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
@@ -286,6 +290,7 @@ let g:syntastic_warning_symbol = '!'
 " And now we disable pyflakes using the quickfix list to leave the quickfix
 " buffer alone, which does weird things to syntastic.
 let g:pyflakes_use_quickfix = 0
+let g:pymode = 1
 let g:pymode_lint_write = 0
 
 " Tagbar
@@ -303,6 +308,7 @@ autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 " This comman will prevent the documentation window opening at all:
 " set completeopt=menu
+autocmd FileType python setlocal shiftwidth=2 tabstop=2
 
 " Ropevim
 " if(filereadable(expand('~/.vim/plugin/ropevim.vim')))
