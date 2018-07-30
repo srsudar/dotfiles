@@ -206,12 +206,8 @@ nmap ga <Plug>(EasyAlign)
 let g:ctrlp_custom_ignore = 'node_modules\|bower_components\|DS_Store\|git'
 
 " Color frontmatter in markdown files.
-let g:vim_markdown_toml_frontmatter = 1
 " let g:vim_markdown_math = 1
-" 2 space indent in lists
-let g:vim_markdown_new_list_item_indent = 2
-" Disable annoying folding, at least for a few levels
-let g:vim_markdown_folding_disabled = 1
+let g:markdown_enable_insert_mode_mappings = 0
 
 " Delay the peekaboo register opening after hitting "
 let g:peekaboo_delay = 1500
@@ -229,8 +225,9 @@ augroup markdown
   " functionality in my LaTeX plugin.
   autocmd FileType markdown map <buffer> <leader>lv :silent! !open -a Marked\ 2 % > /dev/null &<cr>:redraw!<cr>
 
-  " autocmd FileType markdown inoremap <expr> <CR> MarkdownEnter()
-  " autocmd FileType markdown inoremap <expr> <Space> MarkdownSpace()
+  " gabrielelana/vim-markdown override textwidth to 0 for some reason, so re-set
+  " it here to get back wrapping.
+  autocmd Filetype markdown setlocal textwidth=80
 augroup END
 
 " Use system clipboard for pasting and yanking.
