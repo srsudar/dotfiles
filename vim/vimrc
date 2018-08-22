@@ -99,7 +99,8 @@ Plug 'cespare/vim-toml'
 " Better markdown support. Need tabular and vim-markdown
 Plug 'godlygeek/tabular'
 " markdown
-Plug 'gabrielelana/vim-markdown'
+Plug 'srsudar/vim-markdown'
+" Plug 'gabrielelana/vim-markdown'
 " Plug 'plasticboy/vim-markdown'
 " Better searching and highlighting defaults.
 Plug 'junegunn/vim-oblique'
@@ -153,6 +154,8 @@ Plug 'leafgarland/typescript-vim'
 Plug 'mhinz/vim-grepper'
 " Testing support
 Plug 'janko-m/vim-test'
+" Whitespace support
+Plug 'ntpeters/vim-better-whitespace'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -346,6 +349,10 @@ if exists('+colorcolumn')
 else
 	au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>81v.\+', -1)
 endif
+
+" Change the color for better-whitespace plugin
+let g:better_whitespace_ctermcolor='darkblue'
+let g:better_whitespace_filetypes_blacklist=['diff', 'gitcommit', 'unite', 'qf', 'help']
 
 " <C-a> and <C-x> by default interpret leading-zero numbers as octal. I almost
 " never work with octal, so this will make all numbers be interpreted as
