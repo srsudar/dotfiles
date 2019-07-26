@@ -2,7 +2,7 @@
   "foo": "from file",
   "notebooks": {
     "journal": {
-      "path": "~/Dropbox/writing/journal/",
+      "path": "~/Documents/keybase-repos/journal",
       "aliases": ["j"],
       "default": true
     },

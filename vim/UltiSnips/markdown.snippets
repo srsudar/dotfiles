@@ -5,9 +5,10 @@ snippet newj "Start of journal entry"
 > friendly_date = "`date +%Y-%m-%d`"  
 > iso_date = "`date +%Y-%m-%dT%H:%M:%S%z`"  
 > location = "$1"  
-> weather = "$2"  
+> gps = "$2"  
+> weather = "$3"  
 >  
-> tags = [ $3]  
+> tags = [ $4]  
 
 endsnippet
 
@@ -18,9 +19,10 @@ snippet conj "Continue journal entry"
 > friendly_date = "`date +%Y-%m-%d`"  
 > iso_date = "`date +%Y-%m-%dT%H:%M:%S%z`"  
 > location = "$1"  
-> weather = "$2"  
-> 
-> tags = [ $3]  
+> gps = "$2"
+> weather = "$3"  
+>  
+> tags = [ $4]  
 
 endsnippet
 
@@ -32,7 +34,7 @@ snippet transj "Transcribed journal entry"
 > friendly_date = "`date +%Y-%m-%d`"  
 > iso_date = "`date +%Y-%m-%dT%H:%M:%S%z`"  
 > transcribed_iso_date = "`date +%Y-%m-%dT%H:%M:%S%z`"  
-> 
+>  
 > tags = [ 'transcribed', $5]  
 
 

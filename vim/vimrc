@@ -93,7 +93,7 @@ Plug 'tpope/vim-rsi'
 " More information for <ctrl>+a character information, including unicode
 Plug 'tpope/vim-characterize'
 " Fancy pants auto completion
-Plug 'valloric/YouCompleteMe'
+Plug 'ycm-core/YouCompleteMe'
 " Color TOML
 Plug 'cespare/vim-toml'
 " Better markdown support. Need tabular and vim-markdown
@@ -156,9 +156,19 @@ Plug 'mhinz/vim-grepper'
 Plug 'janko-m/vim-test'
 " Whitespace support
 Plug 'ntpeters/vim-better-whitespace'
+" Dart support
+Plug 'dart-lang/dart-vim-plugin'
+Plug 'natebosch/vim-lsc'
+Plug 'natebosch/dartlang-snippets'
+Plug 'google/vim-maktaba'
+Plug 'google/vim-codefmt'
+" Glaive is needed for maktaba's flags. Use `:help :Glaive` for more. Also see
+" Glaive install command below.
+Plug 'google/vim-glaive'
 
 " Add plugins to &runtimepath
 call plug#end()
+call glaive#Install()
 " end vim-plug section
 
 " Don't use default titlecase mappings, as they interfere with gt/gT for tabs
@@ -179,6 +189,22 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
+
+" Dart language server stuff
+let g:lsc_server_commands = {
+    \ 'dart': 'dart_language_server',
+    \ 'html': 'dart_language_server',
+    \}
+let g:lsc_auto_map = {
+    \ 'GoToDefinition': '<C-]>',
+    \ 'FindReferences': 'gr',
+    \ 'FindImplementations': 'gI',
+    \ 'FindCodeActions': 'ga',
+    \ 'DocumentSymbol': 'go',
+    \ 'WorkspaceSymbol': 'gS',
+    \ 'ShowHover': 'K',
+    \ 'Completion': 'completefunc',
+    \}
 
 " Command for fzf stolen from someone else. Their description:
 " This maps \ff in command-line mode to invoke fzf file search and lets you
@@ -253,6 +279,9 @@ let g:EclimCompletionMethod = 'omnifunc'
 nnoremap <leader>y :let g:ycm_auto_trigger=0<CR>
 " Turn on YCM
 nnoremap <leader>Y :let g:ycm_auto_trigger=1<CR>
+
+" Use one space instead of two when fixing up after sentences.
+set nojoinspaces
 
 " vim latex
 " don't complain if we're not using +clientserver
