@@ -30,6 +30,10 @@ Plug 'junegunn/vim-pseudocl'
 Plug 'mileszs/ack.vim'
 " some git integration and status info
 Plug 'tpope/vim-fugitive'
+" help with project configurations
+Plug 'tpope/vim-projectionist'
+" async builds
+Plug 'tpope/vim-dispatch'
 " file browser on the left
 Plug 'scrooloose/nerdtree'
 " and make the nerdtree file browser consistent between tabs
@@ -89,12 +93,15 @@ Plug 'tpope/vim-rsi'
 " More information for <ctrl>+a character information, including unicode
 Plug 'tpope/vim-characterize'
 " Fancy pants auto completion
-Plug 'valloric/YouCompleteMe'
+Plug 'ycm-core/YouCompleteMe'
 " Color TOML
 Plug 'cespare/vim-toml'
 " Better markdown support. Need tabular and vim-markdown
 Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
+" markdown
+Plug 'srsudar/vim-markdown'
+" Plug 'gabrielelana/vim-markdown'
+" Plug 'plasticboy/vim-markdown'
 " Better searching and highlighting defaults.
 Plug 'junegunn/vim-oblique'
 " Show contents of registers using " and @ in insert and <C-CR> in insert
@@ -141,9 +148,27 @@ Plug 'honza/vim-snippets'
 Plug 'ervandew/supertab'
 " json text objects with aj and ij
 Plug 'tpope/vim-jdaddy'
+" Typescript support
+Plug 'leafgarland/typescript-vim'
+" Better grepping
+Plug 'mhinz/vim-grepper'
+" Testing support
+Plug 'janko-m/vim-test'
+" Whitespace support
+Plug 'ntpeters/vim-better-whitespace'
+" Dart support
+Plug 'dart-lang/dart-vim-plugin'
+Plug 'natebosch/vim-lsc'
+Plug 'natebosch/dartlang-snippets'
+Plug 'google/vim-maktaba'
+Plug 'google/vim-codefmt'
+" Glaive is needed for maktaba's flags. Use `:help :Glaive` for more. Also see
+" Glaive install command below.
+Plug 'google/vim-glaive'
 
 " Add plugins to &runtimepath
 call plug#end()
+call glaive#Install()
 " end vim-plug section
 
 " Don't use default titlecase mappings, as they interfere with gt/gT for tabs
@@ -153,7 +178,9 @@ vmap <leader>gt <Plug>Titlecase
 nmap <leader>gT <Plug>TitlecaseLine
 
 " Better completion with UltiSnips
-" make YCM compatible with UltiSnips (using supertab)
+" make YCM compatible with UltiSnips (using supertab). Later I stumbled across
+" this, which looks like the source where I originally got it:
+" https://github.com/SirVer/ultisnips/issues/512
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
@@ -162,6 +189,22 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
+
+" Dart language server stuff
+let g:lsc_server_commands = {
+    \ 'dart': 'dart_language_server',
+    \ 'html': 'dart_language_server',
+    \}
+let g:lsc_auto_map = {
+    \ 'GoToDefinition': '<C-]>',
+    \ 'FindReferences': 'gr',
+    \ 'FindImplementations': 'gI',
+    \ 'FindCodeActions': 'ga',
+    \ 'DocumentSymbol': 'go',
+    \ 'WorkspaceSymbol': 'gS',
+    \ 'ShowHover': 'K',
+    \ 'Completion': 'completefunc',
+    \}
 
 " Command for fzf stolen from someone else. Their description:
 " This maps \ff in command-line mode to invoke fzf file search and lets you
@@ -173,6 +216,9 @@ cnoremap <Leader>ff <C-R>=fzf#run({'down': '40%'})<CR><CR>
 let g:fzf_command_prefix = 'Fzf'
 " Open fzf with <C-p>, like ctrlp.
 nnoremap <c-p> :FZF<cr>
+
+" Use dispatch to async tests run via vim-test
+let test#strategy = "dispatch"
 
 " Add a :Reload command to reload the buffer. This is the same behavior as
 " :edit but I always forget about it.
@@ -191,12 +237,8 @@ let g:ctrlp_custom_ignore = 'node_modules\|bower_components\|DS_Store\|git'
 let g:ctrlp_switch_buffer = ''
 
 " Color frontmatter in markdown files.
-let g:vim_markdown_toml_frontmatter = 1
 " let g:vim_markdown_math = 1
-" 2 space indent in lists
-let g:vim_markdown_new_list_item_indent = 2
-" Disable annoying folding, at least for a few levels
-let g:vim_markdown_folding_disabled = 1
+let g:markdown_enable_insert_mode_mappings = 0
 
 " Delay the peekaboo register opening after hitting "
 let g:peekaboo_delay = 1500
@@ -214,8 +256,9 @@ augroup markdown
   " functionality in my LaTeX plugin.
   autocmd FileType markdown map <buffer> <leader>lv :silent! !open -a Marked\ 2 % > /dev/null &<cr>:redraw!<cr>
 
-  " autocmd FileType markdown inoremap <expr> <CR> MarkdownEnter()
-  " autocmd FileType markdown inoremap <expr> <Space> MarkdownSpace()
+  " gabrielelana/vim-markdown override textwidth to 0 for some reason, so re-set
+  " it here to get back wrapping.
+  autocmd Filetype markdown setlocal textwidth=80
 augroup END
 
 " Use system clipboard for pasting and yanking.
@@ -236,6 +279,9 @@ let g:EclimCompletionMethod = 'omnifunc'
 nnoremap <leader>y :let g:ycm_auto_trigger=0<CR>
 " Turn on YCM
 nnoremap <leader>Y :let g:ycm_auto_trigger=1<CR>
+
+" Use one space instead of two when fixing up after sentences.
+set nojoinspaces
 
 " vim latex
 " don't complain if we're not using +clientserver
@@ -275,6 +321,7 @@ let g:syntastic_warning_symbol = '!'
 " And now we disable pyflakes using the quickfix list to leave the quickfix
 " buffer alone, which does weird things to syntastic.
 let g:pyflakes_use_quickfix = 0
+let g:pymode = 1
 let g:pymode_lint_write = 0
 
 " Tagbar
@@ -292,6 +339,7 @@ autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 " This comman will prevent the documentation window opening at all:
 " set completeopt=menu
+autocmd FileType python setlocal shiftwidth=2 tabstop=2
 
 " Ropevim
 " if(filereadable(expand('~/.vim/plugin/ropevim.vim')))
@@ -331,6 +379,10 @@ else
 	au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>81v.\+', -1)
 endif
 
+" Change the color for better-whitespace plugin
+let g:better_whitespace_ctermcolor='darkblue'
+let g:better_whitespace_filetypes_blacklist=['diff', 'gitcommit', 'unite', 'qf', 'help']
+
 " <C-a> and <C-x> by default interpret leading-zero numbers as octal. I almost
 " never work with octal, so this will make all numbers be interpreted as
 " decimal.
@@ -355,6 +407,25 @@ set autoindent
 "highlight TabHighlight ctermbg=Blue " highlight tabs
 set listchars=tab:>-
 set list
+
+" Settings for the ALE linter.
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   }
+" Mappings in the style of unimpaired-next
+nmap <silent> [W <Plug>(ale_first)
+nmap <silent> [w <Plug>(ale_previous)
+nmap <silent> ]w <Plug>(ale_next)
+nmap <silent> ]W <Plug>(ale_last)
+
+" Grepper configuration.
+let g:grepper = {}
+let g:grepper.tools = ['grep', 'git', 'rg']
+" Search for the current word
+nnoremap <Leader>* :Grepper -cword -noprompt<CR>
+" Search for the current selection
+nmap gs <plug>(GrepperOperator)
+xmap gs <plug>(GrepperOperator)
 
 " Delete trailing whitespace with <leader><space>
 " Taken from: http://sartak.org/2011/03/end-of-line-whitespace-in-vim.html

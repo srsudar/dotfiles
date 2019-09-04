@@ -5,9 +5,10 @@ snippet newj "Start of journal entry"
 > friendly_date = "`date +%Y-%m-%d`"  
 > iso_date = "`date +%Y-%m-%dT%H:%M:%S%z`"  
 > location = "$1"  
-> weather = "$2"  
-> 
-> tags = [ $3]  
+> gps = "$2"  
+> weather = "$3"  
+>  
+> tags = [ $4]  
 
 endsnippet
 
@@ -18,7 +19,52 @@ snippet conj "Continue journal entry"
 > friendly_date = "`date +%Y-%m-%d`"  
 > iso_date = "`date +%Y-%m-%dT%H:%M:%S%z`"  
 > location = "$1"  
-> weather = "$2"  
+> gps = "$2"
+> weather = "$3"  
+>  
+> tags = [ $4]  
+
+endsnippet
+
+snippet transj "Transcribed journal entry"
+# $1, transcribed
+
+> date-of-original-entry = "$1"
+> full-date = "`date`"  
+> friendly_date = "`date +%Y-%m-%d`"  
+> iso_date = "`date +%Y-%m-%dT%H:%M:%S%z`"  
+> transcribed_iso_date = "`date +%Y-%m-%dT%H:%M:%S%z`"  
+>  
+> tags = [ 'transcribed', $5]  
+
+
+
+## Source Images
+
+* ![meta](file)
+endsnippet
+
+snippet news "Start of writing snippet"
+# $1
+
+> full-date = "`date`"  
+> friendly_date = "`date +%Y-%m-%d`"  
+> iso_date = "`date +%Y-%m-%dT%H:%M:%S%z`"  
+> location = "$2"  
+> synopsis = "$3"  
+> 
+> tags = [ $4]  
+
+endsnippet
+
+snippet cons "Continue writing snippet"
+---
+
+> full-date = "`date`"  
+> friendly_date = "`date +%Y-%m-%d`"  
+> iso_date = "`date +%Y-%m-%dT%H:%M:%S%z`"  
+> location = "$1"  
+> synopsis = "$2"  
 > 
 > tags = [ $3]  
 

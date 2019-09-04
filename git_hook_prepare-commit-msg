@@ -1,0 +1,24 @@
+#!/bin/sh
+#
+# Add word count stats to a commit message. They need to be added via `git add`
+# first.
+#
+# Needs to be saved in a repo as `.git/hooks/prepare-commit-msg`.
+
+COMMIT_MSG_FILE=$1
+COMMIT_SOURCE=$2
+SHA1=$3
+
+GITWA=`git diff --cached --word-diff=porcelain | grep -e "^+[^+]" | wc -w | xargs`
+GITWD=`git diff --cached --word-diff=porcelain | grep -e "^-[^-]" | wc -w | xargs`
+GITW=$((${GITWA} - ${GITWD}))
+
+MSG_ADD="added words:   ${GITWA}"
+MSG_DEL="deleted words: ${GITWD}"
+MSG_NET="net words:     ${GITW}"
+
+# This command is from StackOverflow and prepends.
+# https://stackoverflow.com/questions/10587615/unix-command-to-prepend-text-to-a-file/27950358
+printf '\n\n%s\n%s\n%s\n%s\n' "${MSG_ADD}" "${MSG_DEL}" "${MSG_NET}" "$(cat ${COMMIT_MSG_FILE})" >${COMMIT_MSG_FILE}
+
+
