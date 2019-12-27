@@ -1,0 +1,23 @@
+snippet logi "Insert log.Info statement"
+log.Infof("XXX ${1}", ${2})
+endsnippet
+
+snippet loge "Insert log.Error statement"
+log.Errorf("XXX ${1}", ${2})
+endsnippet
+
+snippet tlog "Insert t.Logf statement"
+t.Logf("XXX ${1}", ${2})
+endsnippet
+
+snippet logt "Insert t.Logf statement"
+t.Logf("XXX ${1}", ${2})
+endsnippet
+
+snippet printf "Insert fmt log statement"
+fmt.Fprintf(os.Stderr, "XXX ${1}\n", ${2})
+endsnippet
+
+snippet sleep "Insert a sleep statement"
+time.Sleep(10000 * time.Second)
+endsnippet

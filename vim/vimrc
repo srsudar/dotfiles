@@ -283,6 +283,20 @@ nnoremap <leader>Y :let g:ycm_auto_trigger=1<CR>
 " Use one space instead of two when fixing up after sentences.
 set nojoinspaces
 
+" Typescript
+" jd to Jump to Definition
+nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
+if !exists("g:ycm_semantic_triggers")
+  let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers['typescript'] = ['.']
+augroup FiletypeGroup
+  autocmd!
+  " .ts is a Typescript file
+  au BufNewFile,BufRead *.ts set filetype=typescript
+augroup END
+
+
 " vim latex
 " don't complain if we're not using +clientserver
 let g:vimtex_echo_ignore_wait = 1
