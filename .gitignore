@@ -13,3 +13,4 @@ workbench.xmi
 
 # Don't version things installed by vim-plug.
 vim/plugged
+vim/autoload

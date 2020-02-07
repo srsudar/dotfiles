@@ -1,0 +1,18 @@
+snippet it "Jasmine test" b
+it('${1}', () => {
+  fail('unimplemented');
+});
+endsnippet
+
+snippet tt "table test" b
+Description
+for (const test of [
+  {
+    label: 'test case 1',
+  },
+]) {
+  it(`${test.label}`, () => {
+    fail('unimplemented');
+  });
+}
+endsnippet

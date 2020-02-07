@@ -216,6 +216,7 @@ cnoremap <Leader>ff <C-R>=fzf#run({'down': '40%'})<CR><CR>
 let g:fzf_command_prefix = 'Fzf'
 " Open fzf with <C-p>, like ctrlp.
 nnoremap <c-p> :FZF<cr>
+nnoremap <Leader>b :FzfBuffers<cr>
 
 " Use dispatch to async tests run via vim-test
 let test#strategy = "dispatch"
