@@ -432,9 +432,11 @@ set showcmd
 
 " Indentation/tabs
 set autoindent
+" Turn off tab highlighting for now. Really we want this only for go, but this
+" is easier.
 "highlight TabHighlight ctermbg=Blue " highlight tabs
-set listchars=tab:>-
-set list
+" set listchars=tab:>-
+" set list
 
 " Settings for the ALE linter.
 let g:ale_linters = {
@@ -538,6 +540,10 @@ set textwidth=80
 " message wrapping.
 au FileType gitcommit setlocal tw=72
 au FileType gitcommit setlocal colorcolumn=73
+
+" Wrap go at 100.
+au FileType go setlocal tw=100
+au FileType go setlocal colorcolumn=101
 
 " Hidden buffer support. I think this lets us navigate away from a buffer,
 " even when doing ':bnext', without giving the 'override with !' error.
