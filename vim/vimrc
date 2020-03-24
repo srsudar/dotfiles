@@ -218,7 +218,7 @@ command! -bang -nargs=* Rg
 " you want to open the file.
 cnoremap <Leader>ff <C-R>=fzf#run({'down': '40%'})<CR><CR>
 " This provides "FzfFiles" instead of "Files"
-let g:fzf_command_prefix = 'Fzf'
+" let g:fzf_command_prefix = 'Fzf'
 " Open fzf with <C-p>, like ctrlp.
 nnoremap <c-p> :FZF<cr>
 " Various FZF shortcuts
