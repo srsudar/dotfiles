@@ -514,7 +514,10 @@ let g:NERDTreeIndicatorMapCustom = {
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Color scheme and font
-colorscheme xoria256-pluk
+colorscheme xoria256
+" I like default xoria256, with a few modifications. Set those modifications
+" here.
+hi Comment      ctermfg=48 guifg=#808080
 set guifont=Monaco:h12
 
 " Highlight current line
