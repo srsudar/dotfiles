@@ -4,6 +4,7 @@
 [core]
 	excludesfile = ~/.gitignore_global
 	mergeoptions = --no-edit
+	pager = less -x1,3
 [color]
 	ui = true
 

@@ -148,8 +148,6 @@ Plug 'honza/vim-snippets'
 Plug 'ervandew/supertab'
 " json text objects with aj and ij
 Plug 'tpope/vim-jdaddy'
-" Typescript support
-Plug 'leafgarland/typescript-vim'
 " Better grepping
 Plug 'mhinz/vim-grepper'
 " Testing support
@@ -165,6 +163,9 @@ Plug 'google/vim-codefmt'
 " Glaive is needed for maktaba's flags. Use `:help :Glaive` for more. Also see
 " Glaive install command below.
 Plug 'google/vim-glaive'
+" more language packs. In general this seems to supercede other language packs.
+Plug 'sheerun/vim-polyglot'
+
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -310,6 +311,9 @@ augroup FiletypeGroup
   au BufNewFile,BufRead *.ts set filetype=typescript
 augroup END
 
+" typescript and jsx, based on the peitalin/vim-jsx-typescript readme.
+" set filetypes as typescript.tsx
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
 
 " vim latex
 " don't complain if we're not using +clientserver
