@@ -46,15 +46,9 @@ Plug 'klen/python-mode'
 Plug 'tpope/vim-surround'
 " syntax highlighting
 " Plug 'scrooloose/syntastic'
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
 " complementary mappings
 Plug 'tpope/vim-unimpaired'
-" solarized
-Plug 'altercation/vim-colors-solarized'
-" GO integration
-Plug 'fatih/vim-go'
-" gradle integration
-Plug 'tfnico/vim-gradle'
 " more sane regex
 Plug 'nelstrom/vim-visual-star-search'
 " open alternate files (eg foo.h quick opens foo.c)
@@ -122,22 +116,12 @@ Plug 'Yggdroot/indentLine'
 let g:indentLine_enabled = 0
 " Open the current file[pwd] in finder with go{f,F}.
 Plug 'justinmk/vim-gtfo'
-" Better Javascript highlighting.
-Plug 'pangloss/vim-javascript'
-" Coffeescript support
-Plug 'kchmck/vim-coffee-script'
-" Support for Rust
-Plug 'rust-lang/rust.vim'
 " Highlighting for docker files
 Plug 'honza/dockerfile.vim'
 " Help with unicode digraphs
 Plug 'chrisbra/unicode.vim'
-" HTML5 highlighting.
-Plug 'othree/html5.vim'
 " Polymer support
 " Plug 'webdesus/polymer-ide.vim'
-" Distraction free writing
-Plug 'junegunn/goyo.vim'
 " Title Case operator with gt
 Plug 'christoomey/vim-titlecase'
 " Snippets engine
@@ -150,8 +134,6 @@ Plug 'ervandew/supertab'
 Plug 'tpope/vim-jdaddy'
 " Better grepping
 Plug 'mhinz/vim-grepper'
-" Testing support
-Plug 'janko-m/vim-test'
 " Whitespace support
 Plug 'ntpeters/vim-better-whitespace'
 " Dart support
