@@ -245,6 +245,7 @@ let g:peekaboo_delay = 1500
 augroup markdown
   autocmd!
   autocmd BufNewFile,BufRead *.md,*.markdown setlocal filetype=markdown
+  autocmd BufNewFile,BufRead *.md,*.markdown setlocal spell
   " Open table of contents with <leader>lt
   autocmd Filetype markdown map <buffer> <leader>lt :Toc<CR>
   " highlight bold
