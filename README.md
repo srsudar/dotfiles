@@ -45,6 +45,16 @@ ln -s ./dotfiles/bash_profile_mbAir ./.bashrc
 
 ```
 
+And on linux only:
+
+```shell
+ln -s ./dotfiles/config/rofi ./.config/rofi
+
+ln -s ./dotfiles/config/i3 ./.config/i3
+
+ln -s ./dotfiles/Xresources ./.Xresources
+```
+
 # Vim
 
 I manage my vim plugins with [vim-plug](https://github.com/junegunn/vim-plug).
