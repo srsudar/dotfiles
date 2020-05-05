@@ -1,7 +1,9 @@
 [ui]
-username=Sam Sudar <sudar.sam@gmail.com>
+username=Sam Sudar <srsudar@google.com>
 ignore = ~/.hgignore
 ssh = ssh -C
+# We use this to define the `@` symbol in google's `hg xl`.
+graphnodetemplate = {label('graphnode.{graphnode}', graphnode)}
 # merge = internal:merge */
 [pager]
 pager = LESS='FSRX' less
@@ -15,3 +17,39 @@ shelve =
 graphlog =
 progress =
 hgext.extdiff =
+journal =
+[templatealias]
+# show if the phase is secret
+# google_compact_uniq_id = "{ifeq(phase, "secret", "(secret) ")}{GOOG_node}"
+[color]
+# colors I define
+color.lightblue = 153
+color.brightyellow = 11
+color.scarlet = 198
+# color.lightgreen = 28
+# color.lightgreen = 40
+# color.lightgreen = 45
+# color.lightgreen = 46
+# color.lightgreen = 47
+# color.lightgreen = 75
+# color.lightgreen = 77
+# make 82 the hash?
+# color.lightgreen = 82
+color.brightgreen = 82
+# color.lightgreen = 77
+color.lightgreen = 77
+### commit description colors
+# current commit
+desc.here = brightyellow
+# draft commits
+desc.draft = lightgreen
+# make p4 hashes easier to read
+changeset.public = blue bold
+changeset.draft = brightgreen
+changeset.remaining = black bold
+# make current commit easier to read
+graphnode.@ = brightyellow
+# p4 commits
+desc.outsidenarrow = white
+# make the obsolete tag easier to see
+obsolete.obsolete = scarlet

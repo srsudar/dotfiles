@@ -1,5 +1,32 @@
 set nocompatible
 
+source /usr/share/vim/google/google.vim
+Glug youcompleteme-google
+Glug ft-python
+Glug codefmt gofmt_executable="goimports"
+Glug codefmt-google
+Glug clang-format
+" Run glaze on saving a go file.
+Glug blazedeps auto_filetypes=`['go']`
+Glug blaze
+" https://g3doc.corp.google.com/company/editors/vim/plugins/codefmt-google.md?cl=head
+augroup autoformat_settings
+  " autocmd FileType borg,gcl,patchpanel AutoFormatBuffer gclfmt
+  autocmd FileType bzl AutoFormatBuffer buildifier
+  autocmd FileType c,cpp,javascript AutoFormatBuffer clang-format
+  autocmd FileType dart AutoFormatBuffer dartfmt
+  autocmd FileType go AutoFormatBuffer gofmt
+  autocmd FileType java AutoFormatBuffer google-java-format
+  autocmd FileType jslayout AutoFormatBuffer jslfmt
+  autocmd FileType markdown AutoFormatBuffer mdformat
+  autocmd FileType ncl AutoFormatBuffer nclfmt
+  " autocmd FileType python AutoFormatBuffer pyformat
+  autocmd FileType textpb AutoFormatBuffer text-proto-format
+  autocmd FileType proto AutoFormatBuffer protofmt
+  " autocmd FileType html,css,json AutoFormatBuffer js-beautify
+augroup END
+
+
 set t_Co=256
 
 " ---------- plugins ---------
@@ -41,7 +68,7 @@ Plug 'jistr/vim-nerdtree-tabs'
 " and show git flags
 Plug 'Xuyuanp/nerdtree-git-plugin'
 " more python support
-Plug 'klen/python-mode'
+" Plug 'klen/python-mode'
 " surround things with other things
 Plug 'tpope/vim-surround'
 " syntax highlighting
@@ -87,13 +114,14 @@ Plug 'tpope/vim-rsi'
 " More information for <ctrl>+a character information, including unicode
 Plug 'tpope/vim-characterize'
 " Fancy pants auto completion
-Plug 'ycm-core/YouCompleteMe'
+" DO NOT INCLUDE at google
+" Plug 'valloric/YouCompleteMe'
 " Color TOML
 Plug 'cespare/vim-toml'
 " Better markdown support. Need tabular and vim-markdown
 Plug 'godlygeek/tabular'
 " markdown
-Plug 'srsudar/vim-markdown'
+" Plug 'srsudar/vim-markdown'
 " Plug 'gabrielelana/vim-markdown'
 " Plug 'plasticboy/vim-markdown'
 " Better searching and highlighting defaults.
@@ -141,13 +169,12 @@ Plug 'dart-lang/dart-vim-plugin'
 Plug 'natebosch/vim-lsc'
 Plug 'natebosch/dartlang-snippets'
 Plug 'google/vim-maktaba'
-Plug 'google/vim-codefmt'
+" Plug 'google/vim-codefmt'
 " Glaive is needed for maktaba's flags. Use `:help :Glaive` for more. Also see
 " Glaive install command below.
-Plug 'google/vim-glaive'
+" Plug 'google/vim-glaive'
 " more language packs. In general this seems to supercede other language packs.
 Plug 'sheerun/vim-polyglot'
-
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -173,6 +200,7 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
 
+" Don't use the default vim-lsc mappings, which override too many other things.
 " Dart language server stuff
 let g:lsc_server_commands = {
     \ 'dart': 'dart_language_server',
@@ -418,11 +446,11 @@ set showcmd
 
 " Indentation/tabs
 set autoindent
-" Turn off tab highlighting for now. Really we want this only for go, but this
-" is easier.
-"highlight TabHighlight ctermbg=Blue " highlight tabs
-" set listchars=tab:>-
+" Turn off showing tabs. Only want this for go, but being lazy for now.
+" set listchars=tab:│-
+" set listchars=tab:\│\ ,trail:-,extends:>,precedes:<,nbsp:+
 " set list
+" highlight SpecialKey ctermfg=blue ctermbg=blue
 
 " Settings for the ALE linter.
 let g:ale_linters = {

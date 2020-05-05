@@ -8,3 +8,5 @@
 [color]
 	ui = true
 
+[http]
+	cookiefile = /usr/local/google/home/srsudar/.gitcookies

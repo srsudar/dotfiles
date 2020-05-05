@@ -26,6 +26,7 @@ font pango:Droid Sans Mono 10:FontAwesome 10
 #exec --no-startup-id compton -CGb
 
 # TRAY APPLETS #
+exec /usr/share/goobuntu-indicator/goobuntu_indicator.py
 
 # NetworkManager applet in tray
 exec --no-startup-id nm-applet
