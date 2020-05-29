@@ -287,7 +287,7 @@ augroup markdown
 augroup END
 
 " Use system clipboard for pasting and yanking.
-set clipboard=unnamed
+" set clipboard=unnamed
 " Don't let easy clip overwrite the mark function.
 " let g:EasyClipUseCutDefaults = 0
 " Remap mark to gm, allowing easyclip to use m for move
