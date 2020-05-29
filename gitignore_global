@@ -1,6 +1,2 @@
 *~
 .DS_Store
-
-node_modules
-# for scuba diff counter
-screenshots
