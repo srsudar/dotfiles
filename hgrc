@@ -4,7 +4,8 @@ ignore = ~/.hgignore
 ssh = ssh -C
 # merge = internal:merge */
 [pager]
-pager = LESS='FSRX' less
+# pager = LESS='FSRX' less
+pager = less --tabs=2 -FSRX
 attend = status, help, cat, diff, glog, log, incoming, outgoing, lg, show, lga, blame
 [extensions]
 color =
