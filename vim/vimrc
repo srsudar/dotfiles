@@ -40,13 +40,10 @@ Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 " and show git flags
 Plug 'Xuyuanp/nerdtree-git-plugin'
-" more python support
-Plug 'klen/python-mode'
 " surround things with other things
 Plug 'tpope/vim-surround'
 " syntax highlighting
-" Plug 'scrooloose/syntastic'
-" Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 " complementary mappings
 Plug 'tpope/vim-unimpaired'
 " more sane regex
@@ -283,11 +280,11 @@ set nojoinspaces
 
 " Typescript
 " jd to Jump to Definition
-nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
-if !exists("g:ycm_semantic_triggers")
-  let g:ycm_semantic_triggers = {}
-endif
-let g:ycm_semantic_triggers['typescript'] = ['.']
+" nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
+" if !exists("g:ycm_semantic_triggers")
+"   let g:ycm_semantic_triggers = {}
+" endif
+" let g:ycm_semantic_triggers['typescript'] = ['.']
 augroup FiletypeGroup
   autocmd!
   " .ts is a Typescript file
@@ -322,23 +319,6 @@ let g:vimtex_view_general_options = '-r @line @pdf @tex'
 " Put build files in gen
 " let g:vimtex_latexmk_build_dir = './generated'
 
-" Syntastic
-let g:syntastic_mode_map={ 'mode':'active',
-	\ 'active_filetypes': [],
-	\ 'passive_filetypes': [] }
-let g:syntastic_python_checkers = ['pep8', 'python', 'pyflakes']
-" This tells syntastic to use the location list for displaying things.
-let g:syntastic_auto_loc_list=1
-let g:syntastic_enable_highlighting = 1
-let g:syntastic_enable_signs = 1
-let g:syntastic_error_symbol = 'x'
-let g:syntastic_warning_symbol = '!'
-" And now we disable pyflakes using the quickfix list to leave the quickfix
-" buffer alone, which does weird things to syntastic.
-let g:pyflakes_use_quickfix = 0
-let g:pymode = 1
-let g:pymode_lint_write = 0
-
 " Tagbar
 let g:tagbar_sort = 0
 let g:tagbar_compact = 1
@@ -348,19 +328,9 @@ let g:tagbar_autofocus = 1
 let g:javascript_plugin_jsdoc = 1
 
 " PythonMode
-let g:pymode_folding = 0 " No auto code folding
-" Disable the documentation after tab completion is over.
-autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 " This comman will prevent the documentation window opening at all:
 " set completeopt=menu
 autocmd FileType python setlocal shiftwidth=2 tabstop=2
-
-" Ropevim
-" if(filereadable(expand('~/.vim/plugin/ropevim.vim')))
-" 	let ropevim_vim_completion=1 "Replace vim's complete function with ropevim
-" 	let ropevim_extended_complete=1
-" endif
 
 " Don't move the cursor when you join lines with J
 :nnoremap <silent> J :let p=getpos('.')<bar>join<bar>call setpos('.', p)<cr>
@@ -687,7 +657,7 @@ map <Leader>m :tabm
 " git diff in new tab
 map <Leader>f :tab split<CR>:Gdiff canon/master<CR>
 map <Leader>g :tab split<CR>:Ggrep 
-map <Leader>i Oimport pdb; pdb.set_trace()<ESC>
+" map <Leader>i Oimport pdb; pdb.set_trace()<ESC>
 
 " Remove the delay in ESC leaving a mode (ttimeoutlen)
 set timeoutlen=1000 ttimeoutlen=0
