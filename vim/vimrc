@@ -41,7 +41,7 @@ Plug 'jistr/vim-nerdtree-tabs'
 " and show git flags
 Plug 'Xuyuanp/nerdtree-git-plugin'
 " more python support
-Plug 'klen/python-mode'
+" Plug 'klen/python-mode'
 " surround things with other things
 Plug 'tpope/vim-surround'
 " syntax highlighting
@@ -106,8 +106,6 @@ Plug 'junegunn/vim-peekaboo'
 " :GV over visual range will list commits for the lines
 " You can pass git log options to the command, e.g. :GV -S foobar.
 Plug 'junegunn/gv.vim'
-" Turn on[off] color coding parentheses with :RainbowToggle
-Plug 'luochen1990/rainbow'
 let g:rainbow_active = 0
 " Tmux integration like writing to another pane.
 Plug 'tpope/vim-tbone'
@@ -147,7 +145,10 @@ Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
 " more language packs. In general this seems to supercede other language packs.
 Plug 'sheerun/vim-polyglot'
-
+" No need to `:set paste`.
+Plug 'ConradIrwin/vim-bracketed-paste'
+" Tagbar to see class outlines.
+Plug 'preservim/tagbar'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -167,12 +168,36 @@ nmap <leader>gT <Plug>TitlecaseLine
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
+" Populate the location list with diagnostics. Move via :lnext and :lprevious.
+let g:ycm_always_populate_location_list = 1
+" Try YCM mappings
+noremap <leader>tr :YcmRestartServer
+noremap <leader>tc :YcmForceCompileAndDiagnostics<cr>
+" Show popup
+nmap <leader>tp <Plug>(YCMHover)
+" Show the full error. 'L' because I think of these as entries in the location
+" list.
+noremap <leader>tl :YcmShowDetailedDiagnostic<cr>
+noremap <leader>tL :YcmDiags<cr>
+noremap <leader>tg :YcmCompleter GoTo<cr>
+noremap <leader>td :YcmCompleter GoToDefinition<cr>
+noremap <leader>tD :YcmCompleter GoToDeclaration<cr>
+noremap <leader>tt :YcmCompleter GetType<cr>
+noremap <leader>tp :YcmCompleter GetParent<cr>
+noremap <leader>tf :YcmCompleter FixIt<cr>:ClangFormat<cr>
+" Disable the default hover popup, which seems to slow down vim.
+let g:ycm_auto_hover = ""
+nmap <leader>d <Plug>(YCMHover)
+
+noremap <leader>c  :YcmForceCompileAndDiagnostics<cr>
+
 " let g:UltiSnipsListSnippets = '<c-tab>'
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
 
+" Don't use the default vim-lsc mappings, which override too many other things.
 " Dart language server stuff
 let g:lsc_server_commands = {
     \ 'dart': 'dart_language_server',
@@ -210,9 +235,13 @@ nnoremap <Leader>b :Buffers<cr>
 nnoremap <leader>F :FZF<cr>
 nnoremap <leader>l :Lines<cr>
 nnoremap <leader>M :Maps<cr>
-nnoremap <leader>r :Rg<cr>
+" nnoremap <leader>r :Rg<cr>
 nnoremap <leader>R :Rg!<cr>
 nnoremap <leader>h :History<cr>
+
+" Rather than open empty splits, open with the existing file.
+nnoremap <c-w>n :split<cr>
+nnoremap <c-w>v :vsplit<cr>
 
 " Use dispatch to async tests run via vim-test
 let test#strategy = "dispatch"
@@ -340,8 +369,9 @@ let g:pymode_lint_write = 0
 
 " Tagbar
 let g:tagbar_sort = 0
-let g:tagbar_compact = 1
+" let g:tagbar_compact = 1
 let g:tagbar_autofocus = 1
+let g:tagbar_left = 1
 
 " JavaScript highlighting
 let g:javascript_plugin_jsdoc = 1
@@ -418,11 +448,11 @@ set showcmd
 
 " Indentation/tabs
 set autoindent
-" Turn off tab highlighting for now. Really we want this only for go, but this
-" is easier.
-"highlight TabHighlight ctermbg=Blue " highlight tabs
-" set listchars=tab:>-
+" Turn off showing tabs. Only want this for go, but being lazy for now.
+" set listchars=tab:│-
+" set listchars=tab:\│\ ,trail:-,extends:>,precedes:<,nbsp:+
 " set list
+" highlight SpecialKey ctermfg=blue ctermbg=blue
 
 " Settings for the ALE linter.
 let g:ale_linters = {
@@ -669,7 +699,7 @@ endfunction
 " Function key shortcuts
 map <F1> <nop>
 map <F3> :set hlsearch! hlsearch?<CR>
-map <C-n> :NERDTreeToggle<CR>
+map <C-n> :TagbarToggle<CR>
 map <F7> :NERDTreeToggle<CR>
 map <F8> :TagbarToggle<cr>
 map <F9> :!/usr/bin/ctags -L <(find . -name '*.py') --fields=+iaS --python-kinds=-i --sort=yes --extra=+q<cr>
@@ -683,9 +713,6 @@ map <Leader>m :tabm
 " map <Leader>L :lopen<CR>
 " map <Leader>c :copen<CR>
 " map <Leader>C :cclose<CR>
-" git diff in new tab
-map <Leader>f :tab split<CR>:Gdiff canon/master<CR>
-map <Leader>g :tab split<CR>:Ggrep 
 map <Leader>i Oimport pdb; pdb.set_trace()<ESC>
 
 " Remove the delay in ESC leaving a mode (ttimeoutlen)
