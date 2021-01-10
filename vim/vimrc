@@ -90,7 +90,7 @@ Plug 'cespare/vim-toml'
 " Better markdown support. Need tabular and vim-markdown
 Plug 'godlygeek/tabular'
 " markdown
-Plug 'srsudar/vim-markdown'
+" Plug 'srsudar/vim-markdown'
 " Plug 'gabrielelana/vim-markdown'
 " Plug 'plasticboy/vim-markdown'
 " Better searching and highlighting defaults.
