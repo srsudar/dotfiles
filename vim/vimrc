@@ -136,6 +136,7 @@ Plug 'ntpeters/vim-better-whitespace'
 " Dart support
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'natebosch/vim-lsc'
+Plug 'natebosch/vim-lsc-dart'
 Plug 'natebosch/dartlang-snippets'
 Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
@@ -159,6 +160,22 @@ let g:titlecase_map_keys = 0
 nmap <leader>gt <Plug>Titlecase
 vmap <leader>gt <Plug>Titlecase
 nmap <leader>gT <Plug>TitlecaseLine
+
+" google/vim-codefmt settings. This is the example from their readme. Haven't
+" enabled them for now, so this is a reference.
+" augroup autoformat_settings
+"   autocmd FileType bzl AutoFormatBuffer buildifier
+"   autocmd FileType c,cpp,proto,javascript,arduino AutoFormatBuffer clang-format
+"   autocmd FileType dart AutoFormatBuffer dartfmt
+"   autocmd FileType go AutoFormatBuffer gofmt
+"   autocmd FileType gn AutoFormatBuffer gn
+"   autocmd FileType html,css,sass,scss,less,json AutoFormatBuffer js-beautify
+"   autocmd FileType java AutoFormatBuffer google-java-format
+"   autocmd FileType python AutoFormatBuffer yapf
+"   " Alternative: autocmd FileType python AutoFormatBuffer autopep8
+"   autocmd FileType rust AutoFormatBuffer rustfmt
+"   autocmd FileType vue AutoFormatBuffer prettier
+" augroup END
 
 " Better completion with UltiSnips
 " make YCM compatible with UltiSnips (using supertab). Later I stumbled across
@@ -198,10 +215,11 @@ let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
 
 " Don't use the default vim-lsc mappings, which override too many other things.
 " Dart language server stuff
-let g:lsc_server_commands = {
-    \ 'dart': 'dart_language_server',
-    \ 'html': 'dart_language_server',
-    \}
+let g:lsc_server_commands = {'dart': 'dart_language_server'}
+" let g:lsc_server_commands = {
+"     \ 'dart': 'dart_language_server',
+"     \ 'html': 'dart_language_server',
+"     \}
 let g:lsc_auto_map = {
     \ 'GoToDefinition': '<C-]>',
     \ 'FindReferences': 'gr',
@@ -483,7 +501,7 @@ autocmd BufWinEnter *.java setlocal colorcolumn=101
 autocmd BufWinEnter *.java setlocal textwidth=100
 
 " More familiar symbols for nerdtree-git-plugin
-let g:NERDTreeIndicatorMapCustom = {
+let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ "Modified"  : "*",
     \ "Staged"    : "✹",
     \ "Untracked" : "?",
