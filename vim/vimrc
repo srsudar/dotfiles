@@ -30,8 +30,6 @@ Plug 'junegunn/vim-pseudocl'
 Plug 'mileszs/ack.vim'
 " some git integration and status info
 Plug 'tpope/vim-fugitive'
-" help with project configurations
-Plug 'tpope/vim-projectionist'
 " async builds
 Plug 'tpope/vim-dispatch'
 " file browser on the left
