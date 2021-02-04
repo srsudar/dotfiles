@@ -510,7 +510,7 @@ autocmd BufWinEnter *.java setlocal colorcolumn=101
 autocmd BufWinEnter *.java setlocal textwidth=100
 
 " More familiar symbols for nerdtree-git-plugin
-let g:NERDTreeIndicatorMapCustom = {
+let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ "Modified"  : "*",
     \ "Staged"    : "✹",
     \ "Untracked" : "?",
