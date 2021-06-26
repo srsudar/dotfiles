@@ -1,5 +1,6 @@
 [eg-config]
-pager-cmd = 'less -RMFK'
+# pager-cmd = 'less -RMFK'
+pager-cmd = 'bat -l md'
 custom-dir = ~/dotfiles/eg/custom_files
 
 [color]
