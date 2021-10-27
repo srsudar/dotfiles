@@ -43,7 +43,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 " surround things with other things
 Plug 'tpope/vim-surround'
 " syntax highlighting
-Plug 'dense-analysis/ale'
+" Plug 'dense-analysis/ale'
 " complementary mappings
 Plug 'tpope/vim-unimpaired'
 " more sane regex
@@ -105,7 +105,7 @@ Plug 'junegunn/vim-peekaboo'
 Plug 'junegunn/gv.vim'
 let g:rainbow_active = 0
 " Tmux integration like writing to another pane.
-Plug 'tpope/vim-tbone'
+" Plug 'tpope/vim-tbone'
 " Show indentation levels with :IndentLinesToggle
 Plug 'Yggdroot/indentLine'
 let g:indentLine_enabled = 0
@@ -147,6 +147,10 @@ Plug 'sheerun/vim-polyglot'
 Plug 'ConradIrwin/vim-bracketed-paste'
 " Tagbar to see class outlines.
 Plug 'preservim/tagbar'
+" Tmux integration
+Plug 'preservim/vimux'
+" Better cpp highlighting.
+Plug 'octol/vim-cpp-enhanced-highlight'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -175,6 +179,26 @@ nmap <leader>gT <Plug>TitlecaseLine
 "   autocmd FileType vue AutoFormatBuffer prettier
 " augroup END
 
+" Send data to tmux. Seen at :help vimux
+function! VimuxSend()
+  call VimuxRunCommand(@v, 0)
+endfunction
+
+" If text is selected, save it in the v buffer and send that buffer it to tmux
+vmap <LocalLeader>ts "vy :call VimuxSend()<CR>
+
+" Select current paragraph and send it to tmux
+nmap <LocalLeader>ts vip<LocalLeader>ts<CR>
+
+" All the cpp highlighting
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1
+let g:cpp_posix_standard = 1
+let g:cpp_experimental_template_highlight = 1
+let g:cpp_concepts_highlight = 1
+
+
 " Better completion with UltiSnips
 " make YCM compatible with UltiSnips (using supertab). Later I stumbled across
 " this, which looks like the source where I originally got it:
@@ -182,8 +206,14 @@ nmap <leader>gT <Plug>TitlecaseLine
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
+" Stop including the preview window, because it is slow to open and then keeps
+" things slow for a bit.
+let g:ycm_add_preview_to_completeopt = 0
 " Populate the location list with diagnostics. Move via :lnext and :lprevious.
 let g:ycm_always_populate_location_list = 1
+" Close the preview window with documentation after we no longer need it.
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_autoclose_preview_window_after_completion = 1
 " Try YCM mappings
 noremap <leader>tr :YcmRestartServer
 noremap <leader>tc :YcmForceCompileAndDiagnostics<cr>
