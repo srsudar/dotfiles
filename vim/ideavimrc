@@ -1,0 +1,3 @@
+# vim configuration for Intellij. See:
+# https://www.jetbrains.com/help/idea/using-product-as-the-vim-editor.html#vimrc
+source ~/.vimrc
