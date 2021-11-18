@@ -6,126 +6,124 @@ set t_Co=256
 
 " ---------- plugins ---------
 " We need pseudocli for some of junegunn's other plugins
- Plug 'junegunn/vim-pseudocl'
- " search with ack
- Plug 'mileszs/ack.vim'
- " some git integration and status info
- Plug 'tpope/vim-fugitive'
- " async builds
- Plug 'tpope/vim-dispatch'
- " file browser on the left
- Plug 'scrooloose/nerdtree'
- " and make the nerdtree file browser consistent between tabs
- Plug 'jistr/vim-nerdtree-tabs'
- " and show git flags
- Plug 'Xuyuanp/nerdtree-git-plugin'
- " more python support
- " Plug 'klen/python-mode'
- " surround things with other things
- Plug 'tpope/vim-surround'
- " syntax highlighting
- " Plug 'dense-analysis/ale'
- " complementary mappings
- Plug 'tpope/vim-unimpaired'
- " more sane regex
- Plug 'nelstrom/vim-visual-star-search'
- " open alternate files (eg foo.h quick opens foo.c)
- Plug 'vim-scripts/a.vim'
- " show git status of lines
- Plug 'airblade/vim-gitgutter'
- " Smart alignment of text.
- Plug 'junegunn/vim-easy-align'
- " Use github-flavored markdown highlighting, not canonical md highlighthing
- " Plug 'jtratner/vim-flavored-markdown'
- " Prettier status line.
- Plug 'bling/vim-airline'
- Plug 'vim-airline/vim-airline-themes'
- " Commenting with gc{motion}
- Plug 'tomtom/tcomment_vim'
- " Define custom text objects. Required for vim-textobj-entire
- Plug 'kana/vim-textobj-user'
- " Add 'whole file' objects with ae and ie (ignores leading/trailing whitespace)
- Plug 'kana/vim-textobj-entire'
- " Allow . repeating using vim-surround
- Plug 'tpope/vim-repeat'
- " Smarter CTRL-A and CTRL-X for addition/subtraction
- Plug 'tpope/vim-speeddating'
- " Auto-conversion to snake, camel, mixed, upper  case with crs, crc, crm, cru
- Plug 'tpope/vim-abolish'
- " Word objects for columns of text
- Plug 'coderifous/textobj-word-column.vim'
- " latex support
- Plug 'lervag/vimtex'
- " Readline-style bindings in vim
- Plug 'tpope/vim-rsi'
- " More information for <ctrl>+a character information, including unicode
- Plug 'tpope/vim-characterize'
- " Color TOML
- Plug 'cespare/vim-toml'
- " Better markdown support. Need tabular and vim-markdown
- Plug 'godlygeek/tabular'
- " markdown
- " Plug 'srsudar/vim-markdown'
- " Plug 'gabrielelana/vim-markdown'
- " Plug 'plasticboy/vim-markdown'
- " Better searching and highlighting defaults.
- Plug 'junegunn/vim-oblique'
- " Show contents of registers using " and @ in insert and <C-CR> in insert
- Plug 'junegunn/vim-peekaboo'
- " Browse git commits. fugitive must be installed first.
- " :GV to open commit browser
- " :GV! will only list commits for the current file
- " :GV over visual range will list commits for the lines
- " You can pass git log options to the command, e.g. :GV -S foobar.
- Plug 'junegunn/gv.vim'
- let g:rainbow_active = 0
- " Tmux integration like writing to another pane.
- " Plug 'tpope/vim-tbone'
- " Show indentation levels with :IndentLinesToggle
- Plug 'Yggdroot/indentLine'
- let g:indentLine_enabled = 0
- " Open the current file[pwd] in finder with go{f,F}.
- Plug 'justinmk/vim-gtfo'
- " Highlighting for docker files
- Plug 'honza/dockerfile.vim'
- " Help with unicode digraphs
- Plug 'chrisbra/unicode.vim'
- " Polymer support
- " Plug 'webdesus/polymer-ide.vim'
- " Title Case operator with gt
- Plug 'christoomey/vim-titlecase'
- " Snippets engine
- Plug 'SirVer/ultisnips'
- " Snippet starers
- Plug 'honza/vim-snippets'
- " Try to fix snippet suggestion
- Plug 'ervandew/supertab'
- " json text objects with aj and ij
- Plug 'tpope/vim-jdaddy'
- " Better grepping
- Plug 'mhinz/vim-grepper'
- " Whitespace support
- Plug 'ntpeters/vim-better-whitespace'
- " Dart support
- Plug 'dart-lang/dart-vim-plugin'
- Plug 'natebosch/vim-lsc'
- Plug 'natebosch/vim-lsc-dart'
- Plug 'natebosch/dartlang-snippets'
- Plug 'google/vim-maktaba'
- Plug 'google/vim-codefmt'
- " Glaive is needed for maktaba's flags. Use `:help :Glaive` for more. Also see
- " Glaive install command below.
- Plug 'google/vim-glaive'
- " more language packs. In general this seems to supercede other language packs.
- " Plug 'sheerun/vim-polyglot'
- " No need to `:set paste`.
- Plug 'ConradIrwin/vim-bracketed-paste'
- " Tagbar to see class outlines.
- Plug 'preservim/tagbar'
- " Tmux integration
- Plug 'preservim/vimux'
- " Better cpp highlighting.
- Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'junegunn/vim-pseudocl'
+" search with ack
+Plug 'mileszs/ack.vim'
+" some git integration and status info
+Plug 'tpope/vim-fugitive'
+" async builds
+Plug 'tpope/vim-dispatch'
+" file browser on the left
+Plug 'scrooloose/nerdtree'
+" and make the nerdtree file browser consistent between tabs
+Plug 'jistr/vim-nerdtree-tabs'
+" and show git flags
+Plug 'Xuyuanp/nerdtree-git-plugin'
+" more python support
+" Plug 'klen/python-mode'
+" surround things with other things
+Plug 'tpope/vim-surround'
+" syntax highlighting
+" Plug 'dense-analysis/ale'
+" complementary mappings
+Plug 'tpope/vim-unimpaired'
+" more sane regex
+Plug 'nelstrom/vim-visual-star-search'
+" open alternate files (eg foo.h quick opens foo.c)
+Plug 'vim-scripts/a.vim'
+" show git status of lines
+Plug 'airblade/vim-gitgutter'
+" Use github-flavored markdown highlighting, not canonical md highlighthing
+" Plug 'jtratner/vim-flavored-markdown'
+" Prettier status line.
+Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+" Commenting with gc{motion}
+Plug 'tomtom/tcomment_vim'
+" Define custom text objects. Required for vim-textobj-entire
+Plug 'kana/vim-textobj-user'
+" Add 'whole file' objects with ae and ie (ignores leading/trailing whitespace)
+Plug 'kana/vim-textobj-entire'
+" Allow . repeating using vim-surround
+Plug 'tpope/vim-repeat'
+" Smarter CTRL-A and CTRL-X for addition/subtraction
+Plug 'tpope/vim-speeddating'
+" Auto-conversion to snake, camel, mixed, upper  case with crs, crc, crm, cru
+Plug 'tpope/vim-abolish'
+" Word objects for columns of text
+Plug 'coderifous/textobj-word-column.vim'
+" latex support
+Plug 'lervag/vimtex'
+" Readline-style bindings in vim
+Plug 'tpope/vim-rsi'
+" More information for <ctrl>+a character information, including unicode
+Plug 'tpope/vim-characterize'
+" Color TOML
+Plug 'cespare/vim-toml'
+" Better markdown support. Need tabular and vim-markdown
+Plug 'godlygeek/tabular'
+" markdown
+" Plug 'srsudar/vim-markdown'
+" Plug 'gabrielelana/vim-markdown'
+" Plug 'plasticboy/vim-markdown'
+" Better searching and highlighting defaults.
+Plug 'junegunn/vim-oblique'
+" Show contents of registers using " and @ in insert and <C-CR> in insert
+Plug 'junegunn/vim-peekaboo'
+" Browse git commits. fugitive must be installed first.
+" :GV to open commit browser
+" :GV! will only list commits for the current file
+" :GV over visual range will list commits for the lines
+" You can pass git log options to the command, e.g. :GV -S foobar.
+Plug 'junegunn/gv.vim'
+let g:rainbow_active = 0
+" Tmux integration like writing to another pane.
+" Plug 'tpope/vim-tbone'
+" Show indentation levels with :IndentLinesToggle
+Plug 'Yggdroot/indentLine'
+let g:indentLine_enabled = 0
+" Open the current file[pwd] in finder with go{f,F}.
+Plug 'justinmk/vim-gtfo'
+" Highlighting for docker files
+Plug 'honza/dockerfile.vim'
+" Help with unicode digraphs
+Plug 'chrisbra/unicode.vim'
+" Polymer support
+" Plug 'webdesus/polymer-ide.vim'
+" Title Case operator with gt
+Plug 'christoomey/vim-titlecase'
+" Snippets engine
+Plug 'SirVer/ultisnips'
+" Snippet starers
+Plug 'honza/vim-snippets'
+" Try to fix snippet suggestion
+Plug 'ervandew/supertab'
+" json text objects with aj and ij
+Plug 'tpope/vim-jdaddy'
+" Better grepping
+Plug 'mhinz/vim-grepper'
+" Whitespace support
+Plug 'ntpeters/vim-better-whitespace'
+" Dart support
+Plug 'dart-lang/dart-vim-plugin'
+Plug 'natebosch/vim-lsc'
+Plug 'natebosch/vim-lsc-dart'
+Plug 'natebosch/dartlang-snippets'
+Plug 'google/vim-maktaba'
+Plug 'google/vim-codefmt'
+" Glaive is needed for maktaba's flags. Use `:help :Glaive` for more. Also see
+" Glaive install command below.
+Plug 'google/vim-glaive'
+" more language packs. In general this seems to supercede other language packs.
+" Plug 'sheerun/vim-polyglot'
+" No need to `:set paste`.
+Plug 'ConradIrwin/vim-bracketed-paste'
+" Tagbar to see class outlines.
+Plug 'preservim/tagbar'
+" Tmux integration
+Plug 'preservim/vimux'
+" Better cpp highlighting.
+Plug 'octol/vim-cpp-enhanced-highlight'
 
 " Send data to tmux. Seen at :help vimux
 function! VimuxSend()
@@ -172,25 +170,6 @@ nnoremap <leader>h :History<cr>
 " Rather than open empty splits, open with the existing file.
 nnoremap <c-w>n :split<cr>
 nnoremap <c-w>v :vsplit<cr>
-
-" Use dispatch to async tests run via vim-test
-let test#strategy = "dispatch"
-
-" Add a :Reload command to reload the buffer. This is the same behavior as
-" :edit but I always forget about it.
-" command! Reload execute "edit"
-
-" Align things using ga as a motion for easy-align.
-" ga used to inspect characters.
-" Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga <Plug>(EasyAlign)
-" " Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
-
-" Ignore some directories when using ctrlp
-let g:ctrlp_custom_ignore = 'node_modules\|bower_components\|DS_Store\|git'
-" If a file is already open, open in a new pane rather than switch to it.
-let g:ctrlp_switch_buffer = ''
 
 " Color frontmatter in markdown files.
 " let g:vim_markdown_math = 1
@@ -240,21 +219,13 @@ nnoremap \e :e ~/.ideavimrc<CR>
 nnoremap \r :action IdeaVim.ReloadVimRc.reload<CR>
 
 " Switch between windows in vim mode.
-" map <C-H> <C-W>h
-" map <C-L> <C-W>l
-nnoremap <c-h> <c-w>h
+nnoremap <C-H> <C-W>h
 nnoremap <C-L> <C-W>l
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
+nnoremap <C-J> <C-W>j
+nnoremap <C-K> <C-W>k
 
 " Use one space instead of two when fixing up after sentences.
 set nojoinspaces
-
-" Tagbar
-let g:tagbar_sort = 0
-" let g:tagbar_compact = 1
-let g:tagbar_autofocus = 1
-let g:tagbar_left = 1
 
 " Don't move the cursor when you join lines with J
 :nnoremap <silent> J :let p=getpos('.')<bar>join<bar>call setpos('.', p)<cr>
@@ -286,10 +257,6 @@ filetype on
 filetype plugin indent on
 syntax on
 
-" Turn on the matchit plugin that will enable jumping to pairs of things like
-" matching open and close xml tags with %.
-runtime macros/matchit.vim
-
 " Show what you are typing mid-command
 set showcmd
 
@@ -312,34 +279,11 @@ set guifont=Monaco:h12
 " Highlight current line
 set cursorline
 
-" Statusline
-set laststatus=2 " Show statusline even when there is a single window
-set statusline=%F%m%r%h%w%{fugitive#statusline()}
-set statusline+=[%l,%v][%p%%]
-
 " Maintain more text around the cursor
 set scrolloff=3
 
-" Show line numbers
-set number
-
-" More intelligent backspace and left/right movement
-set backspace=eol,start,indent
-set whichwrap=b,s,h,l,<,>,[,]
-
 set wrap
 set textwidth=80
-
-" Wrap git commit messages as 72 charcters. This is supposed to come with both
-" fugitive and these days stock vim, but for whatever reason I'm getting
-" highlighting at 50 characters in the first line, as expected, but not commit
-" message wrapping.
-au FileType gitcommit setlocal tw=72
-au FileType gitcommit setlocal colorcolumn=73
-
-" Wrap go at 100.
-au FileType go setlocal tw=100
-au FileType go setlocal colorcolumn=101
 
 " Hidden buffer support. I think this lets us navigate away from a buffer,
 " even when doing ':bnext', without giving the 'override with !' error.
@@ -365,19 +309,6 @@ set smartcase
 " Incremental search
 set incsearch
 
-" And we're going to add commands that remap & to :&& in normal and visual
-" modes. & normally reruns the substitution without the same flags, but this
-" isn't super useful, so per the advice of Practical Vim I'm going to remap it
-" to just redo the same thing.
-nnoremap & :&&<CR>
-xnoremap & :&&<CR>
-
-" We're also going to add a toggle for highlighting search to c-l.
-" According to Practical Vim, normally <C-l> clears and redraws the creen.
-" This mapping builds on top of the usual behavior by muting search
-" highlighting. FOR WHATEVER REASON THIS IS NOT WORKING
-nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
-
 " Tab completion
 set wildmode=longest,list
 set wildignore=*.pyc
@@ -397,40 +328,8 @@ set splitright
 " Tags - recursively check parent directories for tags file
 set tags+=./.tags,.tags,../.tags,../../.tags
 
-" Filetypes
-autocmd BufEnter *.mako setlocal filetype=html
-
-" Unicode stuff. This is taken from the following two places, both of which
-" have good explanations:
-" http://vim.wikia.com/wiki/Working_with_Unicode
-" http://stackoverflow.com/questions/16507777/vim-set-encoding-and-fileencoding-utf-8
-if has("multi_byte")
-	if &termencoding == ""
-		let &termencoding = &encoding
-	endif
-	set encoding=utf-8
-	setglobal fileencoding=utf-8
-	set fileencodings=ucs-bom,utf-8,latin1
-endif
-
 " Make warnings more noticeable, specially to not miss search wrap
 hi WarningMsg ctermfg=white ctermbg=red guifg=White guibg=Red gui=None
-
-" This is a function from Practical Vim that executes something for every item
-" in the argument list. It is also available as a plugin, with README
-" information and things here (also see the books for usage):
-" https://github.com/nelstrom/vim-qargs
-" command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
-" function! QuickfixFilenames()
-"   " Building a hash ensures we get each buffer only once
-"   let buffer_numbers = {}
-"   for quickfix_item in getqflist()
-"     let buffer_numbers[quickfix_item['bufnr']] = bufname(quickfix_item['bufnr'])
-"   endfor
-"   return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
-" endfunction
-
-" ---------- mappings ---------
 
 " Make %% a shortcut for %:h on the command line. Normally if you do 
 " ':edit %<Tab>' it will show you the relative path to the file, including the
