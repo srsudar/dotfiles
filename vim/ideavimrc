@@ -1,3 +1,496 @@
-# vim configuration for Intellij. See:
-# https://www.jetbrains.com/help/idea/using-product-as-the-vim-editor.html#vimrc
-source ~/.vimrc
+" vim configuration for Intellij. See:
+" https://www.jetbrains.com/help/idea/using-product-as-the-vim-editor.html#vimrc
+set nocompatible
+
+set t_Co=256
+
+" ---------- plugins ---------
+" We need pseudocli for some of junegunn's other plugins
+ Plug 'junegunn/vim-pseudocl'
+ " search with ack
+ Plug 'mileszs/ack.vim'
+ " some git integration and status info
+ Plug 'tpope/vim-fugitive'
+ " async builds
+ Plug 'tpope/vim-dispatch'
+ " file browser on the left
+ Plug 'scrooloose/nerdtree'
+ " and make the nerdtree file browser consistent between tabs
+ Plug 'jistr/vim-nerdtree-tabs'
+ " and show git flags
+ Plug 'Xuyuanp/nerdtree-git-plugin'
+ " more python support
+ " Plug 'klen/python-mode'
+ " surround things with other things
+ Plug 'tpope/vim-surround'
+ " syntax highlighting
+ " Plug 'dense-analysis/ale'
+ " complementary mappings
+ Plug 'tpope/vim-unimpaired'
+ " more sane regex
+ Plug 'nelstrom/vim-visual-star-search'
+ " open alternate files (eg foo.h quick opens foo.c)
+ Plug 'vim-scripts/a.vim'
+ " show git status of lines
+ Plug 'airblade/vim-gitgutter'
+ " Smart alignment of text.
+ Plug 'junegunn/vim-easy-align'
+ " Use github-flavored markdown highlighting, not canonical md highlighthing
+ " Plug 'jtratner/vim-flavored-markdown'
+ " Prettier status line.
+ Plug 'bling/vim-airline'
+ Plug 'vim-airline/vim-airline-themes'
+ " Commenting with gc{motion}
+ Plug 'tomtom/tcomment_vim'
+ " Define custom text objects. Required for vim-textobj-entire
+ Plug 'kana/vim-textobj-user'
+ " Add 'whole file' objects with ae and ie (ignores leading/trailing whitespace)
+ Plug 'kana/vim-textobj-entire'
+ " Allow . repeating using vim-surround
+ Plug 'tpope/vim-repeat'
+ " Smarter CTRL-A and CTRL-X for addition/subtraction
+ Plug 'tpope/vim-speeddating'
+ " Auto-conversion to snake, camel, mixed, upper  case with crs, crc, crm, cru
+ Plug 'tpope/vim-abolish'
+ " Word objects for columns of text
+ Plug 'coderifous/textobj-word-column.vim'
+ " latex support
+ Plug 'lervag/vimtex'
+ " Readline-style bindings in vim
+ Plug 'tpope/vim-rsi'
+ " More information for <ctrl>+a character information, including unicode
+ Plug 'tpope/vim-characterize'
+ " Color TOML
+ Plug 'cespare/vim-toml'
+ " Better markdown support. Need tabular and vim-markdown
+ Plug 'godlygeek/tabular'
+ " markdown
+ " Plug 'srsudar/vim-markdown'
+ " Plug 'gabrielelana/vim-markdown'
+ " Plug 'plasticboy/vim-markdown'
+ " Better searching and highlighting defaults.
+ Plug 'junegunn/vim-oblique'
+ " Show contents of registers using " and @ in insert and <C-CR> in insert
+ Plug 'junegunn/vim-peekaboo'
+ " Browse git commits. fugitive must be installed first.
+ " :GV to open commit browser
+ " :GV! will only list commits for the current file
+ " :GV over visual range will list commits for the lines
+ " You can pass git log options to the command, e.g. :GV -S foobar.
+ Plug 'junegunn/gv.vim'
+ let g:rainbow_active = 0
+ " Tmux integration like writing to another pane.
+ " Plug 'tpope/vim-tbone'
+ " Show indentation levels with :IndentLinesToggle
+ Plug 'Yggdroot/indentLine'
+ let g:indentLine_enabled = 0
+ " Open the current file[pwd] in finder with go{f,F}.
+ Plug 'justinmk/vim-gtfo'
+ " Highlighting for docker files
+ Plug 'honza/dockerfile.vim'
+ " Help with unicode digraphs
+ Plug 'chrisbra/unicode.vim'
+ " Polymer support
+ " Plug 'webdesus/polymer-ide.vim'
+ " Title Case operator with gt
+ Plug 'christoomey/vim-titlecase'
+ " Snippets engine
+ Plug 'SirVer/ultisnips'
+ " Snippet starers
+ Plug 'honza/vim-snippets'
+ " Try to fix snippet suggestion
+ Plug 'ervandew/supertab'
+ " json text objects with aj and ij
+ Plug 'tpope/vim-jdaddy'
+ " Better grepping
+ Plug 'mhinz/vim-grepper'
+ " Whitespace support
+ Plug 'ntpeters/vim-better-whitespace'
+ " Dart support
+ Plug 'dart-lang/dart-vim-plugin'
+ Plug 'natebosch/vim-lsc'
+ Plug 'natebosch/vim-lsc-dart'
+ Plug 'natebosch/dartlang-snippets'
+ Plug 'google/vim-maktaba'
+ Plug 'google/vim-codefmt'
+ " Glaive is needed for maktaba's flags. Use `:help :Glaive` for more. Also see
+ " Glaive install command below.
+ Plug 'google/vim-glaive'
+ " more language packs. In general this seems to supercede other language packs.
+ " Plug 'sheerun/vim-polyglot'
+ " No need to `:set paste`.
+ Plug 'ConradIrwin/vim-bracketed-paste'
+ " Tagbar to see class outlines.
+ Plug 'preservim/tagbar'
+ " Tmux integration
+ Plug 'preservim/vimux'
+ " Better cpp highlighting.
+ Plug 'octol/vim-cpp-enhanced-highlight'
+
+" Send data to tmux. Seen at :help vimux
+function! VimuxSend()
+  call VimuxRunCommand(@v, 0)
+endfunction
+
+" If text is selected, save it in the v buffer and send that buffer it to tmux
+vmap <LocalLeader>ts "vy :call VimuxSend()<CR>
+
+" Select current paragraph and send it to tmux
+nmap <LocalLeader>ts vip<LocalLeader>ts<CR>
+
+" let g:UltiSnipsListSnippets = '<c-tab>'
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
+
+" Change the Rg command to only use the paths we define in $FZF_SOURCE.
+" command! -bang -nargs=* Rg
+"   \ call fzf#vim#grep(
+"   \   join(['rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), '$(${FZF_SOURCE})'], " "), 1,
+"   \   fzf#vim#with_preview(), <bang>0)
+" Command for fzf stolen from someone else. Their description:
+" This maps \ff in command-line mode to invoke fzf file search and lets you
+" insert the filename in any vim command. So I can type :sp ,ff and then the
+" filename. or :vs or :tabnew. So this gives a lot of flexibility wrt to how
+" you want to open the file.
+cnoremap <Leader>ff <C-R>=fzf#run({'down': '40%'})<CR><CR>
+" This provides "FzfFiles" instead of "Files"
+" let g:fzf_command_prefix = 'Fzf'
+" Open fzf with <C-p>, like ctrlp.
+nnoremap <c-p> :FZF<cr>
+" Various FZF shortcuts
+" eg this opens buffers with \b
+nnoremap <Leader>b :Buffers<cr>
+nnoremap <leader>F :FZF<cr>
+nnoremap <leader>l :Lines<cr>
+nnoremap <leader>M :Maps<cr>
+" nnoremap <leader>r :Rg<cr>
+nnoremap <leader>R :Rg!<cr>
+nnoremap <leader>h :History<cr>
+
+" Rather than open empty splits, open with the existing file.
+nnoremap <c-w>n :split<cr>
+nnoremap <c-w>v :vsplit<cr>
+
+" Use dispatch to async tests run via vim-test
+let test#strategy = "dispatch"
+
+" Add a :Reload command to reload the buffer. This is the same behavior as
+" :edit but I always forget about it.
+" command! Reload execute "edit"
+
+" Align things using ga as a motion for easy-align.
+" ga used to inspect characters.
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+" " Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+" Ignore some directories when using ctrlp
+let g:ctrlp_custom_ignore = 'node_modules\|bower_components\|DS_Store\|git'
+" If a file is already open, open in a new pane rather than switch to it.
+let g:ctrlp_switch_buffer = ''
+
+" Color frontmatter in markdown files.
+" let g:vim_markdown_math = 1
+let g:markdown_enable_insert_mode_mappings = 0
+
+" Delay the peekaboo register opening after hitting "
+let g:peekaboo_delay = 1500
+
+" Treat all *.md files as markdown, not just README.md. Otherwise vim by
+" default treats *.md files as modula-2: https://github.com/tpope/vim-markdown
+augroup markdown
+  autocmd!
+  autocmd BufNewFile,BufRead *.md,*.markdown setlocal filetype=markdown
+  autocmd BufNewFile,BufRead *.md,*.markdown setlocal spell
+  " Open table of contents with <leader>lt
+  autocmd Filetype markdown map <buffer> <leader>lt :Toc<CR>
+  " highlight bold
+  autocmd FileType markdown highlight htmlBold ctermbg=60
+  " View markdown in Marked 2 with <leader>lv. This is lo to mirror the view
+  " functionality in my LaTeX plugin.
+  autocmd FileType markdown map <buffer> <leader>lv :silent! !open -a Marked\ 2 % > /dev/null &<cr>:redraw!<cr>
+
+  " gabrielelana/vim-markdown override textwidth to 0 for some reason, so re-set
+  " it here to get back wrapping.
+  autocmd Filetype markdown setlocal textwidth=80
+augroup END
+
+" Simulate easyclip plugin. From:
+" https://stackoverflow.com/questions/39895146/how-do-i-get-the-easyclip-vim-plugin-like-functionality-in-ideavim-plugin-of-jet
+nnoremap d "_d
+xnoremap d "_d
+
+nnoremap dd "_dd
+
+nnoremap D "_D
+xnoremap D "_D
+
+nnoremap x "_x
+xnoremap x "_x
+
+nnoremap m d
+nnoremap mm dd
+xnoremap m d
+
+" edit ideavimrc and reload
+nnoremap \e :e ~/.ideavimrc<CR>
+nnoremap \r :action IdeaVim.ReloadVimRc.reload<CR>
+
+" Switch between windows in vim mode.
+" map <C-H> <C-W>h
+" map <C-L> <C-W>l
+nnoremap <c-h> <c-w>h
+nnoremap <C-L> <C-W>l
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+
+" Use one space instead of two when fixing up after sentences.
+set nojoinspaces
+
+" Tagbar
+let g:tagbar_sort = 0
+" let g:tagbar_compact = 1
+let g:tagbar_autofocus = 1
+let g:tagbar_left = 1
+
+" Don't move the cursor when you join lines with J
+:nnoremap <silent> J :let p=getpos('.')<bar>join<bar>call setpos('.', p)<cr>
+
+" Command-T
+let g:CommandTMaxFiles=999999
+
+" ---------- settings ---------
+" We'll use a highlight color column if it has it.
+if exists('+colorcolumn')
+	set colorcolumn=81
+else
+	au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>81v.\+', -1)
+endif
+
+" Change the color for better-whitespace plugin
+let g:better_whitespace_ctermcolor='darkblue'
+let g:better_whitespace_filetypes_blacklist=['diff', 'gitcommit', 'unite', 'qf', 'help']
+
+" <C-a> and <C-x> by default interpret leading-zero numbers as octal. I almost
+" never work with octal, so this will make all numbers be interpreted as
+" decimal.
+set nrformats=
+
+set mouse=a
+
+" Filetype highlighting
+filetype on
+filetype plugin indent on
+syntax on
+
+" Turn on the matchit plugin that will enable jumping to pairs of things like
+" matching open and close xml tags with %.
+runtime macros/matchit.vim
+
+" Show what you are typing mid-command
+set showcmd
+
+" Indentation/tabs
+set autoindent
+
+" 2 spaces by default
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+set expandtab
+
+" Color scheme and font
+colorscheme xoria256
+" I like default xoria256, with a few modifications. Set those modifications
+" here.
+hi Comment      ctermfg=48 guifg=#808080
+set guifont=Monaco:h12
+
+" Highlight current line
+set cursorline
+
+" Statusline
+set laststatus=2 " Show statusline even when there is a single window
+set statusline=%F%m%r%h%w%{fugitive#statusline()}
+set statusline+=[%l,%v][%p%%]
+
+" Maintain more text around the cursor
+set scrolloff=3
+
+" Show line numbers
+set number
+
+" More intelligent backspace and left/right movement
+set backspace=eol,start,indent
+set whichwrap=b,s,h,l,<,>,[,]
+
+set wrap
+set textwidth=80
+
+" Wrap git commit messages as 72 charcters. This is supposed to come with both
+" fugitive and these days stock vim, but for whatever reason I'm getting
+" highlighting at 50 characters in the first line, as expected, but not commit
+" message wrapping.
+au FileType gitcommit setlocal tw=72
+au FileType gitcommit setlocal colorcolumn=73
+
+" Wrap go at 100.
+au FileType go setlocal tw=100
+au FileType go setlocal colorcolumn=101
+
+" Hidden buffer support. I think this lets us navigate away from a buffer,
+" even when doing ':bnext', without giving the 'override with !' error.
+set hidden
+
+" Disable annoying messages, swap file already exists
+set autoread
+set shortmess+=IA
+
+" Longer history
+set history=1000
+" By default the up and down arrows filter commands in the history--eg if you
+" type ':e ' and then hit up, you'll see only the previous commands that
+" started with that. If you do that and then hit <C-p>, however, you won't. So
+" let's fix that behavior.
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+
+" Case-smart searching (case-sensitive only if capital letter in search)
+set ignorecase
+set smartcase
+
+" Incremental search
+set incsearch
+
+" And we're going to add commands that remap & to :&& in normal and visual
+" modes. & normally reruns the substitution without the same flags, but this
+" isn't super useful, so per the advice of Practical Vim I'm going to remap it
+" to just redo the same thing.
+nnoremap & :&&<CR>
+xnoremap & :&&<CR>
+
+" We're also going to add a toggle for highlighting search to c-l.
+" According to Practical Vim, normally <C-l> clears and redraws the creen.
+" This mapping builds on top of the usual behavior by muting search
+" highlighting. FOR WHATEVER REASON THIS IS NOT WORKING
+nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+
+" Tab completion
+set wildmode=longest,list
+set wildignore=*.pyc
+
+" Visual bell instead of beep
+set visualbell
+
+" keep backups and temp files in ~.vim/
+set backup
+set backupdir=~/.vim/backup
+set directory=~/.vim/tmp
+
+" set default split opening position to be below and to the right of currently active split
+set splitbelow
+set splitright
+
+" Tags - recursively check parent directories for tags file
+set tags+=./.tags,.tags,../.tags,../../.tags
+
+" Filetypes
+autocmd BufEnter *.mako setlocal filetype=html
+
+" Unicode stuff. This is taken from the following two places, both of which
+" have good explanations:
+" http://vim.wikia.com/wiki/Working_with_Unicode
+" http://stackoverflow.com/questions/16507777/vim-set-encoding-and-fileencoding-utf-8
+if has("multi_byte")
+	if &termencoding == ""
+		let &termencoding = &encoding
+	endif
+	set encoding=utf-8
+	setglobal fileencoding=utf-8
+	set fileencodings=ucs-bom,utf-8,latin1
+endif
+
+" Make warnings more noticeable, specially to not miss search wrap
+hi WarningMsg ctermfg=white ctermbg=red guifg=White guibg=Red gui=None
+
+" This is a function from Practical Vim that executes something for every item
+" in the argument list. It is also available as a plugin, with README
+" information and things here (also see the books for usage):
+" https://github.com/nelstrom/vim-qargs
+" command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
+" function! QuickfixFilenames()
+"   " Building a hash ensures we get each buffer only once
+"   let buffer_numbers = {}
+"   for quickfix_item in getqflist()
+"     let buffer_numbers[quickfix_item['bufnr']] = bufname(quickfix_item['bufnr'])
+"   endfor
+"   return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
+" endfunction
+
+" ---------- mappings ---------
+
+" Make %% a shortcut for %:h on the command line. Normally if you do 
+" ':edit %<Tab>' it will show you the relative path to the file, including the
+" filename. If you don't want the filename, you do ':edit %:h<Tab>'. This
+" remapping will give allow us to get the same functionality by doing
+" ':edit %%'.
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+
+" Typos and things I don't want to do
+nmap Q <ESC>
+nmap :Q :q
+nmap :W :w
+nmap :WQ :wq
+
+" Toggle fix quix and location list
+function! GetBufferList()
+  redir =>buflist
+  silent! ls!
+  redir END
+  return buflist
+endfunction
+
+function! ToggleList(bufname, pfx)
+  let buflist = GetBufferList()
+  for bufnum in map(filter(split(buflist, '\n'), 'v:val =~ "'.a:bufname.'"'), 'str2nr(matchstr(v:val, "\\d\\+"))')
+    if bufwinnr(bufnum) != -1
+      exec(a:pfx.'close')
+      return
+    endif
+  endfor
+  if a:pfx == 'l' && len(getloclist(0)) == 0
+      echohl ErrorMsg
+      echo "Location List is Empty."
+      return
+  endif
+  let winnr = winnr()
+  exec(a:pfx.'open')
+  if winnr() != winnr
+    wincmd p
+  endif
+endfunction
+
+" Function key shortcuts
+map <F1> <nop>
+map <F3> :set hlsearch! hlsearch?<CR>
+map <C-n> :TagbarToggle<CR>
+map <F7> :NERDTreeToggle<CR>
+map <F8> :TagbarToggle<cr>
+map <F9> :!/usr/bin/ctags -L <(find . -name '*.py') --fields=+iaS --python-kinds=-i --sort=yes --extra=+q<cr>
+
+" Leader shortcuts
+" open current buffer in new tab
+map <Leader>s :tab split<CR>
+map <Leader>n :tabnew<CR>
+map <Leader>m :tabm
+" map <Leader>l :lclose<CR>
+" map <Leader>L :lopen<CR>
+" map <Leader>c :copen<CR>
+" map <Leader>C :cclose<CR>
+map <Leader>i Oimport pdb; pdb.set_trace()<ESC>
+
+" Remove the delay in ESC leaving a mode (ttimeoutlen)
+set timeoutlen=1000 ttimeoutlen=0
