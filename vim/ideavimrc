@@ -4,137 +4,29 @@ set nocompatible
 
 set t_Co=256
 
+" Some taken here:
+" https://github.com/w0ng/dotfiles/blob/master/.ideavimrc
+set hlsearch      " Highlight search pattern results.
+set showmode      " Show current mode on the last line.
+set ignorecase    " Ignore case of normal letters in a pattern.
+set smartcase     " Override ignorecase if pattern contains upper case.
+set visualbell    " use visual bell instead of beeping
+" Some fancy joining with J
+" https://github.com/JetBrains/ideavim/wiki/%22ideajoin%22-examples
+set ideajoin
+set ideastatusicon
+
+" Toggle git-blame window
+nnoremap <leader>g :action Annotate<CR>
+
 " ---------- plugins ---------
-" We need pseudocli for some of junegunn's other plugins
-Plug 'junegunn/vim-pseudocl'
-" search with ack
-Plug 'mileszs/ack.vim'
-" some git integration and status info
-Plug 'tpope/vim-fugitive'
-" async builds
-Plug 'tpope/vim-dispatch'
-" file browser on the left
-Plug 'scrooloose/nerdtree'
-" and make the nerdtree file browser consistent between tabs
-Plug 'jistr/vim-nerdtree-tabs'
-" and show git flags
-Plug 'Xuyuanp/nerdtree-git-plugin'
-" more python support
-" Plug 'klen/python-mode'
-" surround things with other things
+" I believe only these plugins are supported:
+" https://github.com/JetBrains/ideavim/wiki/Emulated-plugins
 Plug 'tpope/vim-surround'
-" syntax highlighting
-" Plug 'dense-analysis/ale'
-" complementary mappings
-Plug 'tpope/vim-unimpaired'
-" more sane regex
-Plug 'nelstrom/vim-visual-star-search'
-" open alternate files (eg foo.h quick opens foo.c)
-Plug 'vim-scripts/a.vim'
-" show git status of lines
-Plug 'airblade/vim-gitgutter'
-" Use github-flavored markdown highlighting, not canonical md highlighthing
-" Plug 'jtratner/vim-flavored-markdown'
-" Prettier status line.
-Plug 'bling/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-" Commenting with gc{motion}
-Plug 'tomtom/tcomment_vim'
-" Define custom text objects. Required for vim-textobj-entire
-Plug 'kana/vim-textobj-user'
-" Add 'whole file' objects with ae and ie (ignores leading/trailing whitespace)
+Plug 'tpope/vim-commentary'
 Plug 'kana/vim-textobj-entire'
-" Allow . repeating using vim-surround
-Plug 'tpope/vim-repeat'
-" Smarter CTRL-A and CTRL-X for addition/subtraction
-Plug 'tpope/vim-speeddating'
-" Auto-conversion to snake, camel, mixed, upper  case with crs, crc, crm, cru
-Plug 'tpope/vim-abolish'
-" Word objects for columns of text
-Plug 'coderifous/textobj-word-column.vim'
-" latex support
-Plug 'lervag/vimtex'
-" Readline-style bindings in vim
-Plug 'tpope/vim-rsi'
-" More information for <ctrl>+a character information, including unicode
-Plug 'tpope/vim-characterize'
-" Color TOML
-Plug 'cespare/vim-toml'
-" Better markdown support. Need tabular and vim-markdown
-Plug 'godlygeek/tabular'
-" markdown
-" Plug 'srsudar/vim-markdown'
-" Plug 'gabrielelana/vim-markdown'
-" Plug 'plasticboy/vim-markdown'
-" Better searching and highlighting defaults.
-Plug 'junegunn/vim-oblique'
-" Show contents of registers using " and @ in insert and <C-CR> in insert
-Plug 'junegunn/vim-peekaboo'
-" Browse git commits. fugitive must be installed first.
-" :GV to open commit browser
-" :GV! will only list commits for the current file
-" :GV over visual range will list commits for the lines
-" You can pass git log options to the command, e.g. :GV -S foobar.
-Plug 'junegunn/gv.vim'
-let g:rainbow_active = 0
-" Tmux integration like writing to another pane.
-" Plug 'tpope/vim-tbone'
-" Show indentation levels with :IndentLinesToggle
-Plug 'Yggdroot/indentLine'
-let g:indentLine_enabled = 0
-" Open the current file[pwd] in finder with go{f,F}.
-Plug 'justinmk/vim-gtfo'
-" Highlighting for docker files
-Plug 'honza/dockerfile.vim'
-" Help with unicode digraphs
-Plug 'chrisbra/unicode.vim'
-" Polymer support
-" Plug 'webdesus/polymer-ide.vim'
-" Title Case operator with gt
-Plug 'christoomey/vim-titlecase'
-" Snippets engine
-Plug 'SirVer/ultisnips'
-" Snippet starers
-Plug 'honza/vim-snippets'
-" Try to fix snippet suggestion
-Plug 'ervandew/supertab'
-" json text objects with aj and ij
-Plug 'tpope/vim-jdaddy'
-" Better grepping
-Plug 'mhinz/vim-grepper'
-" Whitespace support
-Plug 'ntpeters/vim-better-whitespace'
-" Dart support
-Plug 'dart-lang/dart-vim-plugin'
-Plug 'natebosch/vim-lsc'
-Plug 'natebosch/vim-lsc-dart'
-Plug 'natebosch/dartlang-snippets'
-Plug 'google/vim-maktaba'
-Plug 'google/vim-codefmt'
-" Glaive is needed for maktaba's flags. Use `:help :Glaive` for more. Also see
-" Glaive install command below.
-Plug 'google/vim-glaive'
-" more language packs. In general this seems to supercede other language packs.
-" Plug 'sheerun/vim-polyglot'
-" No need to `:set paste`.
-Plug 'ConradIrwin/vim-bracketed-paste'
-" Tagbar to see class outlines.
-Plug 'preservim/tagbar'
-" Tmux integration
-Plug 'preservim/vimux'
-" Better cpp highlighting.
-Plug 'octol/vim-cpp-enhanced-highlight'
-
-" Send data to tmux. Seen at :help vimux
-function! VimuxSend()
-  call VimuxRunCommand(@v, 0)
-endfunction
-
-" If text is selected, save it in the v buffer and send that buffer it to tmux
-vmap <LocalLeader>ts "vy :call VimuxSend()<CR>
-
-" Select current paragraph and send it to tmux
-nmap <LocalLeader>ts vip<LocalLeader>ts<CR>
+Plug 'machakann/vim-highlightedyank'
+Plug 'vim-matchit'
 
 " let g:UltiSnipsListSnippets = '<c-tab>'
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -142,30 +34,22 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
 
-" Change the Rg command to only use the paths we define in $FZF_SOURCE.
-" command! -bang -nargs=* Rg
-"   \ call fzf#vim#grep(
-"   \   join(['rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), '$(${FZF_SOURCE})'], " "), 1,
-"   \   fzf#vim#with_preview(), <bang>0)
-" Command for fzf stolen from someone else. Their description:
-" This maps \ff in command-line mode to invoke fzf file search and lets you
-" insert the filename in any vim command. So I can type :sp ,ff and then the
-" filename. or :vs or :tabnew. So this gives a lot of flexibility wrt to how
-" you want to open the file.
-cnoremap <Leader>ff <C-R>=fzf#run({'down': '40%'})<CR><CR>
-" This provides "FzfFiles" instead of "Files"
-" let g:fzf_command_prefix = 'Fzf'
-" Open fzf with <C-p>, like ctrlp.
-nnoremap <c-p> :FZF<cr>
-" Various FZF shortcuts
-" eg this opens buffers with \b
-nnoremap <Leader>b :Buffers<cr>
-nnoremap <leader>F :FZF<cr>
-nnoremap <leader>l :Lines<cr>
-nnoremap <leader>M :Maps<cr>
-" nnoremap <leader>r :Rg<cr>
-nnoremap <leader>R :Rg!<cr>
-nnoremap <leader>h :History<cr>
+" Some useful mappings here:
+" https://towardsdatascience.com/the-essential-ideavim-remaps-291d4cd3971b
+nnoremap ]l :action GotoNextError<CR>
+nnoremap [l :action GotoPreviousError<CR>
+nnoremap ]b :action NextTab<CR>
+nnoremap [b :action PreviousTab<CR>
+" search LINES in ALL files (also search only in open files?)
+nnoremap <Leader>l :action FindInPath<CR>
+" search FILES
+nnoremap <c-p> :action GotoFile<CR>
+" search open tabs (and some other stuff)
+nnoremap <Leader>b :action Switcher<CR>
+" Close the little window at the bottom, eg the test window
+nnoremap <c-c> :action HideActiveWindow<CR>
+" Open the various tool windows, like debugger
+nnoremap <c-n> :action ToolWindowGroup<CR>
 
 " Rather than open empty splits, open with the existing file.
 nnoremap <c-w>n :split<cr>
@@ -294,7 +178,7 @@ set autoread
 set shortmess+=IA
 
 " Longer history
-set history=1000
+set history=10000
 " By default the up and down arrows filter commands in the history--eg if you
 " type ':e ' and then hit up, you'll see only the previous commands that
 " started with that. If you do that and then hit <C-p>, however, you won't. So
@@ -302,19 +186,12 @@ set history=1000
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 
-" Case-smart searching (case-sensitive only if capital letter in search)
-set ignorecase
-set smartcase
-
 " Incremental search
 set incsearch
 
 " Tab completion
 set wildmode=longest,list
 set wildignore=*.pyc
-
-" Visual bell instead of beep
-set visualbell
 
 " keep backups and temp files in ~.vim/
 set backup
@@ -371,25 +248,6 @@ function! ToggleList(bufname, pfx)
     wincmd p
   endif
 endfunction
-
-" Function key shortcuts
-map <F1> <nop>
-map <F3> :set hlsearch! hlsearch?<CR>
-map <C-n> :TagbarToggle<CR>
-map <F7> :NERDTreeToggle<CR>
-map <F8> :TagbarToggle<cr>
-map <F9> :!/usr/bin/ctags -L <(find . -name '*.py') --fields=+iaS --python-kinds=-i --sort=yes --extra=+q<cr>
-
-" Leader shortcuts
-" open current buffer in new tab
-map <Leader>s :tab split<CR>
-map <Leader>n :tabnew<CR>
-map <Leader>m :tabm
-" map <Leader>l :lclose<CR>
-" map <Leader>L :lopen<CR>
-" map <Leader>c :copen<CR>
-" map <Leader>C :cclose<CR>
-map <Leader>i Oimport pdb; pdb.set_trace()<ESC>
 
 " Remove the delay in ESC leaving a mode (ttimeoutlen)
 set timeoutlen=1000 ttimeoutlen=0
