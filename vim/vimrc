@@ -142,7 +142,7 @@ Plug 'google/vim-codefmt'
 " Glaive install command below.
 Plug 'google/vim-glaive'
 " more language packs. In general this seems to supercede other language packs.
-Plug 'sheerun/vim-polyglot'
+" Plug 'sheerun/vim-polyglot'
 " No need to `:set paste`.
 Plug 'ConradIrwin/vim-bracketed-paste'
 " Tagbar to see class outlines.
