@@ -28,16 +28,21 @@ Plug 'kana/vim-textobj-entire'
 Plug 'machakann/vim-highlightedyank'
 Plug 'vim-matchit'
 
-" let g:UltiSnipsListSnippets = '<c-tab>'
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
+" Readline-style bindings in insert mode, stolen from:
+" https://github.com/tpope/vim-rsi/blob/master/plugin/rsi.vim
+inoremap        <C-A> <C-O>^
+inoremap   <C-X><C-A> <C-A>
+inoremap        <C-B> <Left>
+inoremap        <C-D> <C-O>x
+inoremap        <C-E> <C-O>$
+inoremap        <C-F> <Right>
 
 " Some useful mappings here:
 " https://towardsdatascience.com/the-essential-ideavim-remaps-291d4cd3971b
 nnoremap ]l :action GotoNextError<CR>
 nnoremap [l :action GotoPreviousError<CR>
+" Show error popup when on error.
+nnoremap <Leader>e :action ShowErrorDescription<CR>
 nnoremap ]b :action NextTab<CR>
 nnoremap [b :action PreviousTab<CR>
 " search LINES in ALL files (also search only in open files?)
@@ -54,6 +59,12 @@ nnoremap <c-n> :action ToolWindowGroup<CR>
 " Rather than open empty splits, open with the existing file.
 nnoremap <c-w>n :split<cr>
 nnoremap <c-w>v :vsplit<cr>
+
+" The jump-list is kind of wonky by default. Instead we'll use :Back and
+" :Forward, which appears to be more consistent.
+" https://youtrack.jetbrains.com/issue/VIM-44
+nnoremap <C-o> :action Back<CR>
+nnoremap <C-i> :action Forward<CR>
 
 " Color frontmatter in markdown files.
 " let g:vim_markdown_math = 1
@@ -98,8 +109,7 @@ nnoremap m d
 nnoremap mm dd
 xnoremap m d
 
-" edit ideavimrc and reload
-nnoremap \e :e ~/.ideavimrc<CR>
+" reload vimrc. Doesn't seem to work reliably...
 nnoremap \r :action IdeaVim.ReloadVimRc.reload<CR>
 
 " Switch between windows in vim mode.
