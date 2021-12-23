@@ -19,6 +19,9 @@ set ideastatusicon
 " Toggle git-blame window
 nnoremap <leader>g :action Annotate<CR>
 
+" Try and map normal YCM go to declaration.
+nnoremap <leader>tg :action GotoDeclaration<CR>
+
 " ---------- plugins ---------
 " I believe only these plugins are supported:
 " https://github.com/JetBrains/ideavim/wiki/Emulated-plugins
@@ -70,28 +73,6 @@ nnoremap <C-i> :action Forward<CR>
 " let g:vim_markdown_math = 1
 let g:markdown_enable_insert_mode_mappings = 0
 
-" Delay the peekaboo register opening after hitting "
-let g:peekaboo_delay = 1500
-
-" Treat all *.md files as markdown, not just README.md. Otherwise vim by
-" default treats *.md files as modula-2: https://github.com/tpope/vim-markdown
-augroup markdown
-  autocmd!
-  autocmd BufNewFile,BufRead *.md,*.markdown setlocal filetype=markdown
-  autocmd BufNewFile,BufRead *.md,*.markdown setlocal spell
-  " Open table of contents with <leader>lt
-  autocmd Filetype markdown map <buffer> <leader>lt :Toc<CR>
-  " highlight bold
-  autocmd FileType markdown highlight htmlBold ctermbg=60
-  " View markdown in Marked 2 with <leader>lv. This is lo to mirror the view
-  " functionality in my LaTeX plugin.
-  autocmd FileType markdown map <buffer> <leader>lv :silent! !open -a Marked\ 2 % > /dev/null &<cr>:redraw!<cr>
-
-  " gabrielelana/vim-markdown override textwidth to 0 for some reason, so re-set
-  " it here to get back wrapping.
-  autocmd Filetype markdown setlocal textwidth=80
-augroup END
-
 " Simulate easyclip plugin. From:
 " https://stackoverflow.com/questions/39895146/how-do-i-get-the-easyclip-vim-plugin-like-functionality-in-ideavim-plugin-of-jet
 nnoremap d "_d
@@ -108,6 +89,8 @@ xnoremap x "_x
 nnoremap m d
 nnoremap mm dd
 xnoremap m d
+
+xnoremap gmm m
 
 " reload vimrc. Doesn't seem to work reliably...
 nnoremap \r :action IdeaVim.ReloadVimRc.reload<CR>
