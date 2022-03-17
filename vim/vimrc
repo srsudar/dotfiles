@@ -84,7 +84,8 @@ Plug 'tpope/vim-rsi'
 " More information for <ctrl>+a character information, including unicode
 Plug 'tpope/vim-characterize'
 " Fancy pants auto completion
-Plug 'ycm-core/YouCompleteMe'
+" Plug 'ycm-core/YouCompleteMe'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Color TOML
 Plug 'cespare/vim-toml'
 " Better markdown support. Need tabular and vim-markdown
