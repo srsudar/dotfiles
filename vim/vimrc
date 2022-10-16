@@ -85,7 +85,7 @@ Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-characterize'
 " Fancy pants auto completion
 " Plug 'ycm-core/YouCompleteMe'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Color TOML
 Plug 'cespare/vim-toml'
 " Better markdown support. Need tabular and vim-markdown
@@ -216,8 +216,8 @@ let g:ycm_always_populate_location_list = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
 " Try YCM mappings
-noremap <leader>tr :YcmRestartServer
-noremap <leader>tc :YcmForceCompileAndDiagnostics<cr>
+" noremap <leader>tr :YcmRestartServer
+" noremap <leader>tc :YcmForceCompileAndDiagnostics<cr>
 " Show popup
 nmap <leader>tp <Plug>(YCMHover)
 " Show the full error. 'L' because I think of these as entries in the location
@@ -546,11 +546,14 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Color scheme and font
-colorscheme xoria256
+" My preferred version before OuterSunset.
+" colorscheme xoria256
+" Kyle's custom color scheme: https://github.com/malectro/outer-sunset
+colorscheme OuterSunset
 " I like default xoria256, with a few modifications. Set those modifications
 " here.
-hi Comment      ctermfg=48 guifg=#808080
-set guifont=Monaco:h12
+" hi Comment      ctermfg=48 guifg=#808080
+" set guifont=Monaco:h12
 
 " Highlight current line
 set cursorline
