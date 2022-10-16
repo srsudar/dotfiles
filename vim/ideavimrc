@@ -1,8 +1,11 @@
 " vim configuration for Intellij. See:
 " https://www.jetbrains.com/help/idea/using-product-as-the-vim-editor.html#vimrc
 "
-" 'Actions' are special Intellij mappings. I can't find an official list, but I
-" did find this gist:
+" 'Actions' are special Intellij mappings. You can see the live version by
+" typing:
+" :actionlist
+"
+" They are summarized here:
 " https://gist.github.com/zchee/9c78f91cc5ad771c1f5d
 set nocompatible
 
@@ -22,6 +25,10 @@ set ideastatusicon
 
 " Toggle git-blame window
 nnoremap <leader>g :action Annotate<CR>
+" Open the file in the github window with a permalink as from the `ght` sublink
+" I like.
+nnoremap ght :action Github.Open.In.Browser<CR>
+vnoremap ght :action Github.Open.In.Browser<CR>
 
 " Try and map normal YCM go to declaration.
 nnoremap <leader>tg :action GotoDeclaration<CR>
@@ -33,6 +40,13 @@ nnoremap <leader>tg :action GotoDeclaration<CR>
 "   nmap <silent> gr <Plug>(coc-references)
 nnoremap gd :action GotoDeclaration<CR>
 nnoremap gr :action FindUsages<CR>
+
+# Wrap to column in ideavim. Need to install this plugin to work. Details:
+# https://github.com/abrookins/WrapToColumn
+nmap gq :action com.andrewbrookins.idea.wrap.WrapAction<CR>
+
+vmap gw :action com.andrewbrookins.idea.wrap.WrapAction<CR>
+nmap gwap :action com.andrewbrookins.idea.wrap.WrapParagraphAction<CR>
 
 " ---------- plugins ---------
 " I believe only these plugins are supported:
@@ -56,6 +70,8 @@ inoremap        <C-F> <Right>
 " https://towardsdatascience.com/the-essential-ideavim-remaps-291d4cd3971b
 nnoremap ]l :action GotoNextError<CR>
 nnoremap [l :action GotoPreviousError<CR>
+nnoremap ]e :action GotoNextError<CR>
+nnoremap [e :action GotoPreviousError<CR>
 " Show error popup when on error.
 nnoremap <Leader>e :action ShowErrorDescription<CR>
 nnoremap ]b :action NextTab<CR>
