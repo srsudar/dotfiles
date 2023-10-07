@@ -13,6 +13,18 @@ function end(t) {
 }
 endsnippet
 
+snippet descr "Create a describe block" b
+describe('${1}', () => {
+});
+endsnippet
+
+snippet it "Create a test" b
+it('${1}', async () => {
+  chai.assert.fail('unimplemented');
+});
+endsnippet
+
+
 snippet throwerr "Throw a new error"
 throw new Error('${1:unimplemented}');
 endsnippet
@@ -45,6 +57,10 @@ endsnippet
 
 snippet xxx "console.log() something"
 console.log(\`XXX ${1}\`);
+endsnippet
+
+snippet xxxv "console.log() a variable"
+console.log(\`XXX $1\`, ${1});
 endsnippet
 
 snippet newpt "Create a new failing Polymer test" b

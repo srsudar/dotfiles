@@ -59,8 +59,8 @@ Plug 'christoomey/vim-tmux-navigator'
 " Use github-flavored markdown highlighting, not canonical md highlighthing
 " Plug 'jtratner/vim-flavored-markdown'
 " Prettier status line.
-Plug 'bling/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
 " Commenting with gc{motion}
 Plug 'tomtom/tcomment_vim'
 " Define custom text objects. Required for vim-textobj-entire
@@ -152,6 +152,8 @@ Plug 'preservim/tagbar'
 Plug 'preservim/vimux'
 " Better cpp highlighting.
 Plug 'octol/vim-cpp-enhanced-highlight'
+"
+Plug 'ruanyl/vim-gh-line'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -280,6 +282,7 @@ nnoremap <c-p> :FZF<cr>
 nnoremap <Leader>b :Buffers<cr>
 nnoremap <leader>F :FZF<cr>
 nnoremap <leader>l :Lines<cr>
+nnoremap <leader>L :Rg!<cr>
 nnoremap <leader>M :Maps<cr>
 " nnoremap <leader>r :Rg<cr>
 nnoremap <leader>R :Rg!<cr>
@@ -529,6 +532,15 @@ autocmd BufWinEnter *.java setlocal shiftwidth=4
 autocmd BufWinEnter *.java setlocal colorcolumn=101
 autocmd BufWinEnter *.java setlocal textwidth=100
 
+" Show Git blame
+nnoremap <leader>gb :Git blame<CR>
+" Git things with github
+" https://github.com/ruanyl/vim-gh-line
+let g:gh_line_map_default = 0
+let g:gh_line_blame_map_default = 1
+let g:gh_line_map = 'ght'
+let g:gh_line_blame_map = 'ghb'
+
 " More familiar symbols for nerdtree-git-plugin
 let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ "Modified"  : "*",
@@ -550,10 +562,12 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " colorscheme xoria256
 " Kyle's custom color scheme: https://github.com/malectro/outer-sunset
 colorscheme OuterSunset
+" colorscheme onedark
+" set termguicolors
 " I like default xoria256, with a few modifications. Set those modifications
 " here.
-" hi Comment      ctermfg=48 guifg=#808080
-" set guifont=Monaco:h12
+hi Comment      ctermfg=48 guifg=#808080
+set guifont=Monaco:h12
 
 " Highlight current line
 set cursorline
