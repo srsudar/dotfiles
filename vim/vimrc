@@ -7,10 +7,10 @@ set t_Co=256
 " Switching from vundle to vim-plug.
 " This will load and install vim-plug if it isn't already installed.
 " Load vim-plug
-if empty(glob("~/.vim/autoload/plug.vim"))
-    execute '!curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
-endif
-
+" if empty(glob("~/.vim/autoload/plug.vim"))
+"     execute '!curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+" endif
+"
 " begin vim-plug section
 " Directions are here: https://github.com/junegunn/vim-plug.
 " Basically, first initialize using curl -fLo ~/.vim/autoload/plug.vim
@@ -19,145 +19,145 @@ endif
 " This section is for vim-plug managed plugins.
 " :PlugInstall to install them.
 
-call plug#begin('~/.vim/plugged')
+" call plug#begin('~/.vim/plugged')
 
 " fzf for searching
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-" We need pseudocli for some of junegunn's other plugins
-Plug 'junegunn/vim-pseudocl'
-" search with ack
-Plug 'mileszs/ack.vim'
-" some git integration and status info
-Plug 'tpope/vim-fugitive'
-" async builds
-Plug 'tpope/vim-dispatch'
-" file browser on the left
-Plug 'scrooloose/nerdtree'
-" and make the nerdtree file browser consistent between tabs
-Plug 'jistr/vim-nerdtree-tabs'
-" and show git flags
-Plug 'Xuyuanp/nerdtree-git-plugin'
-" more python support
-" Plug 'klen/python-mode'
-" surround things with other things
-Plug 'tpope/vim-surround'
-" syntax highlighting
-" Plug 'dense-analysis/ale'
-" complementary mappings
-Plug 'tpope/vim-unimpaired'
-" more sane regex
-Plug 'nelstrom/vim-visual-star-search'
-" open alternate files (eg foo.h quick opens foo.c)
-Plug 'vim-scripts/a.vim'
-" show git status of lines
-Plug 'airblade/vim-gitgutter'
-" Smart alignment of text.
-Plug 'junegunn/vim-easy-align'
-" Use ctrl+h,j,k,l to navigate tmux and vim windows
-Plug 'christoomey/vim-tmux-navigator'
-" Use github-flavored markdown highlighting, not canonical md highlighthing
-" Plug 'jtratner/vim-flavored-markdown'
-" Prettier status line.
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
-" Commenting with gc{motion}
-Plug 'tomtom/tcomment_vim'
-" Define custom text objects. Required for vim-textobj-entire
-Plug 'kana/vim-textobj-user'
-" Add 'whole file' objects with ae and ie (ignores leading/trailing whitespace)
-Plug 'kana/vim-textobj-entire'
-" Allow . repeating using vim-surround
-Plug 'tpope/vim-repeat'
-" Smarter CTRL-A and CTRL-X for addition/subtraction
-Plug 'tpope/vim-speeddating'
-" Auto-conversion to snake, camel, mixed, upper  case with crs, crc, crm, cru
-Plug 'tpope/vim-abolish'
-" Allow smarter pasting.
-Plug 'svermeulen/vim-easyclip'
-" Word objects for columns of text
-Plug 'coderifous/textobj-word-column.vim'
-" latex support
-Plug 'lervag/vimtex'
-" Readline-style bindings in vim
-Plug 'tpope/vim-rsi'
-" More information for <ctrl>+a character information, including unicode
-Plug 'tpope/vim-characterize'
-" Fancy pants auto completion
-" Plug 'ycm-core/YouCompleteMe'
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Color TOML
-Plug 'cespare/vim-toml'
-" Better markdown support. Need tabular and vim-markdown
-Plug 'godlygeek/tabular'
-" markdown
-" Plug 'srsudar/vim-markdown'
-" Plug 'gabrielelana/vim-markdown'
-" Plug 'plasticboy/vim-markdown'
-" Better searching and highlighting defaults.
-Plug 'junegunn/vim-oblique'
-" Show contents of registers using " and @ in insert and <C-CR> in insert
-Plug 'junegunn/vim-peekaboo'
-" Browse git commits. fugitive must be installed first.
-" :GV to open commit browser
-" :GV! will only list commits for the current file
-" :GV over visual range will list commits for the lines
-" You can pass git log options to the command, e.g. :GV -S foobar.
-Plug 'junegunn/gv.vim'
-let g:rainbow_active = 0
-" Tmux integration like writing to another pane.
-" Plug 'tpope/vim-tbone'
-" Show indentation levels with :IndentLinesToggle
-Plug 'Yggdroot/indentLine'
-let g:indentLine_enabled = 0
-" Open the current file[pwd] in finder with go{f,F}.
-Plug 'justinmk/vim-gtfo'
-" Highlighting for docker files
-Plug 'honza/dockerfile.vim'
-" Help with unicode digraphs
-Plug 'chrisbra/unicode.vim'
-" Polymer support
-" Plug 'webdesus/polymer-ide.vim'
-" Title Case operator with gt
-Plug 'christoomey/vim-titlecase'
-" Snippets engine
-Plug 'SirVer/ultisnips'
-" Snippet starers
-Plug 'honza/vim-snippets'
-" Try to fix snippet suggestion
-Plug 'ervandew/supertab'
-" json text objects with aj and ij
-Plug 'tpope/vim-jdaddy'
-" Better grepping
-Plug 'mhinz/vim-grepper'
-" Whitespace support
-Plug 'ntpeters/vim-better-whitespace'
-" Dart support
-Plug 'dart-lang/dart-vim-plugin'
-Plug 'natebosch/vim-lsc'
-Plug 'natebosch/vim-lsc-dart'
-Plug 'natebosch/dartlang-snippets'
-Plug 'google/vim-maktaba'
-Plug 'google/vim-codefmt'
-" Glaive is needed for maktaba's flags. Use `:help :Glaive` for more. Also see
-" Glaive install command below.
-Plug 'google/vim-glaive'
-" more language packs. In general this seems to supercede other language packs.
-" Plug 'sheerun/vim-polyglot'
-" No need to `:set paste`.
-Plug 'ConradIrwin/vim-bracketed-paste'
-" Tagbar to see class outlines.
-Plug 'preservim/tagbar'
-" Tmux integration
-Plug 'preservim/vimux'
-" Better cpp highlighting.
-Plug 'octol/vim-cpp-enhanced-highlight'
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Plug 'junegunn/fzf.vim'
+" " We need pseudocli for some of junegunn's other plugins
+" Plug 'junegunn/vim-pseudocl'
+" " search with ack
+" Plug 'mileszs/ack.vim'
+" " some git integration and status info
+" Plug 'tpope/vim-fugitive'
+" " async builds
+" Plug 'tpope/vim-dispatch'
+" " file browser on the left
+" Plug 'scrooloose/nerdtree'
+" " and make the nerdtree file browser consistent between tabs
+" Plug 'jistr/vim-nerdtree-tabs'
+" " and show git flags
+" Plug 'Xuyuanp/nerdtree-git-plugin'
+" " more python support
+" " Plug 'klen/python-mode'
+" " surround things with other things
+" Plug 'tpope/vim-surround'
+" " syntax highlighting
+" " Plug 'dense-analysis/ale'
+" " complementary mappings
+" Plug 'tpope/vim-unimpaired'
+" " more sane regex
+" Plug 'nelstrom/vim-visual-star-search'
+" " open alternate files (eg foo.h quick opens foo.c)
+" Plug 'vim-scripts/a.vim'
+" " show git status of lines
+" Plug 'airblade/vim-gitgutter'
+" " Smart alignment of text.
+" Plug 'junegunn/vim-easy-align'
+" " Use ctrl+h,j,k,l to navigate tmux and vim windows
+" Plug 'christoomey/vim-tmux-navigator'
+" " Use github-flavored markdown highlighting, not canonical md highlighthing
+" " Plug 'jtratner/vim-flavored-markdown'
+" " Prettier status line.
+" " Plug 'vim-airline/vim-airline'
+" " Plug 'vim-airline/vim-airline-themes'
+" " Commenting with gc{motion}
+" Plug 'tomtom/tcomment_vim'
+" " Define custom text objects. Required for vim-textobj-entire
+" Plug 'kana/vim-textobj-user'
+" " Add 'whole file' objects with ae and ie (ignores leading/trailing whitespace)
+" Plug 'kana/vim-textobj-entire'
+" " Allow . repeating using vim-surround
+" Plug 'tpope/vim-repeat'
+" " Smarter CTRL-A and CTRL-X for addition/subtraction
+" Plug 'tpope/vim-speeddating'
+" " Auto-conversion to snake, camel, mixed, upper  case with crs, crc, crm, cru
+" Plug 'tpope/vim-abolish'
+" " Allow smarter pasting.
+" Plug 'svermeulen/vim-easyclip'
+" " Word objects for columns of text
+" Plug 'coderifous/textobj-word-column.vim'
+" " latex support
+" Plug 'lervag/vimtex'
+" " Readline-style bindings in vim
+" Plug 'tpope/vim-rsi'
+" " More information for <ctrl>+a character information, including unicode
+" Plug 'tpope/vim-characterize'
+" " Fancy pants auto completion
+" " Plug 'ycm-core/YouCompleteMe'
+" " Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" " Color TOML
+" Plug 'cespare/vim-toml'
+" " Better markdown support. Need tabular and vim-markdown
+" Plug 'godlygeek/tabular'
+" " markdown
+" " Plug 'srsudar/vim-markdown'
+" " Plug 'gabrielelana/vim-markdown'
+" " Plug 'plasticboy/vim-markdown'
+" " Better searching and highlighting defaults.
+" Plug 'junegunn/vim-oblique'
+" " Show contents of registers using " and @ in insert and <C-CR> in insert
+" Plug 'junegunn/vim-peekaboo'
+" " Browse git commits. fugitive must be installed first.
+" " :GV to open commit browser
+" " :GV! will only list commits for the current file
+" " :GV over visual range will list commits for the lines
+" " You can pass git log options to the command, e.g. :GV -S foobar.
+" Plug 'junegunn/gv.vim'
+" let g:rainbow_active = 0
+" " Tmux integration like writing to another pane.
+" " Plug 'tpope/vim-tbone'
+" " Show indentation levels with :IndentLinesToggle
+" Plug 'Yggdroot/indentLine'
+" let g:indentLine_enabled = 0
+" " Open the current file[pwd] in finder with go{f,F}.
+" Plug 'justinmk/vim-gtfo'
+" " Highlighting for docker files
+" Plug 'honza/dockerfile.vim'
+" " Help with unicode digraphs
+" Plug 'chrisbra/unicode.vim'
+" " Polymer support
+" " Plug 'webdesus/polymer-ide.vim'
+" " Title Case operator with gt
+" Plug 'christoomey/vim-titlecase'
+" " Snippets engine
+" Plug 'SirVer/ultisnips'
+" " Snippet starers
+" Plug 'honza/vim-snippets'
+" " Try to fix snippet suggestion
+" Plug 'ervandew/supertab'
+" " json text objects with aj and ij
+" Plug 'tpope/vim-jdaddy'
+" " Better grepping
+" Plug 'mhinz/vim-grepper'
+" " Whitespace support
+" Plug 'ntpeters/vim-better-whitespace'
+" " Dart support
+" Plug 'dart-lang/dart-vim-plugin'
+" Plug 'natebosch/vim-lsc'
+" Plug 'natebosch/vim-lsc-dart'
+" Plug 'natebosch/dartlang-snippets'
+" Plug 'google/vim-maktaba'
+" Plug 'google/vim-codefmt'
+" " Glaive is needed for maktaba's flags. Use `:help :Glaive` for more. Also see
+" " Glaive install command below.
+" Plug 'google/vim-glaive'
+" " more language packs. In general this seems to supercede other language packs.
+" " Plug 'sheerun/vim-polyglot'
+" " No need to `:set paste`.
+" Plug 'ConradIrwin/vim-bracketed-paste'
+" " Tagbar to see class outlines.
+" Plug 'preservim/tagbar'
+" " Tmux integration
+" Plug 'preservim/vimux'
+" " Better cpp highlighting.
+" Plug 'octol/vim-cpp-enhanced-highlight'
+" "
+" Plug 'ruanyl/vim-gh-line'
 "
-Plug 'ruanyl/vim-gh-line'
-
-" Add plugins to &runtimepath
-call plug#end()
-call glaive#Install()
+" " Add plugins to &runtimepath
+" call plug#end()
+" call glaive#Install()
 " end vim-plug section
 
 " Don't use default titlecase mappings, as they interfere with gt/gT for tabs
