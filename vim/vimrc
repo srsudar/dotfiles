@@ -201,6 +201,10 @@ let g:cpp_posix_standard = 1
 let g:cpp_experimental_template_highlight = 1
 let g:cpp_concepts_highlight = 1
 
+" For Yggdrot/intentline, stop messing with json and markdown hiding things
+autocmd Filetype json let g:indentLine_setConceal = 0
+autocmd Filetype markdown let g:indentLine_setConceal = 0
+
 
 " Better completion with UltiSnips
 " make YCM compatible with UltiSnips (using supertab). Later I stumbled across
