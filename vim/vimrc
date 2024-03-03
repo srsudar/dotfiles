@@ -193,6 +193,9 @@ vmap <LocalLeader>ts "vy :call VimuxSend()<CR>
 " Select current paragraph and send it to tmux
 nmap <LocalLeader>ts vip<LocalLeader>ts<CR>
 
+" We need this for rainbow. This lets us use `:RainbowToggle` to turn it on.
+let g:rainbow_active = 0
+
 " All the cpp highlighting
 let g:cpp_class_scope_highlight = 1
 let g:cpp_member_variable_highlight = 1
@@ -353,12 +356,12 @@ cmap <c-v> <plug>EasyClipCommandModePaste
 
 " YouCompleteMe (YCM)
 " Let eclim and YouCompleteMe play nice.
-let g:EclimCompletionMethod = 'omnifunc'
+" let g:EclimCompletionMethod = 'omnifunc'
 " From: https://github.com/Valloric/YouCompleteMe/issues/53 
 " Turn off YCM
-nnoremap <leader>y :let g:ycm_auto_trigger=0<CR>
+" nnoremap <leader>y :let g:ycm_auto_trigger=0<CR>
 " Turn on YCM
-nnoremap <leader>Y :let g:ycm_auto_trigger=1<CR>
+" nnoremap <leader>Y :let g:ycm_auto_trigger=1<CR>
 
 " Use one space instead of two when fixing up after sentences.
 set nojoinspaces
@@ -738,12 +741,12 @@ function! ToggleList(bufname, pfx)
 endfunction
 
 " Function key shortcuts
-map <F1> <nop>
-map <F3> :set hlsearch! hlsearch?<CR>
-map <C-n> :TagbarToggle<CR>
-map <F7> :NERDTreeToggle<CR>
-map <F8> :TagbarToggle<cr>
-map <F9> :!/usr/bin/ctags -L <(find . -name '*.py') --fields=+iaS --python-kinds=-i --sort=yes --extra=+q<cr>
+" map <F1> <nop>
+" map <F3> :set hlsearch! hlsearch?<CR>
+" map <C-n> :TagbarToggle<CR>
+" map <F7> :NERDTreeToggle<CR>
+" map <F8> :TagbarToggle<cr>
+" map <F9> :!/usr/bin/ctags -L <(find . -name '*.py') --fields=+iaS --python-kinds=-i --sort=yes --extra=+q<cr>
 
 " Leader shortcuts
 " open current buffer in new tab
