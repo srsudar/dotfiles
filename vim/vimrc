@@ -471,7 +471,7 @@ syntax on
 
 " Turn on the matchit plugin that will enable jumping to pairs of things like
 " matching open and close xml tags with %.
-runtime macros/matchit.vim
+" runtime macros/matchit.vim
 
 " Show what you are typing mid-command
 set showcmd
