@@ -77,3 +77,8 @@ snippet db "Add a debugger statement" b
 // TODO: remove
 debugger;
 endsnippet
+
+snippet timeout "Add a long timeout for superagent" b
+// TODO: remove
+.timeout({ response: 1_000_000_000, deadline: 1_000_000_000 })
+endsnippet
