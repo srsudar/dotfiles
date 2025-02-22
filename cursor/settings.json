@@ -1,0 +1,64 @@
+{
+  "workbench.colorTheme": "Default Dark Modern",
+  "git.openRepositoryInParentFolders": "never",
+  "mocha.files.glob": "test/**/*{.js,.ts}",
+  "[json][less][css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript][javascriptreact][typescript][typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true, // removes border from overview ruler (located on the right, same position as the scrollbar)
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    }
+  },
+  "editor.formatOnSave": true,
+  "editor.snippetSuggestions": "bottom",
+  "editor.suggestSelection": "first",
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "javascript.preferences.importModuleSpecifier": "non-relative",
+  "vim.enableNeovim": true,
+  "vim.neovimConfigPath": "/Users/sudars/.config/nvim/init.vim",
+  "vim.neovimPath": "/Users/sudars/.local/share/bob/nvim-bin/nvim",
+  "vim.neovimUseConfigFile": true,
+  "vim.showMarksInGutter": true,
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["]", "d"],
+      "commands": ["editor.action.marker.nextInFiles"],
+      "silent": true
+    },
+    {
+      "before": ["[", "d"],
+      "commands": ["editor.action.marker.prevInFiles"],
+      "silent": true
+    },
+    {
+      "before": ["<leader>", "e"],
+      "commands": ["editor.action.showHover"],
+      "silent": true
+    },
+    {
+      "before": ["<C-h>"],
+      "commands": ["workbench.action.focusLeftGroup"],
+      "silent": true
+    },
+    {
+      "before": ["<C-l>"],
+      "commands": ["workbench.action.focusRightGroup"],
+      "silent": true
+    },
+    {
+      "before": ["<C-j>"],
+      "commands": ["workbench.action.focusBelowGroup"],
+      "silent": true
+    },
+    {
+      "before": ["<C-k>"],
+      "commands": ["workbench.action.focusAboveGroup"],
+      "silent": true
+    }
+  ],
+  "vim.normalModeKeyBindings": [],
+  "workbench.settings.applyToAllProfiles": []
+}
