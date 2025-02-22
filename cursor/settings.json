@@ -25,12 +25,18 @@
   "vim.normalModeKeyBindingsNonRecursive": [
     {
       "before": ["]", "d"],
-      "commands": ["editor.action.marker.nextInFiles"],
+      "commands": [
+        "editor.action.marker.nextInFiles",
+        "closeMarkersNavigation"
+      ],
       "silent": true
     },
     {
       "before": ["[", "d"],
-      "commands": ["editor.action.marker.prevInFiles"],
+      "commands": [
+        "editor.action.marker.prevInFiles",
+        "closeMarkersNavigation"
+      ],
       "silent": true
     },
     {
@@ -60,5 +66,8 @@
     }
   ],
   "vim.normalModeKeyBindings": [],
-  "workbench.settings.applyToAllProfiles": []
+  "workbench.settings.applyToAllProfiles": [
+
+  
+  ]
 }

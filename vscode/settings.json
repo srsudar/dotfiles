@@ -25,17 +25,43 @@
     "vim.normalModeKeyBindingsNonRecursive": [
       {
         "before": ["]", "d"],
-        "commands": ["editor.action.marker.nextInFiles"],
+        "commands": [
+          "editor.action.marker.nextInFiles",
+          "closeMarkersNavigation"
+        ],
         "silent": true
       },
       {
         "before": ["[", "d"],
-        "commands": ["editor.action.marker.prevInFiles"],
+        "commands": [
+          "editor.action.marker.prevInFiles",
+          "closeMarkersNavigation"
+        ],
         "silent": true
       },
       {
         "before": ["<leader>", "e"],
         "commands": ["editor.action.showHover"],
+        "silent": true
+      },
+      {
+        "before": ["<C-h>"],
+        "commands": ["workbench.action.focusLeftGroup"],
+        "silent": true
+      },
+      {
+        "before": ["<C-l>"],
+        "commands": ["workbench.action.focusRightGroup"],
+        "silent": true
+      },
+      {
+        "before": ["<C-j>"],
+        "commands": ["workbench.action.focusBelowGroup"],
+        "silent": true
+      },
+      {
+        "before": ["<C-k>"],
+        "commands": ["workbench.action.focusAboveGroup"],
         "silent": true
       }
     ],
