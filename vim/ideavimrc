@@ -70,8 +70,8 @@ inoremap        <C-F> <Right>
 " https://towardsdatascience.com/the-essential-ideavim-remaps-291d4cd3971b
 nnoremap ]l :action GotoNextError<CR>
 nnoremap [l :action GotoPreviousError<CR>
-nnoremap ]e :action GotoNextError<CR>
-nnoremap [e :action GotoPreviousError<CR>
+nnoremap ]d :action GotoNextError<CR>
+nnoremap [d :action GotoPreviousError<CR>
 " Show error popup when on error.
 nnoremap <Leader>e :action ShowErrorDescription<CR>
 nnoremap ]b :action NextTab<CR>
@@ -261,8 +261,8 @@ set cursorline
 " Maintain more text around the cursor
 set scrolloff=3
 
-set wrap
-set textwidth=80
+" set wrap
+" set textwidth=80
 
 " Hidden buffer support. I think this lets us navigate away from a buffer,
 " even when doing ':bnext', without giving the 'override with !' error.

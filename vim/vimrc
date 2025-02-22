@@ -1,6 +1,6 @@
-set nocompatible
+" set nocompatible
 
-set t_Co=256
+" set t_Co=256
 
 " ---------- plugins ---------
 
@@ -161,10 +161,10 @@ set t_Co=256
 " end vim-plug section
 
 " Don't use default titlecase mappings, as they interfere with gt/gT for tabs
-let g:titlecase_map_keys = 0
-nmap <leader>gt <Plug>Titlecase
-vmap <leader>gt <Plug>Titlecase
-nmap <leader>gT <Plug>TitlecaseLine
+" let g:titlecase_map_keys = 0
+" nmap <leader>gt <Plug>Titlecase
+" vmap <leader>gt <Plug>Titlecase
+" nmap <leader>gT <Plug>TitlecaseLine
 
 " google/vim-codefmt settings. This is the example from their readme. Haven't
 " enabled them for now, so this is a reference.
@@ -183,340 +183,340 @@ nmap <leader>gT <Plug>TitlecaseLine
 " augroup END
 
 " Send data to tmux. Seen at :help vimux
-function! VimuxSend()
-  call VimuxRunCommand(@v, 0)
-endfunction
+" function! VimuxSend()
+"   call VimuxRunCommand(@v, 0)
+" endfunction
 
 " If text is selected, save it in the v buffer and send that buffer it to tmux
-vmap <LocalLeader>ts "vy :call VimuxSend()<CR>
+" vmap <LocalLeader>ts "vy :call VimuxSend()<CR>
 
 " Select current paragraph and send it to tmux
-nmap <LocalLeader>ts vip<LocalLeader>ts<CR>
+" nmap <LocalLeader>ts vip<LocalLeader>ts<CR>
 
 " We need this for rainbow. This lets us use `:RainbowToggle` to turn it on.
-let g:rainbow_active = 0
-
-" All the cpp highlighting
-let g:cpp_class_scope_highlight = 1
-let g:cpp_member_variable_highlight = 1
-let g:cpp_class_decl_highlight = 1
-let g:cpp_posix_standard = 1
-let g:cpp_experimental_template_highlight = 1
-let g:cpp_concepts_highlight = 1
-
-" For Yggdrot/intentline, stop messing with json and markdown hiding things
-autocmd Filetype json let g:indentLine_setConceal = 0
-autocmd Filetype markdown let g:indentLine_setConceal = 0
+" let g:rainbow_active = 0
+"
+" " All the cpp highlighting
+" let g:cpp_class_scope_highlight = 1
+" let g:cpp_member_variable_highlight = 1
+" let g:cpp_class_decl_highlight = 1
+" let g:cpp_posix_standard = 1
+" let g:cpp_experimental_template_highlight = 1
+" let g:cpp_concepts_highlight = 1
+"
+" " For Yggdrot/intentline, stop messing with json and markdown hiding things
+" autocmd Filetype json let g:indentLine_setConceal = 0
+" autocmd Filetype markdown let g:indentLine_setConceal = 0
 
 
 " Better completion with UltiSnips
 " make YCM compatible with UltiSnips (using supertab). Later I stumbled across
 " this, which looks like the source where I originally got it:
 " https://github.com/SirVer/ultisnips/issues/512
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
+" let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+" let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+" let g:SuperTabDefaultCompletionType = '<C-n>'
 " Stop including the preview window, because it is slow to open and then keeps
 " things slow for a bit.
-let g:ycm_add_preview_to_completeopt = 0
+" let g:ycm_add_preview_to_completeopt = 0
 " Populate the location list with diagnostics. Move via :lnext and :lprevious.
-let g:ycm_always_populate_location_list = 1
+" let g:ycm_always_populate_location_list = 1
 " Close the preview window with documentation after we no longer need it.
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_autoclose_preview_window_after_completion = 1
+" let g:ycm_autoclose_preview_window_after_insertion = 1
+" let g:ycm_autoclose_preview_window_after_completion = 1
 " Try YCM mappings
 " noremap <leader>tr :YcmRestartServer
 " noremap <leader>tc :YcmForceCompileAndDiagnostics<cr>
 " Show popup
-nmap <leader>tp <Plug>(YCMHover)
+" nmap <leader>tp <Plug>(YCMHover)
 " Show the full error. 'L' because I think of these as entries in the location
 " list.
-noremap <leader>tl :YcmShowDetailedDiagnostic<cr>
-noremap <leader>tL :YcmDiags<cr>
-noremap <leader>tg :YcmCompleter GoTo<cr>
-noremap <leader>td :YcmCompleter GoToDefinition<cr>
-noremap <leader>tD :YcmCompleter GoToDeclaration<cr>
-noremap <leader>tt :YcmCompleter GetType<cr>
-noremap <leader>tp :YcmCompleter GetParent<cr>
-noremap <leader>tf :YcmCompleter FixIt<cr>:ClangFormat<cr>
+" noremap <leader>tl :YcmShowDetailedDiagnostic<cr>
+" noremap <leader>tL :YcmDiags<cr>
+" noremap <leader>tg :YcmCompleter GoTo<cr>
+" noremap <leader>td :YcmCompleter GoToDefinition<cr>
+" noremap <leader>tD :YcmCompleter GoToDeclaration<cr>
+" noremap <leader>tt :YcmCompleter GetType<cr>
+" noremap <leader>tp :YcmCompleter GetParent<cr>
+" noremap <leader>tf :YcmCompleter FixIt<cr>:ClangFormat<cr>
 " Disable the default hover popup, which seems to slow down vim.
-let g:ycm_auto_hover = ""
-nmap <leader>d <Plug>(YCMHover)
+" let g:ycm_auto_hover = ""
+" nmap <leader>d <Plug>(YCMHover)
 
-noremap <leader>c  :YcmForceCompileAndDiagnostics<cr>
+" noremap <leader>c  :YcmForceCompileAndDiagnostics<cr>
 
 " let g:UltiSnipsListSnippets = '<c-tab>'
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
+" let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<tab>"
+" let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+" let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
 
 " Don't use the default vim-lsc mappings, which override too many other things.
 " Dart language server stuff
-let g:lsc_server_commands = {'dart': 'dart_language_server'}
+" let g:lsc_server_commands = {'dart': 'dart_language_server'}
 " let g:lsc_server_commands = {
 "     \ 'dart': 'dart_language_server',
 "     \ 'html': 'dart_language_server',
 "     \}
-let g:lsc_auto_map = {
-    \ 'GoToDefinition': '<C-]>',
-    \ 'FindReferences': 'gr',
-    \ 'FindImplementations': 'gI',
-    \ 'FindCodeActions': 'ga',
-    \ 'DocumentSymbol': 'go',
-    \ 'WorkspaceSymbol': 'gS',
-    \ 'ShowHover': 'K',
-    \ 'Completion': 'completefunc',
-    \}
+" let g:lsc_auto_map = {
+"     \ 'GoToDefinition': '<C-]>',
+"     \ 'FindReferences': 'gr',
+"     \ 'FindImplementations': 'gI',
+"     \ 'FindCodeActions': 'ga',
+"     \ 'DocumentSymbol': 'go',
+"     \ 'WorkspaceSymbol': 'gS',
+"     \ 'ShowHover': 'K',
+"     \ 'Completion': 'completefunc',
+"     \}
 
 " Change the Rg command to only use the paths we define in $FZF_SOURCE.
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   join(['rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), '$(${FZF_SOURCE})'], " "), 1,
-  \   fzf#vim#with_preview(), <bang>0)
+" command! -bang -nargs=* Rg
+"   \ call fzf#vim#grep(
+"   \   join(['rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), '$(${FZF_SOURCE})'], " "), 1,
+"   \   fzf#vim#with_preview(), <bang>0)
 " Command for fzf stolen from someone else. Their description:
 " This maps \ff in command-line mode to invoke fzf file search and lets you
 " insert the filename in any vim command. So I can type :sp ,ff and then the
 " filename. or :vs or :tabnew. So this gives a lot of flexibility wrt to how
 " you want to open the file.
-cnoremap <Leader>ff <C-R>=fzf#run({'down': '40%'})<CR><CR>
+" cnoremap <Leader>ff <C-R>=fzf#run({'down': '40%'})<CR><CR>
 " This provides "FzfFiles" instead of "Files"
 " let g:fzf_command_prefix = 'Fzf'
 " Open fzf with <C-p>, like ctrlp.
-nnoremap <c-p> :FZF<cr>
-" Various FZF shortcuts
-" eg this opens buffers with \b
-nnoremap <Leader>b :Buffers<cr>
-nnoremap <leader>F :FZF<cr>
-nnoremap <leader>l :Lines<cr>
-nnoremap <leader>L :Rg!<cr>
-nnoremap <leader>M :Maps<cr>
-" nnoremap <leader>r :Rg<cr>
-nnoremap <leader>R :Rg!<cr>
-nnoremap <leader>h :History<cr>
-
-" Rather than open empty splits, open with the existing file.
-nnoremap <c-w>n :split<cr>
-nnoremap <c-w>v :vsplit<cr>
-
-" Use dispatch to async tests run via vim-test
-let test#strategy = "dispatch"
-
-" Add a :Reload command to reload the buffer. This is the same behavior as
-" :edit but I always forget about it.
-command! Reload execute "edit"
-
-" Align things using ga as a motion for easy-align.
-" ga used to inspect characters.
-" Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga <Plug>(EasyAlign)
-" " Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
-
-" Ignore some directories when using ctrlp
-let g:ctrlp_custom_ignore = 'node_modules\|bower_components\|DS_Store\|git'
-" If a file is already open, open in a new pane rather than switch to it.
-let g:ctrlp_switch_buffer = ''
-
-" Color frontmatter in markdown files.
-" let g:vim_markdown_math = 1
-let g:markdown_enable_insert_mode_mappings = 0
-
-" Delay the peekaboo register opening after hitting "
-let g:peekaboo_delay = 1500
-
-" Treat all *.md files as markdown, not just README.md. Otherwise vim by
-" default treats *.md files as modula-2: https://github.com/tpope/vim-markdown
-augroup markdown
-  autocmd!
-  autocmd BufNewFile,BufRead *.md,*.markdown setlocal filetype=markdown
-  autocmd BufNewFile,BufRead *.md,*.markdown setlocal spell
-  " Open table of contents with <leader>lt
-  autocmd Filetype markdown map <buffer> <leader>lt :Toc<CR>
-  " highlight bold
-  autocmd FileType markdown highlight htmlBold ctermbg=60
-  " View markdown in Marked 2 with <leader>lv. This is lo to mirror the view
-  " functionality in my LaTeX plugin.
-  autocmd FileType markdown map <buffer> <leader>lv :silent! !open -a Marked\ 2 % > /dev/null &<cr>:redraw!<cr>
-
-  " gabrielelana/vim-markdown override textwidth to 0 for some reason, so re-set
-  " it here to get back wrapping.
-  autocmd Filetype markdown setlocal textwidth=80
-augroup END
-
-" Use system clipboard for pasting and yanking.
-" set clipboard=unnamed
-" Don't let easy clip overwrite the mark function.
-" let g:EasyClipUseCutDefaults = 0
-" Remap mark to gm, allowing easyclip to use m for move
-nnoremap gm m
-" Set paste by default when pasting from insert and command mode.
-imap <c-v> <plug>EasyClipInsertModePaste
-cmap <c-v> <plug>EasyClipCommandModePaste
-
-" YouCompleteMe (YCM)
-" Let eclim and YouCompleteMe play nice.
-" let g:EclimCompletionMethod = 'omnifunc'
-" From: https://github.com/Valloric/YouCompleteMe/issues/53 
-" Turn off YCM
-" nnoremap <leader>y :let g:ycm_auto_trigger=0<CR>
-" Turn on YCM
-" nnoremap <leader>Y :let g:ycm_auto_trigger=1<CR>
-
-" Use one space instead of two when fixing up after sentences.
-set nojoinspaces
-
-" Typescript
-" jd to Jump to Definition
-" nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
-" if !exists("g:ycm_semantic_triggers")
+" nnoremap <c-p> :FZF<cr>
+" " Various FZF shortcuts
+" " eg this opens buffers with \b
+" nnoremap <Leader>b :Buffers<cr>
+" nnoremap <leader>F :FZF<cr>
+" nnoremap <leader>l :Lines<cr>
+" nnoremap <leader>L :Rg!<cr>
+" nnoremap <leader>M :Maps<cr>
+" " nnoremap <leader>r :Rg<cr>
+" nnoremap <leader>R :Rg!<cr>
+" nnoremap <leader>h :History<cr>
+"
+" " Rather than open empty splits, open with the existing file.
+" nnoremap <c-w>n :split<cr>
+" nnoremap <c-w>v :vsplit<cr>
+"
+" " Use dispatch to async tests run via vim-test
+" let test#strategy = "dispatch"
+"
+" " Add a :Reload command to reload the buffer. This is the same behavior as
+" " :edit but I always forget about it.
+" " command! Reload execute "edit"
+"
+" " Align things using ga as a motion for easy-align.
+" " ga used to inspect characters.
+" " Start interactive EasyAlign in visual mode (e.g. vipga)
+" " xmap ga <Plug>(EasyAlign)
+" " " Start interactive EasyAlign for a motion/text object (e.g. gaip)
+" " nmap ga <Plug>(EasyAlign)
+"
+" " Ignore some directories when using ctrlp
+" " let g:ctrlp_custom_ignore = 'node_modules\|bower_components\|DS_Store\|git'
+" " If a file is already open, open in a new pane rather than switch to it.
+" " let g:ctrlp_switch_buffer = ''
+"
+" " Color frontmatter in markdown files.
+" " let g:vim_markdown_math = 1
+" " let g:markdown_enable_insert_mode_mappings = 0
+"
+" " Delay the peekaboo register opening after hitting "
+" " let g:peekaboo_delay = 1500
+"
+" " Treat all *.md files as markdown, not just README.md. Otherwise vim by
+" " default treats *.md files as modula-2: https://github.com/tpope/vim-markdown
+" " augroup markdown
+" "   autocmd!
+" "   autocmd BufNewFile,BufRead *.md,*.markdown setlocal filetype=markdown
+" "   autocmd BufNewFile,BufRead *.md,*.markdown setlocal spell
+" "   " Open table of contents with <leader>lt
+" "   autocmd Filetype markdown map <buffer> <leader>lt :Toc<CR>
+" "   " highlight bold
+" "   autocmd FileType markdown highlight htmlBold ctermbg=60
+" "   " View markdown in Marked 2 with <leader>lv. This is lo to mirror the view
+" "   " functionality in my LaTeX plugin.
+" "   autocmd FileType markdown map <buffer> <leader>lv :silent! !open -a Marked\ 2 % > /dev/null &<cr>:redraw!<cr>
+" "
+" "   " gabrielelana/vim-markdown override textwidth to 0 for some reason, so re-set
+" "   " it here to get back wrapping.
+" "   autocmd Filetype markdown setlocal textwidth=80
+" " augroup END
+"
+" " Use system clipboard for pasting and yanking.
+" " set clipboard=unnamed
+" " Don't let easy clip overwrite the mark function.
+" " let g:EasyClipUseCutDefaults = 0
+" " Remap mark to gm, allowing easyclip to use m for move
+" " nnoremap gm m
+" " Set paste by default when pasting from insert and command mode.
+" " imap <c-v> <plug>EasyClipInsertModePaste
+" " cmap <c-v> <plug>EasyClipCommandModePaste
+"
+" " YouCompleteMe (YCM)
+" " Let eclim and YouCompleteMe play nice.
+" " let g:EclimCompletionMethod = 'omnifunc'
+" " From: https://github.com/Valloric/YouCompleteMe/issues/53 
+" " Turn off YCM
+" " nnoremap <leader>y :let g:ycm_auto_trigger=0<CR>
+" " Turn on YCM
+" " nnoremap <leader>Y :let g:ycm_auto_trigger=1<CR>
+"
+" " Use one space instead of two when fixing up after sentences.
+" " set nojoinspaces
+"
+" " Typescript
+" " jd to Jump to Definition
+" " nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
+" " if !exists("g:ycm_semantic_triggers")
+" "   let g:ycm_semantic_triggers = {}
+" " endif
+" " let g:ycm_semantic_triggers['typescript'] = ['.']
+" " augroup FiletypeGroup
+" "   autocmd!
+" "   " .ts is a Typescript file
+" "   au BufNewFile,BufRead *.ts set filetype=typescript
+" " augroup END
+"
+" " typescript and jsx, based on the peitalin/vim-jsx-typescript readme.
+" " set filetypes as typescript.tsx
+" autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
+"
+" " vim latex
+" " don't complain if we're not using +clientserver
+" let g:vimtex_echo_ignore_wait = 1
+" " autocomplete citations with ycm. :h vimtex-complete-youcompleteme
+" if !exists('g:ycm_semantic_triggers')
 "   let g:ycm_semantic_triggers = {}
 " endif
-" let g:ycm_semantic_triggers['typescript'] = ['.']
-augroup FiletypeGroup
-  autocmd!
-  " .ts is a Typescript file
-  au BufNewFile,BufRead *.ts set filetype=typescript
-augroup END
-
-" typescript and jsx, based on the peitalin/vim-jsx-typescript readme.
-" set filetypes as typescript.tsx
-autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
-
-" vim latex
-" don't complain if we're not using +clientserver
-let g:vimtex_echo_ignore_wait = 1
-" autocomplete citations with ycm. :h vimtex-complete-youcompleteme
-if !exists('g:ycm_semantic_triggers')
-  let g:ycm_semantic_triggers = {}
-endif
-let g:ycm_semantic_triggers.tex = [
-      \ 're!\\[A-Za-z]*cite[A-Za-z]*(\[[^]]*\]){0,2}{[^}]*',
-      \ 're!\\[A-Za-z]*ref({[^}]*|range{([^,{}]*(}{)?))',
-      \ 're!\\hyperref\[[^]]*',
-      \ 're!\\includegraphics\*?(\[[^]]*\]){0,2}{[^}]*',
-      \ 're!\\(include(only)?|input){[^}]*',
-      \ 're!\\\a*(gls|Gls|GLS)(pl)?\a*(\s*\[[^]]*\]){0,2}\s*\{[^}]*',
-      \ 're!\\includepdf(\s*\[[^]]*\])?\s*\{[^}]*',
-      \ 're!\\includestandalone(\s*\[[^]]*\])?\s*\{[^}]*',
-      \ ]
-" Open using skim
-let g:vimtex_view_general_viewer
-      \ = '/Applications/Skim.app/Contents/SharedSupport/displayline'
-let g:vimtex_view_general_options = '-r @line @pdf @tex'
-" Put build files in gen
-" let g:vimtex_latexmk_build_dir = './generated'
-
-" Tagbar
-let g:tagbar_sort = 0
-" let g:tagbar_compact = 1
-let g:tagbar_autofocus = 1
-let g:tagbar_left = 1
-
-" JavaScript highlighting
-let g:javascript_plugin_jsdoc = 1
-
-" PythonMode
-" This comman will prevent the documentation window opening at all:
-" set completeopt=menu
-autocmd FileType python setlocal shiftwidth=2 tabstop=2
-
-" Don't move the cursor when you join lines with J
-:nnoremap <silent> J :let p=getpos('.')<bar>join<bar>call setpos('.', p)<cr>
-
-" Command-T
-let g:CommandTMaxFiles=999999
-
-" Airline
-let g:airline_theme='murmur'
-" Don't want to require patched font, so change separator.
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
-" Turn off file type, which is useless. Keep tagbar and virtual env, like
-" default
-let g:airline_section_x = airline#section#create_right(['tagbar', 'virtualenv'])
-" Turn off file type and file encoding
-let g:airline_section_y = 0
-" Handle whitespace errors with airline
-autocmd FileType * unlet! g:airline#extensions#whitespace#checks
-autocmd FileType markdown let g:airline#extensions#whitespace#checks = [ 'indent' ]
-" Enable Tabline
-let g:airline#extensions#tabline#enabled = 1
-" Show buffer numbers
-let g:airline#extensions#tabline#buffer_nr_show = 1
-
-" ---------- settings ---------
-" We'll use a highlight color column if it has it.
-if exists('+colorcolumn')
-	set colorcolumn=81
-else
-	au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>81v.\+', -1)
-endif
-
-" Change the color for better-whitespace plugin
-let g:better_whitespace_ctermcolor='darkblue'
-let g:better_whitespace_filetypes_blacklist=['diff', 'gitcommit', 'unite', 'qf', 'help']
-
-" <C-a> and <C-x> by default interpret leading-zero numbers as octal. I almost
-" never work with octal, so this will make all numbers be interpreted as
-" decimal.
-set nrformats=
-
-set mouse=a
-
-" Filetype highlighting
-filetype on
-filetype plugin indent on
-syntax on
-
-" Turn on the matchit plugin that will enable jumping to pairs of things like
-" matching open and close xml tags with %.
-" runtime macros/matchit.vim
-
-" Show what you are typing mid-command
-set showcmd
-
-" Indentation/tabs
-set autoindent
-" Turn off showing tabs. Only want this for go, but being lazy for now.
-" set listchars=tab:│-
-" set listchars=tab:\│\ ,trail:-,extends:>,precedes:<,nbsp:+
-" set list
-" highlight SpecialKey ctermfg=blue ctermbg=blue
-
-" Settings for the ALE linter.
-let g:ale_linters = {
-\   'javascript': ['eslint'],
-\   }
-" Mappings in the style of unimpaired-next
-nmap <silent> [W <Plug>(ale_first)
-nmap <silent> [w <Plug>(ale_previous)
-nmap <silent> ]w <Plug>(ale_next)
-nmap <silent> ]W <Plug>(ale_last)
+" let g:ycm_semantic_triggers.tex = [
+"       \ 're!\\[A-Za-z]*cite[A-Za-z]*(\[[^]]*\]){0,2}{[^}]*',
+"       \ 're!\\[A-Za-z]*ref({[^}]*|range{([^,{}]*(}{)?))',
+"       \ 're!\\hyperref\[[^]]*',
+"       \ 're!\\includegraphics\*?(\[[^]]*\]){0,2}{[^}]*',
+"       \ 're!\\(include(only)?|input){[^}]*',
+"       \ 're!\\\a*(gls|Gls|GLS)(pl)?\a*(\s*\[[^]]*\]){0,2}\s*\{[^}]*',
+"       \ 're!\\includepdf(\s*\[[^]]*\])?\s*\{[^}]*',
+"       \ 're!\\includestandalone(\s*\[[^]]*\])?\s*\{[^}]*',
+"       \ ]
+" " Open using skim
+" let g:vimtex_view_general_viewer
+"       \ = '/Applications/Skim.app/Contents/SharedSupport/displayline'
+" let g:vimtex_view_general_options = '-r @line @pdf @tex'
+" " Put build files in gen
+" " let g:vimtex_latexmk_build_dir = './generated'
+"
+" " Tagbar
+" let g:tagbar_sort = 0
+" " let g:tagbar_compact = 1
+" let g:tagbar_autofocus = 1
+" let g:tagbar_left = 1
+"
+" " JavaScript highlighting
+" let g:javascript_plugin_jsdoc = 1
+"
+" " PythonMode
+" " This comman will prevent the documentation window opening at all:
+" " set completeopt=menu
+" autocmd FileType python setlocal shiftwidth=2 tabstop=2
+"
+" " Don't move the cursor when you join lines with J
+" :nnoremap <silent> J :let p=getpos('.')<bar>join<bar>call setpos('.', p)<cr>
+"
+" " Command-T
+" let g:CommandTMaxFiles=999999
+"
+" " Airline
+" let g:airline_theme='murmur'
+" " Don't want to require patched font, so change separator.
+" let g:airline_left_sep = ''
+" let g:airline_right_sep = ''
+" " Turn off file type, which is useless. Keep tagbar and virtual env, like
+" " default
+" let g:airline_section_x = airline#section#create_right(['tagbar', 'virtualenv'])
+" " Turn off file type and file encoding
+" let g:airline_section_y = 0
+" " Handle whitespace errors with airline
+" autocmd FileType * unlet! g:airline#extensions#whitespace#checks
+" autocmd FileType markdown let g:airline#extensions#whitespace#checks = [ 'indent' ]
+" " Enable Tabline
+" let g:airline#extensions#tabline#enabled = 1
+" " Show buffer numbers
+" let g:airline#extensions#tabline#buffer_nr_show = 1
+"
+" " ---------- settings ---------
+" " We'll use a highlight color column if it has it.
+" if exists('+colorcolumn')
+" 	set colorcolumn=81
+" else
+" 	au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>81v.\+', -1)
+" endif
+"
+" " Change the color for better-whitespace plugin
+" let g:better_whitespace_ctermcolor='darkblue'
+" let g:better_whitespace_filetypes_blacklist=['diff', 'gitcommit', 'unite', 'qf', 'help']
+"
+" " <C-a> and <C-x> by default interpret leading-zero numbers as octal. I almost
+" " never work with octal, so this will make all numbers be interpreted as
+" " decimal.
+" set nrformats=
+"
+" set mouse=a
+"
+" " Filetype highlighting
+" filetype on
+" filetype plugin indent on
+" syntax on
+"
+" " Turn on the matchit plugin that will enable jumping to pairs of things like
+" " matching open and close xml tags with %.
+" " runtime macros/matchit.vim
+"
+" " Show what you are typing mid-command
+" set showcmd
+"
+" " Indentation/tabs
+" set autoindent
+" " Turn off showing tabs. Only want this for go, but being lazy for now.
+" " set listchars=tab:│-
+" " set listchars=tab:\│\ ,trail:-,extends:>,precedes:<,nbsp:+
+" " set list
+" " highlight SpecialKey ctermfg=blue ctermbg=blue
+"
+" " Settings for the ALE linter.
+" let g:ale_linters = {
+" \   'javascript': ['eslint'],
+" \   }
+" " Mappings in the style of unimpaired-next
+" nmap <silent> [W <Plug>(ale_first)
+" nmap <silent> [w <Plug>(ale_previous)
+" nmap <silent> ]w <Plug>(ale_next)
+" nmap <silent> ]W <Plug>(ale_last)
 
 " Grepper configuration.
-let g:grepper = {}
-let g:grepper.tools = ['grep', 'git', 'rg']
-" Search for the current word
-nnoremap <Leader>* :Grepper -cword -noprompt<CR>
-" Search for the current selection
-nmap gs <plug>(GrepperOperator)
-xmap gs <plug>(GrepperOperator)
+" let g:grepper = {}
+" let g:grepper.tools = ['grep', 'git', 'rg']
+" " Search for the current word
+" nnoremap <Leader>* :Grepper -cword -noprompt<CR>
+" " Search for the current selection
+" nmap gs <plug>(GrepperOperator)
+" xmap gs <plug>(GrepperOperator)
 
 " Delete trailing whitespace with <leader><space>
 " Taken from: http://sartak.org/2011/03/end-of-line-whitespace-in-vim.html
-function! <SID>StripTrailingWhitespace()
-    " Preparation: save last search, and cursor position.
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
-    " Do the business:
-    %s/\s\+$//e
-    " Clean up: restore previous search history, and cursor position
-    let @/=_s
-    call cursor(l, c)
-endfunction
-nmap <silent> <Leader><space> :call <SID>StripTrailingWhitespace()<CR>
+" function! <SID>StripTrailingWhitespace()
+"     " Preparation: save last search, and cursor position.
+"     let _s=@/
+"     let l = line(".")
+"     let c = col(".")
+"     " Do the business:
+"     %s/\s\+$//e
+"     " Clean up: restore previous search history, and cursor position
+"     let @/=_s
+"     call cursor(l, c)
+" endfunction
+" nmap <silent> <Leader><space> :call <SID>StripTrailingWhitespace()<CR>
 
 " 2 spaces by default
 set tabstop=2
@@ -577,187 +577,187 @@ hi Comment      ctermfg=48 guifg=#808080
 set guifont=Monaco:h12
 
 " Highlight current line
-set cursorline
-
-" Statusline
-set laststatus=2 " Show statusline even when there is a single window
-set statusline=%F%m%r%h%w%{fugitive#statusline()}
-set statusline+=[%l,%v][%p%%]
-
-" Maintain more text around the cursor
-set scrolloff=3
-
-" Show line numbers
-set number
-
-" More intelligent backspace and left/right movement
-set backspace=eol,start,indent
-set whichwrap=b,s,h,l,<,>,[,]
-
-set wrap
-set textwidth=80
-
-" Wrap git commit messages as 72 charcters. This is supposed to come with both
-" fugitive and these days stock vim, but for whatever reason I'm getting
-" highlighting at 50 characters in the first line, as expected, but not commit
-" message wrapping.
-au FileType gitcommit setlocal tw=72
-au FileType gitcommit setlocal colorcolumn=73
-
-" Wrap go at 100.
-au FileType go setlocal tw=100
-au FileType go setlocal colorcolumn=101
-
-" Hidden buffer support. I think this lets us navigate away from a buffer,
-" even when doing ':bnext', without giving the 'override with !' error.
-set hidden
-
-" Disable annoying messages, swap file already exists
-set autoread
-set shortmess+=IA
-
-" Longer history
-set history=1000
-" By default the up and down arrows filter commands in the history--eg if you
-" type ':e ' and then hit up, you'll see only the previous commands that
-" started with that. If you do that and then hit <C-p>, however, you won't. So
-" let's fix that behavior.
-cnoremap <C-p> <Up>
-cnoremap <C-n> <Down>
-
-" Case-smart searching (case-sensitive only if capital letter in search)
-set ignorecase
-set smartcase
-
-" Incremental search
-set incsearch
-
-" And we're going to add commands that remap & to :&& in normal and visual
-" modes. & normally reruns the substitution without the same flags, but this
-" isn't super useful, so per the advice of Practical Vim I'm going to remap it
-" to just redo the same thing.
-nnoremap & :&&<CR>
-xnoremap & :&&<CR>
-
-" We're also going to add a toggle for highlighting search to c-l.
-" According to Practical Vim, normally <C-l> clears and redraws the creen.
-" This mapping builds on top of the usual behavior by muting search
-" highlighting. FOR WHATEVER REASON THIS IS NOT WORKING
-nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
-
-" Tab completion
-set wildmode=longest,list
-set wildignore=*.pyc
-
-" Visual bell instead of beep
-set visualbell
-
-" keep backups and temp files in ~.vim/
-set backup
-set backupdir=~/.vim/backup
-set directory=~/.vim/tmp
-
-" set default split opening position to be below and to the right of currently active split
-set splitbelow
-set splitright
-
-" Tags - recursively check parent directories for tags file
-set tags+=./.tags,.tags,../.tags,../../.tags
-
-" Filetypes
-autocmd BufEnter *.mako setlocal filetype=html
-
-" Unicode stuff. This is taken from the following two places, both of which
-" have good explanations:
-" http://vim.wikia.com/wiki/Working_with_Unicode
-" http://stackoverflow.com/questions/16507777/vim-set-encoding-and-fileencoding-utf-8
-if has("multi_byte")
-	if &termencoding == ""
-		let &termencoding = &encoding
-	endif
-	set encoding=utf-8
-	setglobal fileencoding=utf-8
-	set fileencodings=ucs-bom,utf-8,latin1
-endif
-
-" Make warnings more noticeable, specially to not miss search wrap
-hi WarningMsg ctermfg=white ctermbg=red guifg=White guibg=Red gui=None
-
-" This is a function from Practical Vim that executes something for every item
-" in the argument list. It is also available as a plugin, with README
-" information and things here (also see the books for usage):
-" https://github.com/nelstrom/vim-qargs
-command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
-function! QuickfixFilenames()
-  " Building a hash ensures we get each buffer only once
-  let buffer_numbers = {}
-  for quickfix_item in getqflist()
-    let buffer_numbers[quickfix_item['bufnr']] = bufname(quickfix_item['bufnr'])
-  endfor
-  return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
-endfunction
-
-" ---------- mappings ---------
-
-" Make %% a shortcut for %:h on the command line. Normally if you do 
-" ':edit %<Tab>' it will show you the relative path to the file, including the
-" filename. If you don't want the filename, you do ':edit %:h<Tab>'. This
-" remapping will give allow us to get the same functionality by doing
-" ':edit %%'.
-cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
-
-" Typos and things I don't want to do
-nmap Q <ESC>
-nmap :Q :q
-nmap :W :w
-nmap :WQ :wq
-
-" Toggle fix quix and location list
-function! GetBufferList()
-  redir =>buflist
-  silent! ls!
-  redir END
-  return buflist
-endfunction
-
-function! ToggleList(bufname, pfx)
-  let buflist = GetBufferList()
-  for bufnum in map(filter(split(buflist, '\n'), 'v:val =~ "'.a:bufname.'"'), 'str2nr(matchstr(v:val, "\\d\\+"))')
-    if bufwinnr(bufnum) != -1
-      exec(a:pfx.'close')
-      return
-    endif
-  endfor
-  if a:pfx == 'l' && len(getloclist(0)) == 0
-      echohl ErrorMsg
-      echo "Location List is Empty."
-      return
-  endif
-  let winnr = winnr()
-  exec(a:pfx.'open')
-  if winnr() != winnr
-    wincmd p
-  endif
-endfunction
-
-" Function key shortcuts
-" map <F1> <nop>
-" map <F3> :set hlsearch! hlsearch?<CR>
-" map <C-n> :TagbarToggle<CR>
-" map <F7> :NERDTreeToggle<CR>
-" map <F8> :TagbarToggle<cr>
-" map <F9> :!/usr/bin/ctags -L <(find . -name '*.py') --fields=+iaS --python-kinds=-i --sort=yes --extra=+q<cr>
-
-" Leader shortcuts
-" open current buffer in new tab
-map <Leader>s :tab split<CR>
-map <Leader>n :tabnew<CR>
-map <Leader>m :tabm
-" map <Leader>l :lclose<CR>
-" map <Leader>L :lopen<CR>
-" map <Leader>c :copen<CR>
-" map <Leader>C :cclose<CR>
-map <Leader>i Oimport pdb; pdb.set_trace()<ESC>
-
-" Remove the delay in ESC leaving a mode (ttimeoutlen)
-set timeoutlen=1000 ttimeoutlen=0
+" set cursorline
+"
+" " Statusline
+" set laststatus=2 " Show statusline even when there is a single window
+" set statusline=%F%m%r%h%w%{fugitive#statusline()}
+" set statusline+=[%l,%v][%p%%]
+"
+" " Maintain more text around the cursor
+" set scrolloff=3
+"
+" " Show line numbers
+" set number
+"
+" " More intelligent backspace and left/right movement
+" set backspace=eol,start,indent
+" set whichwrap=b,s,h,l,<,>,[,]
+"
+" set wrap
+" set textwidth=80
+"
+" " Wrap git commit messages as 72 charcters. This is supposed to come with both
+" " fugitive and these days stock vim, but for whatever reason I'm getting
+" " highlighting at 50 characters in the first line, as expected, but not commit
+" " message wrapping.
+" au FileType gitcommit setlocal tw=72
+" au FileType gitcommit setlocal colorcolumn=73
+"
+" " Wrap go at 100.
+" au FileType go setlocal tw=100
+" au FileType go setlocal colorcolumn=101
+"
+" " Hidden buffer support. I think this lets us navigate away from a buffer,
+" " even when doing ':bnext', without giving the 'override with !' error.
+" set hidden
+"
+" " Disable annoying messages, swap file already exists
+" set autoread
+" set shortmess+=IA
+"
+" " Longer history
+" set history=1000
+" " By default the up and down arrows filter commands in the history--eg if you
+" " type ':e ' and then hit up, you'll see only the previous commands that
+" " started with that. If you do that and then hit <C-p>, however, you won't. So
+" " let's fix that behavior.
+" cnoremap <C-p> <Up>
+" cnoremap <C-n> <Down>
+"
+" " Case-smart searching (case-sensitive only if capital letter in search)
+" set ignorecase
+" set smartcase
+"
+" " Incremental search
+" set incsearch
+"
+" " And we're going to add commands that remap & to :&& in normal and visual
+" " modes. & normally reruns the substitution without the same flags, but this
+" " isn't super useful, so per the advice of Practical Vim I'm going to remap it
+" " to just redo the same thing.
+" nnoremap & :&&<CR>
+" xnoremap & :&&<CR>
+"
+" " We're also going to add a toggle for highlighting search to c-l.
+" " According to Practical Vim, normally <C-l> clears and redraws the creen.
+" " This mapping builds on top of the usual behavior by muting search
+" " highlighting. FOR WHATEVER REASON THIS IS NOT WORKING
+" nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+"
+" " Tab completion
+" set wildmode=longest,list
+" set wildignore=*.pyc
+"
+" " Visual bell instead of beep
+" set visualbell
+"
+" " keep backups and temp files in ~.vim/
+" set backup
+" set backupdir=~/.vim/backup
+" set directory=~/.vim/tmp
+"
+" " set default split opening position to be below and to the right of currently active split
+" set splitbelow
+" set splitright
+"
+" " Tags - recursively check parent directories for tags file
+" set tags+=./.tags,.tags,../.tags,../../.tags
+"
+" " Filetypes
+" autocmd BufEnter *.mako setlocal filetype=html
+"
+" " Unicode stuff. This is taken from the following two places, both of which
+" " have good explanations:
+" " http://vim.wikia.com/wiki/Working_with_Unicode
+" " http://stackoverflow.com/questions/16507777/vim-set-encoding-and-fileencoding-utf-8
+" if has("multi_byte")
+" 	if &termencoding == ""
+" 		let &termencoding = &encoding
+" 	endif
+" 	set encoding=utf-8
+" 	setglobal fileencoding=utf-8
+" 	set fileencodings=ucs-bom,utf-8,latin1
+" endif
+"
+" " Make warnings more noticeable, specially to not miss search wrap
+" hi WarningMsg ctermfg=white ctermbg=red guifg=White guibg=Red gui=None
+"
+" " This is a function from Practical Vim that executes something for every item
+" " in the argument list. It is also available as a plugin, with README
+" " information and things here (also see the books for usage):
+" " https://github.com/nelstrom/vim-qargs
+" command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
+" function! QuickfixFilenames()
+"   " Building a hash ensures we get each buffer only once
+"   let buffer_numbers = {}
+"   for quickfix_item in getqflist()
+"     let buffer_numbers[quickfix_item['bufnr']] = bufname(quickfix_item['bufnr'])
+"   endfor
+"   return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
+" endfunction
+"
+" " ---------- mappings ---------
+"
+" " Make %% a shortcut for %:h on the command line. Normally if you do 
+" " ':edit %<Tab>' it will show you the relative path to the file, including the
+" " filename. If you don't want the filename, you do ':edit %:h<Tab>'. This
+" " remapping will give allow us to get the same functionality by doing
+" " ':edit %%'.
+" cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+"
+" " Typos and things I don't want to do
+" nmap Q <ESC>
+" nmap :Q :q
+" nmap :W :w
+" nmap :WQ :wq
+"
+" " Toggle fix quix and location list
+" function! GetBufferList()
+"   redir =>buflist
+"   silent! ls!
+"   redir END
+"   return buflist
+" endfunction
+"
+" function! ToggleList(bufname, pfx)
+"   let buflist = GetBufferList()
+"   for bufnum in map(filter(split(buflist, '\n'), 'v:val =~ "'.a:bufname.'"'), 'str2nr(matchstr(v:val, "\\d\\+"))')
+"     if bufwinnr(bufnum) != -1
+"       exec(a:pfx.'close')
+"       return
+"     endif
+"   endfor
+"   if a:pfx == 'l' && len(getloclist(0)) == 0
+"       echohl ErrorMsg
+"       echo "Location List is Empty."
+"       return
+"   endif
+"   let winnr = winnr()
+"   exec(a:pfx.'open')
+"   if winnr() != winnr
+"     wincmd p
+"   endif
+" endfunction
+"
+" " Function key shortcuts
+" " map <F1> <nop>
+" " map <F3> :set hlsearch! hlsearch?<CR>
+" " map <C-n> :TagbarToggle<CR>
+" " map <F7> :NERDTreeToggle<CR>
+" " map <F8> :TagbarToggle<cr>
+" " map <F9> :!/usr/bin/ctags -L <(find . -name '*.py') --fields=+iaS --python-kinds=-i --sort=yes --extra=+q<cr>
+"
+" " Leader shortcuts
+" " open current buffer in new tab
+" map <Leader>s :tab split<CR>
+" map <Leader>n :tabnew<CR>
+" map <Leader>m :tabm
+" " map <Leader>l :lclose<CR>
+" " map <Leader>L :lopen<CR>
+" " map <Leader>c :copen<CR>
+" " map <Leader>C :cclose<CR>
+" map <Leader>i Oimport pdb; pdb.set_trace()<ESC>
+"
+" " Remove the delay in ESC leaving a mode (ttimeoutlen)
+" set timeoutlen=1000 ttimeoutlen=0
