@@ -22,7 +22,16 @@
     "vim.neovimPath": "/Users/sudars/.local/share/bob/nvim-bin/nvim",
     "vim.neovimUseConfigFile": true,
     "vim.showMarksInGutter": true,
+    "vim.highlightedyank.enable": true,
     "vim.normalModeKeyBindingsNonRecursive": [
+      {
+        "before": ["<C-p>"],
+        "commands": ["workbench.action.quickOpen"]
+      },
+      {
+        "before": ["<leader>", "b"],
+        "commands": ["workbench.action.quickOpenPreviousRecentlyUsedEditor"]
+      },
       {
         "before": ["]", "d"],
         "commands": [
@@ -63,7 +72,74 @@
         "before": ["<C-k>"],
         "commands": ["workbench.action.focusAboveGroup"],
         "silent": true
+      },
+      // BEGIN vim-cutlass implementation https://github.com/VSCodeVim/Vim/issues/5242
+      {
+        "before": ["D"],
+        "after": ["\"", "_", "D"]
+      },
+      {
+        "before": ["d"],
+        "after": ["\"", "_", "d"]
+      },
+      {
+        "before": ["d", "d"],
+        "after": ["\"", "_", "d", "d"]
+      },
+      {
+        "before": ["c"],
+        "after": ["\"", "_", "c"]
+      },
+      {
+        "before": ["C"],
+        "after": ["\"", "_", "C"]
+      },
+      {
+        "before": ["c", "c"],
+        "after": ["\"", "_", "c", "c"]
+      },
+      {
+        "before": ["x"],
+        "after": ["\"", "_", "x"]
+      },
+      {
+        "before": ["X"],
+        "after": ["\"", "_", "X"]
+      },
+      // "move"/"cut" remap
+      {
+        "before": ["m"],
+        "after": ["d"]
+      },
+      {
+        "before": ["m", "m"],
+        "after": ["d", "d"]
+      },
+      {
+        "before": ["M"],
+        "after": ["D"]
       }
+      // END vim-cutlass implementation
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+      // BEGIN vim-cutlass implementation https://github.com/VSCodeVim/Vim/issues/5242
+      {
+        "before": ["d"],
+        "after": ["\"", "_", "d"]
+      },
+      {
+        "before": ["c"],
+        "after": ["\"", "_", "c"]
+      },
+      {
+        "before": ["x"],
+        "after": ["\"", "_", "x"]
+      },
+      {
+        "before": ["m"],
+        "after": ["d"]
+      }
+      // END vim-cutlass implementation
     ],
     "vim.commandLineModeKeyBindings": [
 
@@ -75,5 +151,8 @@
     "editor.cursorSurroundingLines": 5,
     "workbench.settings.applyToAllProfiles": [
 
+    ],
+    "editor.rulers": [
+      80,
     ]
 }
