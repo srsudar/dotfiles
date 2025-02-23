@@ -138,6 +138,10 @@
         {
           "before": ["m"],
           "after": ["d"]
+        },
+        {
+          "before": ["p"],
+          "after": ["P"]
         }
         // END vim-cutlass implementation
   ],
