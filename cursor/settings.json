@@ -124,26 +124,26 @@
   "vim.visualModeKeyBindingsNonRecursive": [
     // BEGIN vim-cutlass implementation https://github.com/VSCodeVim/Vim/issues/5242
     {
-          "before": ["d"],
-          "after": ["\"", "_", "d"]
-        },
-        {
-          "before": ["c"],
-          "after": ["\"", "_", "c"]
-        },
-        {
-          "before": ["x"],
-          "after": ["\"", "_", "x"]
-        },
-        {
-          "before": ["m"],
-          "after": ["d"]
-        },
-        {
-          "before": ["p"],
-          "after": ["P"]
-        }
-        // END vim-cutlass implementation
+      "before": ["d"],
+      "after": ["\"", "_", "d"]
+    },
+    {
+      "before": ["c"],
+      "after": ["\"", "_", "c"]
+    },
+    {
+      "before": ["x"],
+      "after": ["\"", "_", "x"]
+    },
+    {
+      "before": ["m"],
+      "after": ["d"]
+    },
+    {
+      "before": ["p"],
+      "after": ["P"]
+    }
+    // END vim-cutlass implementation
   ],
   "vim.normalModeKeyBindings": [],
   // I'd rather this be 3, but apparently it always defaults
@@ -152,7 +152,52 @@
   // https://github.com/microsoft/vscode/issues/229075
   "editor.cursorSurroundingLines": 5,
   "workbench.settings.applyToAllProfiles": [],
-  "editor.rulers": [
-    80,
-  ]
+  "editor.rulers": [80],
+  "typescript.experimental.useTsgo": false,
+  "editor.gotoLocation.multipleDeclarations": "goto",
+  "editor.gotoLocation.multipleDefinitions": "goto",
+
+  // ---
+  // Mike's python settings
+  // ---
+  "python.analysis.diagnosticSeverityOverrides": {
+    "reportMissingImports": "none",
+    "reportMissingModuleSource": "none"
+  },
+
+  "[python]": {
+    "editor.formatOnType": true,
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
+  },
+
+  "mypy-type-checker.args": [
+      "--follow-imports=normal",
+      "--ignore-missing-imports",
+      "--show-column-numbers",
+      "--no-pretty"
+  ],
+
+  "flake8.args": [
+      "--ignore=E203,W503,W605"
+  ],
+
+  "isort.args": [
+      "--profile",
+      "black",
+      "-l",
+      "79"
+  ],
+  "isort.check": true,
+  "isort.serverEnabled": false,
+  "black-formatter.args": [
+      "--line-length=79"
+  ],
+  "black-formatter.importStrategy": "fromEnvironment",
+
+  // ---
+  // end Mike's python settings
+  // ---
 }
