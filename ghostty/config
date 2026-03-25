@@ -48,3 +48,30 @@
 # # Just for example:
 # resize-overlay-duration = 4s 200ms
 theme = Iterm2 Default
+# the dark blue everyone seems to be using these days is hard to read though.
+# light blue
+# palette = 4=#AACCFF
+palette = 4=#AACCFF
+# lighter blue
+# palette = 4=#5F87FF
+# muted steel blue
+# palette = 4=#6699CC
+# medium sky blue
+# palette = 4=#4D9DE0
+# softer blue
+# palette = 4=#5B8DD9
+
+# You may also want to override color 12 (bright blue, used in some contexts):
+palette = 12=#87AFFF
+
+
+# I don't like font ligatures like threequals being one character
+font-feature = -calt
+
+# allow mere cmd to click links inside tmux
+# https://github.com/ghostty-org/ghostty/discussions/4618
+# mouse-shift-capture = false
+
+# Allow `^;` to complete one word, which works with my shell history to jump
+# forward
+keybind = ctrl+;=esc:f
