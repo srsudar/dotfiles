@@ -2,7 +2,7 @@
   "foo": "from file",
   "notebooks": {
     "journal": {
-      "path": "~/Documents/keybase-repos/journal",
+      "path": "~/Dropbox/writing/journal",
       "aliases": ["j"],
       "default": true
     },
@@ -23,6 +23,11 @@
       "path": "~/Dropbox/writing/chile",
       "defaultTitle": "chile-coffee",
       "aliases": ["ch"],
+      "template": "<title>.md"
+    },
+    "ascoli": {
+      "path": "~/Dropbox/writing/ascoli-piceno",
+      "defaultTitle": "ascoli",
       "template": "<title>.md"
     }
   }
