@@ -1,10 +1,47 @@
 [user]
 	name = Sam Sudar
 	email = sudar.sam@gmail.com
+
+[column]
+  # this and a handeful of others in here are taken from
+  # https://blog.gitbutler.com/how-git-core-devs-configure-git/
+  ui = auto
+
+[branch]
+  sort = -committerdate
+
+[tag]
+  sort = version:refname
+
+[init]
+  defaultBranch = master
+
+[diff]
+  algorithm = histogram
+  colorMoved = plain
+  mnemonicPrefix = true
+  renames = true
+
+[help]
+  autocorrect = prompt
+
+[commit]
+  verbose = true
+
+[push]
+  default = simple
+  autoSetupRemote = true
+  followTags = true
+
 [core]
 	excludesfile = ~/.gitignore_global
 	mergeoptions = --no-edit
+  # these two supposedly make things much faster in big repos but can come with
+  # a performance cost. Try them but be aware.
+  fsmonitor = true
+  untrackedCache = true
 	# pager = less -x1,3
+
 [color]
 	ui = true
 

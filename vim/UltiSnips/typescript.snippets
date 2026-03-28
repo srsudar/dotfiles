@@ -1,9 +1,9 @@
-snippet it "Jasmine test" b
-it('${1}', () => {
-  chai.assert.fail('unimplemented');
-});
-
-endsnippet
+# snippet it "Jasmine test" b
+# it('${1}', () => {
+#   chai.assert.fail('unimplemented');
+# });
+#
+# endsnippet
 snippet itt "Jasmine test" b
 it('${1}', () => {
   fail('unimplemented');
@@ -21,4 +21,9 @@ for (const test of [
     fail('unimplemented');
   });
 }
+endsnippet
+
+snippet timeout "Add a long timeout for superagent" b
+// TODO: remove
+.timeout({ response: 1_000_000_000, deadline: 1_000_000_000 })
 endsnippet

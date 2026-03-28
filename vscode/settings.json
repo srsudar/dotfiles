@@ -1,0 +1,162 @@
+{
+    "workbench.colorTheme": "Default Dark Modern",
+    "git.openRepositoryInParentFolders": "never",
+    "mocha.files.glob": "test/**/*{.js,.ts}",
+    "[json][less][css]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascript][javascriptreact][typescript][typescriptreact]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.formatOnSave": true, // removes border from overview ruler (located on the right, same position as the scrollbar)
+      "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": "explicit"
+      }
+    },
+    "editor.formatOnSave": true,
+    "editor.snippetSuggestions": "bottom",
+    "editor.suggestSelection": "first",
+    "typescript.preferences.importModuleSpecifier": "non-relative",
+    "javascript.preferences.importModuleSpecifier": "non-relative",
+    "vim.enableNeovim": true,
+    "vim.neovimConfigPath": "/Users/sudars/.config/nvim/init.vim",
+    "vim.neovimPath": "/Users/sudars/.local/share/bob/nvim-bin/nvim",
+    "vim.neovimUseConfigFile": true,
+    "vim.showMarksInGutter": true,
+    "vim.highlightedyank.enable": true,
+    "vim.normalModeKeyBindingsNonRecursive": [
+      {
+        "before": ["<C-p>"],
+        "commands": ["workbench.action.quickOpen"]
+      },
+      {
+        "before": ["<leader>", "b"],
+        "commands": ["workbench.action.quickOpenPreviousRecentlyUsedEditor"]
+      },
+      {
+        "before": ["]", "d"],
+        "commands": [
+          "editor.action.marker.nextInFiles",
+          "closeMarkersNavigation"
+        ],
+        "silent": true
+      },
+      {
+        "before": ["[", "d"],
+        "commands": [
+          "editor.action.marker.prevInFiles",
+          "closeMarkersNavigation"
+        ],
+        "silent": true
+      },
+      {
+        "before": ["<leader>", "e"],
+        "commands": ["editor.action.showHover"],
+        "silent": true
+      },
+      {
+        "before": ["<C-h>"],
+        "commands": ["workbench.action.focusLeftGroup"],
+        "silent": true
+      },
+      {
+        "before": ["<C-l>"],
+        "commands": ["workbench.action.focusRightGroup"],
+        "silent": true
+      },
+      {
+        "before": ["<C-j>"],
+        "commands": ["workbench.action.focusBelowGroup"],
+        "silent": true
+      },
+      {
+        "before": ["<C-k>"],
+        "commands": ["workbench.action.focusAboveGroup"],
+        "silent": true
+      },
+      // BEGIN vim-cutlass implementation https://github.com/VSCodeVim/Vim/issues/5242
+      {
+        "before": ["D"],
+        "after": ["\"", "_", "D"]
+      },
+      {
+        "before": ["d"],
+        "after": ["\"", "_", "d"]
+      },
+      {
+        "before": ["d", "d"],
+        "after": ["\"", "_", "d", "d"]
+      },
+      {
+        "before": ["c"],
+        "after": ["\"", "_", "c"]
+      },
+      {
+        "before": ["C"],
+        "after": ["\"", "_", "C"]
+      },
+      {
+        "before": ["c", "c"],
+        "after": ["\"", "_", "c", "c"]
+      },
+      {
+        "before": ["x"],
+        "after": ["\"", "_", "x"]
+      },
+      {
+        "before": ["X"],
+        "after": ["\"", "_", "X"]
+      },
+      // "move"/"cut" remap
+      {
+        "before": ["m"],
+        "after": ["d"]
+      },
+      {
+        "before": ["m", "m"],
+        "after": ["d", "d"]
+      },
+      {
+        "before": ["M"],
+        "after": ["D"]
+      }
+      // END vim-cutlass implementation
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+      // BEGIN vim-cutlass implementation https://github.com/VSCodeVim/Vim/issues/5242
+      {
+        "before": ["d"],
+        "after": ["\"", "_", "d"]
+      },
+      {
+        "before": ["c"],
+        "after": ["\"", "_", "c"]
+      },
+      {
+        "before": ["x"],
+        "after": ["\"", "_", "x"]
+      },
+      {
+        "before": ["m"],
+        "after": ["d"]
+      },
+      {
+        "before": ["p"],
+        "after": ["P"]
+      }
+      // END vim-cutlass implementation
+    ],
+    "vim.commandLineModeKeyBindings": [
+
+    ],
+    // I'd rather this be 3, but apparently it always defaults
+    // to 5. See:
+    //
+    // https://github.com/microsoft/vscode/issues/229075
+    "editor.cursorSurroundingLines": 5,
+    "workbench.settings.applyToAllProfiles": [
+
+    ],
+    "editor.rulers": [
+      80,
+    ]
+}

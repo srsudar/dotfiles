@@ -29,6 +29,10 @@ ln -s ./dotfiles/gitconfig ./.gitconfig
 # tig
 ln -s ./dotfiles/tigrc ./.tigrc
 
+# ghostty
+mkdir -p ./.config/ghostty
+ln -s ~/dotfiles/ghostty/config ~/.config/ghostty/config
+
 # mighty vim
 ln -s ./dotfiles/vim/ ./.vim
 ln -s ./.vim/vimrc ./.vimrc
