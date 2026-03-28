@@ -38,7 +38,37 @@ make_link() {
   ok "$link → $target"
 }
 
+# ── 0. Manual prerequisites ─────────────────────────────────────────
+echo "Checking prerequisites..."
+
+MISSING=()
+
+if ! command -v brew &>/dev/null; then
+  MISSING+=("  Homebrew: https://brew.sh")
+fi
+
+if ! command -v rustup &>/dev/null; then
+  MISSING+=("  Rust:     https://rustup.rs")
+fi
+
+if ! command -v nvm &>/dev/null && [ ! -d "$HOME/.nvm" ]; then
+  MISSING+=("  nvm:      https://github.com/nvm-sh/nvm#installing-and-updating")
+fi
+
+if [ ${#MISSING[@]} -gt 0 ]; then
+  err "Missing tools that require manual installation:"
+  for line in "${MISSING[@]}"; do
+    echo "$line"
+  done
+  echo ""
+  err "Install these first, then re-run this script."
+  exit 1
+fi
+
+ok "All prerequisites found"
+
 # ── 1. Core repos ───────────────────────────────────────────────────
+echo ""
 echo "Checking repos..."
 clone_if_missing "git@github.com:srsudar/dotfiles.git"       "$HOME/dotfiles"
 "dotfiles"
@@ -95,13 +125,51 @@ make_link "$HOME/dotfiles/ghostty/config"   "$HOME/.config/ghostty/config"
 make_link "$HOME/dotfiles/bash_profile_mbAir" "$HOME/.bash_profile"
 make_link "$HOME/dotfiles/bash_profile_mbAir" "$HOME/.bashrc"
 
-# ── 4. zprezto symlinks ──────────────────────────────────────────────
+# ── 4. zprezto symlinks (from prezto README) ─────────────────────────
 echo ""
 echo "Linking zprezto runcoms..."
 
-for rcfile in zlogin zlogout zpreztorc zprofile zshenv zshrc; do
-  make_link "$HOME/.zprezto/runcoms/$rcfile" "$HOME/.${rcfile}"
-done
+zsh -c '
+  setopt EXTENDED_GLOB
+  for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
+    ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}" 2>/dev/null && \
+      printf "  \033[0;32m✓\033[0m %s → %s\n" "${ZDOTDIR:-$HOME}/.${rcfile:t}" "$rcfile" || \
+      printf "  \033[0;33m⊘\033[0m %s (already exists)\n" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+  done
+'
+
+# ── 5. Homebrew packages (macOS only) ────────────────────────────────
+if [ "$(uname -s)" = "Darwin" ]; then
+  echo ""
+  echo "Checking Homebrew packages..."
+
+  BREW_PACKAGES=(
+    atuin
+    bat
+    eg-examples
+    ffmpeg
+    go
+    jq
+    k9s
+    livekit-cli
+    bob
+    sqlite
+    tig
+    tmux
+    uv
+    zig
+  )
+
+  for pkg in "${BREW_PACKAGES[@]}"; do
+    if brew list --formula "$pkg" &>/dev/null; then
+      skip "$pkg"
+    else
+      info "Installing $pkg"
+      brew install "$pkg"
+      ok "$pkg installed"
+    fi
+  done
+fi
 
 echo ""
 echo "Done."
