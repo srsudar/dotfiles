@@ -1,22 +1,13 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Repos: name, target path, clone URL
-declare -A REPOS=(
-  [dotfiles]="$HOME/dotfiles|git@github.com:srsudar/dotfiles.git"
-  [zprezto]="$HOME/.zprezto|git@github.com:srsudar/prezto-private.git"
-  [nvim-config]="$HOME/.config/nvim|git@github.com:srsudar/nvim-config.git"
-)
-
 info()  { printf '  \033[1;34m→\033[0m %s\n' "$*"; }
 skip()  { printf '  \033[0;33m⊘\033[0m %s (already exists)\n' "$*"; }
 ok()    { printf '  \033[0;32m✓\033[0m %s\n' "$*"; }
 err()   { printf '  \033[0;31m✗\033[0m %s\n' "$*" >&2; }
 
-# ── 1. Clone repos if missing ───────────────────────────────────────
-echo "Checking repos..."
-for name in "${!REPOS[@]}"; do
-  IFS='|' read -r path url <<< "${REPOS[$name]}"
+clone_if_missing() {
+  local url="$1" path="$2" name="$3"
   if [ -d "$path/.git" ]; then
     skip "$name already cloned at $path"
   else
@@ -24,14 +15,10 @@ for name in "${!REPOS[@]}"; do
     git clone "$url" "$path"
     ok "$name cloned"
   fi
-done
+}
 
-# ── 2. Helper: make a symlink ────────────────────────────────────────
 make_link() {
   local target="$1" link="$2"
-  local link_dir
-  link_dir="$(dirname "$link")"
-
   if [ -L "$link" ]; then
     local existing
     existing="$(readlink "$link")"
@@ -46,11 +33,32 @@ make_link() {
     err "$link exists and is not a symlink — skipping"
     return
   fi
-
-  mkdir -p "$link_dir"
+  mkdir -p "$(dirname "$link")"
   ln -s "$target" "$link"
   ok "$link → $target"
 }
+
+# ── 1. Core repos ───────────────────────────────────────────────────
+echo "Checking repos..."
+clone_if_missing "git@github.com:srsudar/dotfiles.git"       "$HOME/dotfiles"
+"dotfiles"
+clone_if_missing "git@github.com:srsudar/prezto-private.git"  "$HOME/.zprezto"
+"zprezto"
+clone_if_missing "git@github.com:srsudar/nvim-config.git"     "$HOME/.config/nvim"
+"nvim-config"
+
+# ── 2. Zsh plugins (referenced in zshrc) ────────────────────────────
+echo ""
+echo "Checking zsh plugins..."
+mkdir -p "$HOME/.zsh"
+clone_if_missing "https://github.com/zdharma/fast-syntax-highlighting"
+"$HOME/.zsh/fast-syntax-highlighting"  "fast-syntax-highlighting"
+clone_if_missing "https://github.com/zsh-users/zsh-autosuggestions.git"
+"$HOME/.zsh/zsh-autosuggestions"        "zsh-autosuggestions"
+clone_if_missing "https://github.com/Aloxaf/fzf-tab"                   "$HOME/.zsh/fzf-tab"
+                   "fzf-tab"
+clone_if_missing "https://github.com/srsudar/fzf-complete-flags"
+"$HOME/.zsh/fzf-complete-flags"         "fzf-complete-flags"
 
 # ── 3. dotfiles symlinks ─────────────────────────────────────────────
 echo ""
