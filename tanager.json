@@ -1,5 +1,6 @@
 {
   "foo": "from file",
+  "editorCmd": "nvim",
   "notebooks": {
     "journal": {
       "path": "~/Dropbox/writing/journal",

@@ -146,6 +146,7 @@ if [ "$(uname -s)" = "Darwin" ]; then
     k9s
     livekit-cli
     bob
+    ripgrep
     sqlite
     tig
     tmux
