@@ -12,7 +12,7 @@ Clone the repo to your home directory (i.e. `~/dotfiles`).
 Type these commands. I purposely don't put them in a script, forcing me to
 think about the setup at least a tiny bit on each new machine.
 
-```shell
+```bash
 # tmux
 ln -s ./dotfiles/tmux.conf ./.tmux.conf
 
@@ -32,6 +32,13 @@ ln -s ./dotfiles/tigrc ./.tigrc
 # ghostty
 mkdir -p ./.config/ghostty
 ln -s ~/dotfiles/ghostty/config ~/.config/ghostty/config
+
+# agent files for codex
+ln -s "$HOME/dotfiles/agents" "$HOME/.agents"
+
+# personal directions for codex
+mkdir -p "$HOME/.codex"
+ln -s "$HOME/dotfiles/codex/AGENTS.md" "$HOME/.codex/AGENTS.md"
 
 # mighty vim
 ln -s ./dotfiles/vim/ ./.vim

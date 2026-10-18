@@ -75,3 +75,7 @@ font-feature = -calt
 # Allow `^;` to complete one word, which works with my shell history to jump
 # forward
 keybind = ctrl+;=esc:f
+
+# Keep the left option key as true 'option', which lets me enter special
+# characters like I want to.
+macos-option-as-alt = right

@@ -111,6 +111,9 @@ make_link "$HOME/dotfiles/vim"              "$HOME/.vim"
 make_link "$HOME/.vim/vimrc"                "$HOME/.vimrc"
 make_link "$HOME/dotfiles/vim/ideavimrc"    "$HOME/.ideavimrc"
 
+# claude
+make_link "$HOME/dotfiles/claude/skills"    "$HOME/.claude/skills"
+
 # ghostty
 make_link "$HOME/dotfiles/ghostty/config"   "$HOME/.config/ghostty/config"
 
@@ -146,6 +149,7 @@ if [ "$(uname -s)" = "Darwin" ]; then
     k9s
     livekit-cli
     bob
+    gawk
     ripgrep
     sqlite
     tig
@@ -164,6 +168,26 @@ if [ "$(uname -s)" = "Darwin" ]; then
     fi
   done
 fi
+
+# ── 6. Cargo packages ───────────────────────────────────────────────
+# tree-sitter-cli is required by nvim-treesitter 1.0+ to compile parsers.
+# Without it, :TSInstall silently fails and treesitter highlighting won't work.
+echo ""
+echo "Checking cargo packages..."
+
+CARGO_PACKAGES=(
+  tree-sitter-cli
+)
+
+for pkg in "${CARGO_PACKAGES[@]}"; do
+  if cargo install --list 2>/dev/null | grep -q "^${pkg} "; then
+    skip "$pkg"
+  else
+    info "Installing $pkg"
+    cargo install "$pkg"
+    ok "$pkg installed"
+  fi
+done
 
 echo ""
 echo "Done."

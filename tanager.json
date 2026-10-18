@@ -4,6 +4,8 @@
   "notebooks": {
     "journal": {
       "path": "~/Dropbox/writing/journal",
+      "template": "<YYYY>/<MM>/<YYYY-MM-DD>_<title>.md",
+      "defaultTitle": "daily",
       "aliases": ["j"],
       "default": true
     },
