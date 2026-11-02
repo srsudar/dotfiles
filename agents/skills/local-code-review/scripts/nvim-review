@@ -1,0 +1,63 @@
+#!/usr/bin/env python3
+"""Open a portable review plan in Neovim."""
+
+import argparse
+import os
+from pathlib import Path
+import shutil
+import subprocess
+import sys
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("plan", type=Path, help="Path to a review JSON file")
+    parser.add_argument(
+        "--worktree", type=Path, default=Path.cwd(),
+        help="Existing checkout to review (default: current directory)",
+    )
+    args = parser.parse_args()
+    plan = args.plan.expanduser().resolve()
+    if not plan.is_file():
+        parser.error(f"No review plan at {plan}")
+
+    nvim = shutil.which("nvim")
+    if nvim is None:
+        parser.error("nvim is not on PATH")
+
+    env = {**os.environ, "GIT_OPTIONAL_LOCKS": "0"}
+
+    result = subprocess.run(
+        ["git", "-c", "core.fsmonitor=false", "-C",
+         str(args.worktree.expanduser()), "rev-parse", "--show-toplevel"],
+        env=env, text=True, capture_output=True,
+    )
+
+    if result.returncode:
+        parser.error(result.stderr.strip())
+
+    root = Path(result.stdout.strip()).resolve()
+    directory = Path(__file__).resolve().parent
+    state_home = Path(
+        env.get("XDG_STATE_HOME") or Path.home() / ".local" / "state"
+    ).expanduser()
+    state_directory = Path(
+        env.get("NVIM_REVIEW_STATE_DIR")
+        or state_home / "nvim" / "agent-review-v2"
+    ).expanduser().resolve()
+    env.update({
+        "NVIM_REVIEW_PLAN": str(plan),
+        "NVIM_REVIEW_ROOT": str(root),
+        "NVIM_REVIEW_HELPER": str(directory / "lua" / "review.lua"),
+        "NVIM_REVIEW_STATE_DIR": str(state_directory),
+    })
+    os.chdir(root)
+    os.execve(nvim, [nvim, "-c",
+                    "lua dofile(vim.env.NVIM_REVIEW_HELPER).start()"], env)
+
+
+if __name__ == "__main__":
+    try:
+        main()
+    except OSError as error:
+        sys.exit(str(error))

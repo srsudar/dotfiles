@@ -1,0 +1,4 @@
+interface:
+  display_name: "Respond to AGENT comments"
+  short_description: "Answer or apply saved source review notes"
+  default_prompt: "Use $respond-to-agent-comments to read my saved AGENT notes."

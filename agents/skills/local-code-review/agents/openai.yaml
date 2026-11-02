@@ -1,0 +1,4 @@
+interface:
+  display_name: "Local code review"
+  short_description: "Review PRs, branches, or working changes in Neovim"
+  default_prompt: "Use $local-code-review head against master."
